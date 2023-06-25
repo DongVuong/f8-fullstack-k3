@@ -1,0 +1,44 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+header{
+    margin-top: 50px ;
+    width: fit-content;
+    border:1px solid #b48020;
+    margin-left: 30px;
+}
+header>div{
+    display: inline-block;
+    color: #b48020;
+    padding: 0 30px;
+}
+.contry-color{
+    color: white;
+    background-color:  #b48020;
+}
+main{
+    margin-top: 50px;
+    background-color: 	#f2f2f2;
+    margin-left: 30px;
+    height: 450px;
+}
+section{   
+    display: inline-block;
+    box-sizing: border-box;
+    width: 30%;
+    height: 450px;
+    padding: 40px;
+    vertical-align: top;
+}
+section h2{
+    font-size: 20px;
+}
+aside{
+    display: inline-block;
+    width: 69%;
+    height: 500px;
+    border: none;
+}
+.email-color{
+    color: #b48020;
+}

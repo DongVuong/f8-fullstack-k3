@@ -1,0 +1,38 @@
+*{
+    font-family: 'poppins', sans-serif;
+    text-align: center;
+}
+.header-textbox{
+    margin: auto;
+    padding: 15px 10px;
+    font-size: 24px;
+    font-weight: 100;
+    color: #efeded;
+    background-color:#7f7fe2;
+    width: 200px;
+}
+main h1{
+    font-weight: 300;
+    font-size: 50px;
+}
+span{
+    color: #00cbff;
+    font-weight: 700;
+}
+main p{
+    color: #666666;
+    font-size: 22px;
+}
+button{
+    margin-top: 30px;
+    display: inline-block;
+    color: #efeded;
+    border: none;
+    padding: 20px 40px;
+    font-size: 20px;
+    background: #2c3033;
+    border-radius: 4px;
+}
+.button-fix{
+    margin-left: 30px;
+}
