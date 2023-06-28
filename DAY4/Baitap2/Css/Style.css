@@ -28,7 +28,7 @@ h2.form-name{
     display: block;
 }
 input{
-    width: 420px;
+    width: 90%;
     margin-bottom: 30px;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 24px;
@@ -43,7 +43,7 @@ input[type="text"]::placeholder{
     padding: 30px;
 }
 button.btn{
-    width: 420px;
+    width: 90%;
     margin-bottom: 30px;
     font-family: 'Alfa Slab One', cursive;
     font-size: 24px;
