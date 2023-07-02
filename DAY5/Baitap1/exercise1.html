@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bai tap 1</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="container">
+      <h1 class="heading">Hey there</h1>
+      <p class="desc">
+        <span class="desc__hightlight">We'd like to hear from you.</span> Send
+        us your message or just say hy with our contact form or directly via
+        phone, we love to chat
+      </p>
+      <!-- Form-submit -->
+      <form action="" class="form-wrapper" method="GET">
+        <!-- Name -->
+        <div class="form-group">
+          <label for="name"><i class="fas fa-user-tie"></i></label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Your name..."
+            required
+          />
+          <i class="fas fa-star"></i>
+          <i class="fas fa-times"></i>
+          <p class="input__suggest" style="color: #eee">Enter your name</p>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email"><i class="fas fa-envelope"></i></label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="your@domain.com"
+            required
+          />
+          <i class="fas fa-star"></i>
+          <i class="fas fa-times"></i>
+          <p class="input__suggest" style="color: #eee">Enter your email</p>
+        </div>
+
+        <!-- Tel -->
+        <div class="form-group">
+          <label for="tel"
+            ><i class="fas fa-mobile-alt"></i></i
+          ></label>
+          <input
+            type="tel"
+            name="tel"
+            id="tel"
+            placeholder="+44 00 123"
+            required
+          />
+          <p class="input__suggest" style="color: #eee">Enter your phone</p>
+        </div>
+        <div class="form-group">
+          <label for="subject"><i class="fas fa-book"></i></label>
+          <select name="subject" id="subject" required>
+            <option value="">Subject</option>
+            <option value="1">Subject1</option>
+            <option value="2">Subject2</option>
+            <option value="3">Subject3</option>
+          </select>
+        </div>
+
+        <!-- Message -->
+        <div class="form-group group-message">
+          <label for="message" class="label-message">
+            <i class="fa-solid fa-mobile-screen-button"> </i>
+          </label>
+          <textarea
+            name="message"
+            id="message"
+            placeholder="Message"
+            required
+          ></textarea>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-times"></i>
+          <p class="input__suggest" style="color: #eee">
+            Please write a message
+          </p>
+        </div>
+
+        <!-- Cta -->
+        <div class="group-submit">
+          <div class="checkbox">
+            <input type="checkbox" name="send" id="check" hidden />
+            <label class="label-submit" for="check">
+              Send me a copy of this message
+            </label>
+          </div>
+          <button type="submit">SEND</button>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>

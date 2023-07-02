@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: "Lato", sans-serif;
+}
+i {
+    font-size: 20px;
+    padding: 8px;
+}
+label i {
+    color: #fff;
+}
+.form-group {
+    display: inline-flex;
+    position: relative;
+    margin-bottom: 30px;
+    width: 100%;
+}
+.form-group label {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    width: 55px;
+    height: 55px;
+}
+.form-group:hover label {
+    background-color: #333;
+    color: #fff;
+}
+.form-group:hover select,
+.form-group:hover textarea,
+.form-group:hover input {
+    border: 1px solid #333;
+}
+.fa-star,
+.fa-times {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: #999;
+}
+.input__suggest::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 8px;
+    display: inline-block;
+    border: 20px solid #333;
+    border-top: 16px solid transparent;
+    border-right: 16px solid transparent;
+    transform: rotate(-45deg);
+}
+textarea,
+select,
+input:not(input[type="checkbox"]) {
+    width: 100%;
+    height: 55px;
+    border: 1px solid #ddd;
+    padding: 0 20px;
+    font-size: 17px;
+    color: #333;
+}
+
+.container {
+    background-color: rgb(255, 255, 255, 0.78);
+    width: 720px;
+    padding: 5px 40px;
+    position: relative;
+}
+.container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+.heading {
+    font-family: "Lobster", cursive;
+    font-size: 50px;
+    font-weight: normal;
+    margin-bottom: 35px;
+    color: #333;
+}
+.desc {
+    font-size: 17px;
+    font-weight: 400;
+    color: #999;
+    margin-bottom: 30px;
+}
+.desc__hightlight {
+    color: red;
+}
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.form-group:hover .fa-star {
+    color: black;
+}
+.fa-times {
+    display: none;
+}
+.input__suggest {
+    position: absolute;
+    padding: 14px;
+    background-color: #333;
+    top: -70px;
+    left: 45px;
+    display: none;
+}
+#subject {
+    appearance: none;
+}
+.form-group i.select-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    color: #999;
+    font-size: 13px;
+    transform: translateY(-50%);
+}
+.form-group:hover i.select-icon {
+    color: #666;
+}
+
+
+input:focus ~ .fa-star,
+textarea:focus ~ .fa-star {
+    display: none;
+}
+input:focus ~ p.input__suggest,
+input:focus ~ p.input__suggest::after,
+input:focus ~ .fa-times,
+textarea:focus ~ p.input__suggest,
+textarea:focus ~ p.input__suggest::after,
+textarea:focus ~ .fa-times {
+    display: inline-block;
+    color: #666;
+    cursor: pointer;
+}
+input:focus ~ .fa-times,
+textarea:focus ~ .fa-times {
+    font-size: 14px;
+}
+.group-message {
+    position: relative;
+}
+.group-message i {
+    position: absolute;
+    top: 20px;
+}
+label.label-message {
+    height: 200px;
+}
+textarea {
+    padding-top: 20px;
+    height: 200px;
+    resize: none;
+}
+/* footer form */
+.group-submit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.checkbox .label-submit {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: #666;
+}
+.checkbox .label-submit::before,
+.checkbox .label-submit::after {
+    content: "";
+    display: inline-block;
+}
+.checkbox .label-submit::before {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #999;
+    background-color: #fff;
+}
+
+.checkbox input[type="checkbox"]:checked ~ .label-submit::after {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 15px;
+    height: 8px;
+    border-left: 3.8px solid #333;
+    border-bottom: 3.8px solid #333;
+    rotate: -45deg;
+}
+button[type="submit"] {
+    border: none;
+    font-size: 18px;
+    padding: 10px 40px;
+    background-color: #ea3f33;
+    color: #fff;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    opacity: 0.5;
+}

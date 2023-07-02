@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body {
+    padding: 20px;
+}
+.dropdown__item {
+    overflow: hidden;
+    margin-top: 5px;
+    color: #fff;
+}
+.dropdown__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #d95925;
+    font-size: 15px;
+    padding: 10px 10px;
+    cursor: pointer;
+}
+.dropdown__header .fa-minus {
+    display: none;
+}
+.dropdown__content {
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    display: none;
+}
+.dropdown__content b {
+    font-weight: 600;
+}
+.dropdown__input:checked ~ .dropdown__header .fa-minus {
+    display: block;
+}
+.dropdown__input:checked ~ .dropdown__header .fa-plus {
+    display: none;
+}
+.dropdown__input:checked ~ .dropdown__content {
+    background-color: #fff;
+    display: block;
+}
+.dropdown__input:checked ~ .dropdown__header {
+    opacity: .88;
+}
