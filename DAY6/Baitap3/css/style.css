@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap');
+*{
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+body{
+    background-image: url("http://uiwebsoft.com/justlog/login-one/images/login-bg2.jpg");
+}
+.container{
+    display: flex;
+    margin:  200px 400px;
+}
+.content-left{
+    display: block;
+    width: 35%;
+    height: 500px;
+    background-color: #ff574d;
+    padding: 50px 25px;
+}
+.content-right{
+    display: block;
+    align-items: center;
+    justify-content: center;
+    width: 65%;
+    height: 500px;
+    background-color: #fff;
+    padding: 50px 25px;
+}
+h2.title{
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 30px;
+}
+h2.title span{
+background-color: #FFF;
+color: #ff574d;
+padding: 2px 10px;
+margin-right: 10px;
+border-radius: 4px;
+}
+p{
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
+}
+button{
+    color:#ff574d;
+    font-size: 1.5rem;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.btn-wrap{
+    text-align: center;
+}
+.contact{
+    text-align: center;
+}
+.contact-child{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(143, 21, 21);
+    margin: 5px;
+    border-radius: 5px;
+}
+.contact-child a{
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+}
+h2.title-right{
+    text-align: center;
+    color: #272323;
+    margin-bottom: 30px;
+}
+h2.title-right span{
+    color:#ff574d;
+}
+h2.title-right::after{
+    content: '';
+    width: 40px;
+    height: 2px;
+    display: block;
+    background-color: red;
+    margin: auto;
+}
+form{
+    padding-left: 30px;
+}
+div{
+    margin: 0px;
+}
+.input-info input{
+    margin-bottom: 20px;
+    width: 85%;
+    padding: 10px 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+.oftion{
+    display: flex;
+    width: 85%;
+    height: auto;
+    
+}
+.left{
+    display: inline-block;
+    float: left;
+    width: 50%;
+    margin-bottom: 20px;
+
+}
+.right{
+    display: inline-block;
+    float: right;
+    width: 50%;
+    margin-bottom: 20px;
+}
+button.btn-2{
+    width: 85%;
+    color: #fff;
+    background-color: #ff574d;
+}
+div.support{
+    text-align: center;
+}

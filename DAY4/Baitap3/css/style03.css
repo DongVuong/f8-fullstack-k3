@@ -80,13 +80,13 @@ input:nth-of-type(5):checked~  nav ul li:nth-of-type(5){
 .products img:first-child{
     display: none;
 }
-.products:hover img:last-child{
+.products-wrap:hover img:last-child{
     display: none;
 }
-.products:hover img:first-child{
+.products-wrap:hover img:first-child{
     display: block;
 }
-.products:hover~ .buy-opt{
+.products-wrap:hover .buy-opt{
     display: block;
 }
 .rate{

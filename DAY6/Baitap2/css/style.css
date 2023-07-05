@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Lobster&family=Open+Sans&family=Roboto:wght@300;500&display=swap");
+
+html{
+    font-family: "Roboto", sans-serif;
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: #ebf5fe;
+    color: #666666;
+}
+main{
+    display: grid;
+    margin: 50px;
+    grid-template-columns: 30% 30% 30%;
+    gap: 30px;
+}
+section{
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 0 10px 1px #666666;
+    background-color: #fff;
+}
+h2{
+    display: flex;
+    align-items: center;
+    color: black;
+}
+span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    margin-right: 10px;
+    margin-left: 0px;
+    font-size: 45px;
+    border-radius: 50%;
+}
+a{
+    text-decoration: none;
+}
+span.avatar-red{
+    color: #fff;
+    background-image: linear-gradient(to right,red,rgb(255, 183, 183));
+}
+span.avatar-green{
+    color: #fff;
+    background-image: linear-gradient(to right,rgb(21, 132, 147),rgb(183, 255, 244));
+}
+span.avatar-yellow{
+    color: #fff;
+    background-image: linear-gradient(to right,rgb(255, 166, 0),rgb(237, 237, 123));
+}
+span.avatar-blue{
+    color: #fff;
+    background-image: linear-gradient(to right,blue,rgb(96, 96, 255));
+}
+span.avatar-purple{
+    color: #fff;
+    background-image: linear-gradient(to right,purple,rgb(250, 201, 250));
+}
+span.avatar-green-2{
+    color: #fff;
+    background-image: linear-gradient(to right,rgb(36, 89, 28),rgb(133, 211, 133))
+}
+.box-1:hover{
+    box-shadow: 0 0 0 5px red;
+}
+.box-2:hover{
+    box-shadow: 0 0 0 5px rgb(21, 132, 147);
+}
+.box-3:hover{
+    box-shadow: 0 0 0 5px rgb(255, 166, 0);
+}
+.box-4:hover{
+    box-shadow: 0 0 0 5px blue;
+}
+.box-5:hover{
+    box-shadow: 0 0 0 5px purple;
+}
+.box-6:hover{
+    box-shadow: 0 0 0 5px rgb(36, 89, 28);
+}
