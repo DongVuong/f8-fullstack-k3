@@ -130,3 +130,22 @@ button.btn-2{
 div.support{
     text-align: center;
 }
+.content-mid{
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    padding: 0;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 40px;
+    color: #ff574d;
+    border-radius: 50%;
+    border: 1px;
+    box-shadow: 0 0 10px 1px #666666;
+    position:absolute;
+    left: 41%;
+    top: 400px;
+
+}
