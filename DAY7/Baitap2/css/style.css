@@ -1,0 +1,74 @@
+@font-face {
+    font-family: SFU;
+    src: url("../font/SFUTradeGothicBoldCondensedTwenty.ttf");
+}
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Asap', sans-serif;
+}
+body{
+    margin: 20px;
+}
+header.title-wrap{
+    background: url("https://fastly.picsum.photos/id/352/2000/500.jpg?hmac=g5SS8m1zzLWauRaikLK8NXsN5NyCOhx8kRvFfKhKDeU");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 400px;
+    position: relative;
+}
+header.title-wrap img{
+    position: absolute;
+    bottom: 0px;
+    left: 50px;
+}
+header.title-wrap .title{
+    width: 500px;
+    position: absolute;
+    left: 250px;
+    bottom: 0px;
+    margin-bottom: 20px;
+}
+.title h2.main-title{
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #fff;
+    padding: 20px;
+}
+.title .sub-title{
+    display: inline-block;
+    color: #fff;
+    padding: 20px;
+    text-transform:uppercase;
+}
+.title .sub-title span{
+    font-family: SFU;
+    font-size: 1.5em;
+}
+input[type="radio"]{
+    display: none;
+}
+.list-items{
+list-style: none;
+margin-right: 30px;
+float: right;
+}
+.list-items li{
+    display: inline-block;
+    padding: 10px 0px;
+    margin-right: 30px;
+    text-transform: uppercase;
+}
+.content input:nth-of-type(1):checked~ul li:nth-of-type(1){
+    color:#bf4240;
+    border-bottom: 3px solid #bf4240;
+}
+.content input:nth-of-type(2):checked~ul li:nth-of-type(2){
+    color:#bf4240;
+    border-bottom: 3px solid #bf4240;
+}
+.content input:nth-of-type(3):checked~ul li:nth-of-type(3){
+    color:#bf4240;
+    border-bottom: 3px solid #bf4240;
+}

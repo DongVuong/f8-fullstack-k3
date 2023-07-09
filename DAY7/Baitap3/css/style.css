@@ -1,0 +1,127 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Asap', sans-serif;
+}
+body{
+    width: 1100px;
+    margin:  50px auto
+}
+header{
+    margin: 10px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+ul{
+    list-style: none;
+    display: flex;
+    margin: 10px;
+}
+ul li{
+    text-align: center;
+    display: inline-block;
+    background-color: #ccc;
+    border-radius: 99px;
+    padding: 10px 10px;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+li .title{
+    text-transform: capitalize;
+    font-size: 0.9rem;
+}
+li .sub-title{
+    margin-top: 3px;
+    text-transform: capitalize;
+    font-size: 0.6rem;
+}
+.content-wrap .content:nth-child(1){
+    background: url("https://fastly.picsum.photos/id/545/318/195.jpg?hmac=Vl-hSwXXZivksuuG2r0td2sVXMa_bfx8QB-SnMfzsyE");
+    background-repeat: no-repeat;
+    background-size:contain, cover;
+}
+.content-wrap .content:nth-child(2){
+    background: url("https://fastly.picsum.photos/id/33/318/195.jpg?hmac=AOs4fjt4P9lMyCSpHFGUp3WON7cD34RsBfIvJhNMHig");
+    background-repeat: no-repeat;
+    background-size:contain, cover;
+}
+.content-wrap .content:nth-child(3){
+    background: url("https://fastly.picsum.photos/id/678/318/195.jpg?hmac=f0Sv9V4PZYa1rSsfzFrbDgW8xWQFHcbyyZOvXp5sVBU");
+    background-repeat: no-repeat;
+    background-size:contain, cover;
+}
+.content-wrap .content:nth-child(4){
+    background: url("https://fastly.picsum.photos/id/114/318/195.jpg?hmac=A8u340CYS356ogXZnxmh5K78fZkkdG71jc2m2U_yxBM");
+    background-repeat: no-repeat;
+    background-size:contain, cover;
+}
+.content-wrap .content:nth-child(5){
+    background: url("https://fastly.picsum.photos/id/335/318/195.jpg?hmac=q_dhREXEc-yElcBMLHSYTyyS7Y3tJ-_8eqDhcJofpgU");
+    background-repeat: no-repeat;
+    background-size:contain, cover;
+}
+.content-wrap .content:nth-child(6){
+    background: url("https://fastly.picsum.photos/id/67/318/195.jpg?hmac=h_n6SHkX-aP7V-ysdeaat008TTxaPdPZoxp_bhKViro");
+    background-repeat: no-repeat;
+    bbackground-size:contain, cover;
+}
+.content-wrap{
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+}
+.content{
+    position: relative;
+    border-radius: 5px;
+    width: 318px;
+    height: 195px;
+    margin: 10px;
+}
+h3{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    color: #fff;
+    font-weight: 400;
+}
+.sub-content{
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    color: #fff;
+    font-size: 0.8rem;
+}
+ul li:hover{
+    background-color: rgb(152, 103, 12);
+    color: #fff;
+}
+input[type="radio"]{
+    display: none;
+}
+input:nth-child(1):checked~ ul li:nth-child(1),
+input:nth-child(2):checked~ ul li:nth-child(2),
+input:nth-child(3):checked~ ul li:nth-child(3),
+input:nth-child(4):checked~ ul li:nth-child(4),
+input:nth-child(5):checked~ ul li:nth-child(5),
+input:nth-child(6):checked~ ul li:nth-child(6),
+input:nth-child(7):checked~ ul li:nth-child(7),
+input:nth-child(8):checked~ ul li:nth-child(8){
+    background-color: rgb(152, 103, 12);
+    color: #fff;
+}
+.content .overlay{
+    display: none;
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.592);
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+.content:hover .overlay{
+    display: flex;
+}
