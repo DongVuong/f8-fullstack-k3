@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    color: #5f5c5c;
+}
+.container{
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+}
+img{
+    width: 100px;
+}
+.image{
+    width: 800px;
+    background-color: gray;
+}
+.shopping-cart{
+    width: 400px;
+}
+.title{
+    background-color: #dcdcdc;
+    display: flex;
+    padding: 15px 20px;
+    position: relative;
+}
+.title h2{
+    font-weight: 400;
+    color: black;
+    font-size: 1.6rem;
+}
+.title span{
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    display: inline-block;
+    background-color: blue;
+    color: #fff;
+    border-radius: 50%;
+}
+.title i{
+    font-size: 2rem;
+position: absolute;
+right:10px;
+top:12px;
+}
+img{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    /* border: 1px solid black; */
+}
+.item-container{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.207);
+}
+.item-wrap{
+    height: 282px;
+    overflow: auto;
+}
+.item-container{
+    position: relative;
+    padding: 20px;
+    display: flex;
+    /* background-color: #f3ebeb; */
+}
+.content{
+    height: 100px;
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+.item-container::after{
+    content: "X";
+    position: absolute;
+    right: 20px;
+}
+.content p{
+    display: block;
+    width: 300px;
+}
+.volunm{
+    padding: 5px 10px;
+}
+.cost{
+    padding: 5px 50px;
+}
+.volunm{
+    border: 1px solid rgb(87, 86, 86);
+    border-radius: 99px;
+
+}
+.total{
+    padding:10px 20px;
+    display: flex;
+    justify-content: space-between
+}
+.total span{
+    font-weight: 500;
+    font-size: 1.6rem;
+    color: black;
+}
+.total span:nth-child(2){
+    color: red;
+}
+p.sub-content{
+    padding-left: 20px;
+    font-size: 0.8rem;
+}
+button{
+margin: 10px 20px;
+background-color: #fff;
+    width: calc(100% - 20px);
+    padding: 20px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.btn-2{
+    color: #fff;
+    background-color: rgba(0, 0, 255, 0.57);
+}
+.delivery{
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.struck{
+    display: flex;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border: 1px solid rgb(25, 25, 163);
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 2rem;
+}
+.note{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: black;
+}

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+*{
+    padding: 0;
+    margin: 20px auto;
+    box-sizing: border-box;
+    text-align: center;
+}
+img{
+    margin: 0 auto;
+    display: block;
+    height: 100px;
+}
+h2{
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+footer span{
+    text-transform: capitalize;
+}
+.sevice{
+    max-width: 1300px;
+}
+.content-wrap{
+    flex-basis: 400px;
+    position: relative;
+}
+a{
+    text-decoration: none;
+    padding: 10px 40px;
+    background-color: rgb(8, 8, 145);
+    color: white;
+}
+.container{
+    max-width: 100%;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+a span{
+    text-transform: capitalize;
+}
+.content-wrap a{
+    position: absolute;
+    right: 120px;
+    bottom: -50px;
+}
+h3{
+    font-size: 1.2rem;
+}
+p{
+    color: gray;
+}

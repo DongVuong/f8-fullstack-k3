@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+}
+body{
+    background:url("https://admin.money24h.vn/wp-content/uploads/2021/07/cong-ty-bao-hiem-nhan-tho.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+section{
+    margin: 30px auto;
+    max-width: 1200px;
+    /* border: 1px solid; */
+}
+header{
+    margin: 10px auto;
+}
+ul.title{
+    /* border: 1px solid black; */
+    display: flex;
+    text-align: center;
+    list-style: none;
+    align-items: center;
+    position: relative;
+}
+ul.title li{
+    /* border: 1px solid red; */
+    padding: 10px 10px;
+    flex-grow: 1;
+    cursor: pointer;
+}
+ul.title>li+li{
+    padding-top: 30px;
+    height: 80px;
+
+}
+li{
+    list-style: none;
+}
+ul.title > li:first-of-type{
+   width: 40%;
+   padding-left: 0;
+    text-align: left;
+    font-size: 26px;
+}
+ul li i:nth-child(2){
+    font-size: 0.7rem;
+}
+ul li i:nth-child(1){
+    font-size: 1.2rem;
+}
+div.menu-wrap{
+    position: absolute;
+    width: 1200px;
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    top:73px;
+    left:0px;
+    display: none;
+
+}
+.menu-left{
+    margin: 30px auto;
+    width: 35%;
+    border-right:  2px solid rgba(193, 187, 187, 0.405);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+.menu-upper,.menu-lower{
+    margin: 0 auto;
+}
+.menu-items{
+    display: flex;
+    flex-wrap: wrap;
+}
+.menu-right-wrap{
+    margin: 30px auto;
+    width: 60%;
+}
+.item, .item-r{
+text-align: left;
+}
+.menu-title{
+    text-align: left;
+    padding: 10px 10px;
+}
+.item{
+    width: 150px;
+    font-weight: 500;
+}
+.item-r{
+    width: 230px;
+    font-weight: 500;
+}
+.menu-title{
+    text-transform: uppercase;
+}
+/*hover*/
+li:hover span, li:hover i{
+    color: gray;
+}
+li:hover .menu-wrap{
+    display: flex;
+}
+.menu-wrap li:hover{
+    color: gray;
+}
+
