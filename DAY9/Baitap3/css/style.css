@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+:root{
+    --border-color:gray;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: gray;
+}
+body{
+    background-color: #978b8b23;
+}
+.form-register{
+    max-width: 900px;
+    margin: 50px auto;
+}
+.title{
+    margin: 0,auto;
+    text-align: center;
+    line-height: 3rem;
+}
+h2{
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: black;
+}
+form{
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+input{
+    width: 400px;
+    height: 70px;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 1.2rem;
+    color: black;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+}
+select{
+    width: 400px;
+    height: 70px;
+    padding-left: 20px;
+    font-size: 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+}
+textarea{
+    width: 820px;
+    font-size: 1.2rem;
+    color: black;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+}
+button.btn{
+    padding:20px 20px;
+    color: #fff;
+    background-color: rgb(29, 41, 208);
+    border: none;
+    border-radius: 99px;
+    font-size: 1.2rem;
+}
+.input-content{
+    position: relative;
+}
+.input-content span{
+    font-size: 1.2rem;
+    position: absolute;
+    display:block;
+    top: 50%;
+    left: 20px;
+    translate: 0 -50%;
+    transform-origin: 0 0;
+    transition: font-size 0.4s ease;
+}
+.select-content{
+    position: relative;
+}
+.select-content span{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    /* border: 1px solid black; */
+    top: 50%;
+    right:2px;
+    translate: 0 -50%;
+    background-color: #fff;
+}
+.text-area{
+    position: relative;
+}
+textarea{
+    padding-top: 30px;
+    padding-left: 20px;
+    font-size: 1.2rem;
+}
+.text-area span{
+    position: absolute;
+    display: block;
+    font-size: 1.2rem;
+    left: 20px;
+    top: 30px;
+    transform-origin: 0 0;
+    transition: all 0.4s ease;
+}
+input:focus ~ span{
+font-size: 0.9rem;
+translate: 0 -20px;
+}
+textarea:focus ~ span{
+    font-size: 0.9rem;
+    translate: 0 -20px;
+}
+input:valid{
+    background-color: rgba(207, 164, 233, 0.21);
+    --border-color: rgba(207, 164, 233, 0.21);
+}
+input:valid ~ span{
+    font-size: 0.9rem;
+    translate: 0 -20px;
+}
+.btn:hover{
+    opacity: 0.5;
+}
+

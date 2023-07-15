@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bai tap 3</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <section class="form-register">
+      <div class="title">
+        <h2 class="main-title">Drop Us a Line</h2>
+        <div class="sub-title">
+          Reach out to us from contact form and we will get back to you shortly.
+        </div>
+      </div>
+      <form method="get">
+        <div class="input-content">
+          <input type="text" name="firstname" required />
+          <span>First Name *</span>
+        </div>
+        <div class="input-content">
+          <input type="text" name="lastname" required />
+          <span>Last Name *</span>
+        </div>
+        <div class="input-content">
+          <input type="email" name="email" required />
+          <span>Email *</span>
+        </div>
+        <div class="select-content">
+          <select name="sales" id="sales">
+            <option value="0">Select a department</option>
+            <option value="1" selected>Sales</option>
+            <option value="2">Marketing</option>
+            <option value="3">Customer Support</option>
+          </select>
+          <span><i class="fa-sharp fa-solid fa-chevron-down"></i></span>
+        </div>
+        <div class="text-area">
+          <textarea name="Message" id="Message" cols="30" rows="10"> </textarea>
+          <span>Message *</span>
+        </div>
+        <button class="btn">Send Message</button>
+      </form>
+    </section>
+  </body>
+</html>
