@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    height: 100vh;
+    background-color: rgb(223, 223, 223);
+}
+input[type="radio"]{
+    display: none;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding-top: 100px;
+    width: 850px;
+    justify-content: center;
+    
+}
+.content-wrap-1{
+    order: 1;
+}
+.content-wrap-2{
+    order: 2;
+}
+.content-wrap-3{
+    order: 3;
+}
+.content-wrap-4{
+    order: 4;
+}
+
+.label-wrap{
+    padding: 5px;
+    border: 1px solid rgb(210, 210, 210);
+    background-color: white;
+    border-right: none;
+}
+.label-wrap:first-of-type{
+    border-left: none;
+}
+.title {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    padding: 18px 20px;
+    transition: 0.4s linear;
+    cursor: pointer;
+}
+.content-wrap-1,.content-wrap-2,.content-wrap-3,.content-wrap-4{
+    position: relative;
+    width: 100%;
+    background-color: white;
+    perspective: 500px;
+    perspective-origin: top;
+}
+.content {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 30px 0px 30px 30px;
+    transform-origin: top;
+    background-color: white;
+    opacity: 0;
+    transform: rotateX(-60deg);
+    overflow-x: scroll;
+    transition-property: transform opacity;
+    transition: 0.5s ease-in-out;
+}
+h2 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+p {
+    line-height: 1.5rem;
+    margin-bottom: 10px;
+}
+.label-wrap:hover .title,
+.input-radio:checked + .label-wrap .title{
+    background-color: #4298DB;
+    color: white;
+}
+.input-radio:first-of-type:checked ~ .content-wrap-1 .content,
+.input-radio:nth-of-type(2):checked ~ .content-wrap-2 .content,
+.input-radio:nth-of-type(3):checked ~ .content-wrap-3 .content,
+.input-radio:last-of-type:checked ~ .content-wrap-4 .content{
+    transition-delay: 0.5s;
+    opacity: 1;
+    transform: rotateX(0);
+}
