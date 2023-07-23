@@ -1,0 +1,484 @@
+html{
+    font-family: 'Poppins', sans-serif;
+}
+header{
+    .nav{
+        .container{
+            .row{
+                .logo{
+                    text-align: left;
+                }
+                label{
+                    span{
+                        margin-left: auto;
+                        display: block;
+                        cursor: pointer;
+                        font-size: 30px;
+                        width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        border: 1px solid gray;
+                        border-radius: 5px;
+                    }
+                }
+
+            }
+            .nav-menu{
+                height: 0px;
+                overflow: hidden;
+                font-size: 1.2rem;
+                transition: height 0.4s ease-in-out;
+                .nav-item-grover li, .nav-search li{
+                    margin: 30px;
+                }
+            }
+        }
+    }
+}
+.content-1{
+ .note-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    .note{
+        display: flex;
+        padding: 10px;
+        border: none;
+        background-color: pink;
+        color: red;
+        align-items: center;
+        justify-content: center;
+        border-radius: 99px;
+    }
+ }
+}
+.content-text-1{
+    margin-top: 50px;
+    text-align: center;
+    h1{
+        font-size: 4rem;
+        font-weight: 600;
+        line-height: 5rem;
+        padding: 0 10px;
+        span{
+            font-size: 4rem;
+            font-weight: 400;
+            color: red;
+        }
+    }
+    p{
+        margin-top: 30px;
+        line-height: 1.8rem;
+        color: gray;
+        margin-bottom: 30px;
+    }
+}
+.row{
+align-items: center;
+justify-content: center;
+    .order-1{
+        font-size: 1.5rem;
+        background-color: red;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 20px 10px;
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+}
+.order-2{
+    display: flex;
+    align-items: center;
+justify-content: center;
+    button{
+        background-color: #fff;
+        border: #fff;
+display: flex;
+align-items: center;
+justify-content: center;
+        .img-button{
+            display: block;
+            img{
+            height: 120px;
+        }
+    }
+        span{
+            text-transform: capitalize;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.content-2-wrap{
+    img{
+        max-width: 100%;
+    }
+}
+.content-3{
+    background-color: #f1dede;
+    padding: 100px 20px;
+    .container > .row .heading{
+        h5{
+            font-size: 1rem;
+            color:rgb(188, 20, 20);
+            margin-bottom: 30px;
+        }
+        h2{
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 3rem;
+            text-transform: capitalize;
+        }
+    }
+    .content-3-wrap{
+        margin-top: 20px;
+        .box{
+        margin: 20px;
+        position: relative;
+        border-radius: 10px;
+        .bg{
+            position: absolute;
+            background: #fe6a6a;
+            inset: 0;
+            opacity: 0.5;
+            border-radius: 10px;
+            transition-property:rotate,transform, opacity;
+            transition: 0.4s ease-in-out;
+            z-index: 1;
+        }
+        .box-box{
+        border-radius: 10px;
+        background: #fff;
+        padding: 50px 10px;
+        z-index: 2;
+        .img{
+            height: 100px;
+        }
+        h3{
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 4rem;
+        }
+        p{
+            font-size: 1rem;
+            font-weight: 300;
+            color: #434040;
+            line-height: 2rem;
+        }
+        }
+    }
+    }
+}
+.content-4{
+    img{
+        width: 100%;
+    }
+}
+._feature_grover_grocery_content{
+    margin-top: 100px;
+    h5{
+        font-size: 1rem;
+        color: green;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    h2{
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 3rem;
+        text-transform: capitalize;
+    }
+    p{
+        margin-top: 30px;
+        font-size: 1rem;
+        font-weight: 300;
+        color: #434040;
+        line-height: 2rem;
+    }
+    .content-4-btn{
+        margin-top: 50px;
+        display: inline-block;
+            font-size: 1.5rem;
+            background-color: rgb(238, 56, 56);
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 20px 10px;
+            a{
+                text-decoration: none;
+                color: #fff;
+                padding: 10px 20px;
+            }
+        }
+    }
+
+.content-5{
+    img{
+        width: 100%;
+    }
+    .content-5-content{
+        .content-5-content-txt{ 
+            margin-top: 100px;
+            h5{
+                font-size: 1rem;
+                color: rgb(217, 129, 14);
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+            h2{
+                font-size: 2rem;
+                font-weight: 600;
+                line-height: 3rem;
+                text-transform: capitalize;
+            }
+            p{
+                margin-top: 30px;
+                font-size: 1rem;
+                font-weight: 300;
+                color: #434040;
+                line-height: 2rem;
+            }
+
+        }
+        .content-5-content-btn{
+            margin-top: 50px;
+        display: inline-block;
+            font-size: 1.5rem;
+            background-color: rgb(238, 56, 56);
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 20px 10px;
+            a{
+                text-decoration: none;
+                color: #fff;
+                padding: 10px 20px;
+            }
+
+        }
+
+    }
+}
+.content-6{
+    margin-top: 150px;
+    background-color: rgb(221, 201, 204);
+    .content-6-wrap{
+        padding-top: 50px;
+        .content-6-content-wrap{ 
+            margin-top: 100px;
+            h5{
+                font-size: 1rem;
+                color: rgb(217, 14, 14);
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+            h2{
+                font-size: 2rem;
+                font-weight: 600;
+                line-height: 3rem;
+                text-transform: capitalize;
+            }
+            p{
+                margin-top: 30px;
+                font-size: 1rem;
+                font-weight: 300;
+                color: #434040;
+                line-height: 2rem;
+            }
+
+        }
+        .container .row{
+            margin-bottom: 50px;
+            a{
+                color: black;
+                padding: 10px 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid rgb(153, 152, 152);
+                border-radius: 10px;
+                span{
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+.footer-wrap{
+    .left-box{
+        p{
+            color: gray;
+            margin: 30px 0px;
+        }
+    }
+    .right-box{
+        margin-bottom: 50px;
+        line-height: 2rem;
+        h4{
+            color: black;
+            font-weight: 600;
+            line-height: 4rem;
+        }
+        li a{
+            text-decoration: none;
+            color: gray;
+        }
+        p{
+            color: gray;
+
+        }
+    }
+
+}
+._footer_grover_grocery_bottom{
+    .sub-link{
+        .container{
+            .row{
+                justify-content: space-evenly;
+                .first-child{
+                    text-align: right;
+                }
+                .second-child{
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+
+
+
+input[type="checkbox"]:checked~ .nav-menu{
+    height: 300px;
+}
+.order-1:hover{
+    background-color: #fff;
+    border: 1px solid red;
+    a{
+        color:red;
+    }
+}
+.order-2:hover{
+    opacity: 0.5;
+}
+
+.content-3-wrap:hover .bg{
+    transform: translateX(10px);
+    rotate: -2deg;
+
+}
+
+@media screen and (min-width:576px){
+}
+@media screen and (min-width:768px){
+.content-1 .note-wrap {
+        justify-content: flex-start;
+    }
+.content-text-1{
+    text-align: left;
+
+}
+.btn-1-wrap .row{
+    justify-content: flex-start;
+}
+
+._feature_grover_grocery_content{
+    margin-top: 0px;
+    text-align: left;
+}
+    .content-5-content{
+        margin-top: 0px;
+    text-align: left;
+
+    }
+.content-6-wrap{
+.content-6-content-wrap{
+    text-align: left;
+}
+.container .container{
+    padding: 0 !important;
+    .row-content-6{
+        justify-content: flex-start;
+    }
+}
+}
+._footer_grover_grocery_bottom .row{
+    text-align: left;
+
+}
+}
+.sub-link .container .row{
+    justify-content: space-around;
+    .first-child{
+        text-align: center;
+    }
+    .second-child{
+        text-align: center;
+    }
+}
+
+@media screen and (min-width:992px){
+    .nav{
+        .container{
+            .row{
+                label{
+                    display: none;
+                }
+                .nav-menu{
+                     display: flex;
+                     justify-content: center;
+                     align-items: center;
+                     height: auto;
+                         .nav-item-grover{
+                             display: flex;
+                             li{
+                                margin: 0 30px;
+                             }
+        }
+        .nav-search{
+            li{
+               margin: 0 30px;
+            }
+    }
+            }}}
+}
+.content-5 .content-5-wrap .container .row{
+    .first-content{
+        order: 2;
+    }
+    .second-content{
+        order: 1;
+    }
+}
+._footer_grover_grocery_top{
+    .row{
+        align-items: flex-start;
+        margin: 0px -10px;
+    }
+}
+._footer_grover_grocery_bottom{
+    .sub-link{
+        .container{
+            .row{
+                justify-content: flex-end;
+                .first-child{
+                    text-align: right;
+                }
+                .second-child{
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
+
+}
+@media screen and (min-width:1200px){
+    .content-6-wrap .container .container .row-content-6{
+        justify-content: space-between;
+    }
+}
+@media screen and (min-width:1400px){
+}
