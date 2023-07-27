@@ -1,0 +1,356 @@
+*{
+    box-sizing: border-box;
+    // font-family: 'Rajdhani', sans-serif;
+    // font-family: 'Titillium Web', sans-serif;
+
+}
+:root{
+    --primaryColor:#3e3f5e;
+    --btn-color:rgb(85, 0, 255);
+}
+%formInput{
+    margin-top: 76px;
+    .form-input{
+        margin-top: 28px;
+        position: relative;
+        input{
+            width: 100%;
+            padding: 20px 10px;
+            outline: none;
+            border-radius: 10px;
+            border: 1px solid gray;
+            &:focus{
+                border: 1px solid rgb(106, 0, 255);
+            }
+        }
+        label{
+            font-size: 16px;
+            line-height: 24px;
+            background-color: #fff;
+            position: absolute;
+            left: 10px;
+            top:50%;
+            transform: translateY(-50%);
+            font-family: 'Rajdhani', sans-serif;
+            color: #868686;
+            scale:1;
+            transition-property: scale top;
+            transition: 0.4s ease-in-out;
+            transform-origin: 0 0;
+        }
+        input:focus ~ label{
+            scale: 0.9;
+            top: 0px;
+        }
+
+    }
+    .form-row{
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 22px;
+        margin-top: 28px;
+        font-weight: 700;
+        display: float;
+        .form-row-checkbox{
+            float: left;
+            display: flex;
+            align-items: center;
+            .checked-box{
+                border-radius: 5px;
+                border: 1px solid gray;
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                img{
+                    width: 12px;
+                }
+            }
+            label{
+                margin-left: 10px;
+            }
+            .check-sub:checked ~ .checked-box{
+                background-color: rgb(0, 225, 255);
+            }
+        }
+        .form-row-link{
+            float: right;
+            color:#86868686;
+        }
+    }
+    button.form-submit{
+        font-size: 14px;
+        line-height: 54px;
+        font-weight: 700;
+        border-radius: 10px;
+        border: none;
+        color: #fff;
+        background-color:var(--btn-color);
+        margin-top: 28px;
+        width: 100%;
+        cursor: pointer;
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+}
+@import "mixin.scss";
+body{
+    background-image: url("../image/landing-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+.container{
+    min-height: 100vh;
+    padding-top:80px;
+    padding-bottom:100px;
+    h2.landing-info-title{
+        font-size: 20px;
+        margin-top: 36px;
+        text-transform: uppercase;
+        font-family: 'Rajdhani', sans-serif;
+        color: #fff;
+        font-weight: 700;
+    }
+    h1{
+        font-size: 104px;
+        line-height: 104px;
+        margin-top: -10px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        font-family: 'Titillium Web', sans-serif;
+        color: #fff;
+        font-weight: 900;
+    }
+    p.landing-info-desc{
+       display: none;
+    }
+    .btn{
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    .landing-btn-login, .landing-btn-register{
+        @include btn;
+}
+.landing-btn-login{
+    border-radius: 10px 0 0 10px;
+
+}
+.landing-btn-register{
+
+    border-radius:0 10px 10px 0;
+}
+}
+.landing-wrap{
+    font-family: 'Rajdhani', sans-serif;
+    margin: 80px auto;
+    align-items: center;
+    .login-form{
+        width: 485px;
+        background-color: #fff;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        margin: 0px auto;
+        padding:64px;
+        h2.form-title{
+            color: var(--primaryColor);
+            font-size: 26px;
+            line-height: 26px;
+            text-transform: capitalize;
+        }
+        form{
+    @extend %formInput;
+        }
+        p.landing-form-text{
+            margin-top: 40px;
+            font-size: 14px;
+            line-height: 14px;
+            font-weight: 700;
+            position: relative;
+        }
+        p.landing-form-text::before{
+            content: "";
+            display: block;
+            width: 90px;
+            height: 1px;
+            background-color: #ccc;
+            position: absolute;
+            top:50%;
+        }
+        p.landing-form-text::after{
+            content: "";
+            display: block;
+            width: 85px;
+            height: 1px;
+            background-color: #ccc;
+            position: absolute;
+            top:50%;
+            left:75%;
+        }
+        .landing-form-socials{
+            margin-top: 30px;
+           a.contact{
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            transform: translateY(0%);
+            transition: translate;
+            transition: 0.4s ease-in-out;
+            &:hover{
+               transform: translateY(-20%);
+            }
+            img{
+                width: 12px;
+            }
+            border-radius: 5px;
+           }
+           a.contact:nth-child(1){
+            background-color:  rgb(85, 0, 255);
+            margin-right: 20px;
+           }
+           a.contact:nth-child(2){
+            background-color:  rgb(0, 204, 255);
+            margin-right: 20px;
+           }
+           a.contact:nth-child(3){
+            background-color:  rgba(85, 0, 255, 0.901);
+            margin-right: 20px;
+           }
+           a.contact:nth-child(4){
+            background-color: red;
+           }
+           
+        }
+    }
+    .register-form{
+        width: 485px;
+        background-color: #fff;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        margin: 0px auto;
+        padding:64px;
+        h2.form-title{
+            color: var(--primaryColor);
+            font-size: 26px;
+            line-height: 26px;
+            text-transform: capitalize;
+        }
+        form{
+        --btn-color:rgb(0, 225, 255);
+        @extend %formInput;
+        }
+        p.form-desc{
+            margin-top: 40px;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: left;
+        }
+    }
+    .register-form{
+        display: none;
+    }
+}
+    .rocket-icon{
+        display: none;
+    }
+}
+
+
+input.login-view:checked ~ .landing-info .landing-btn-login{
+    background-color: #fff;
+    span{
+        color: var(--primaryColor);
+    }
+}
+input.register-view:checked ~ .landing-info .landing-btn-register{
+    background-color: #fff;
+    span{
+        color: var(--primaryColor);
+    }
+}
+input.login-view:checked ~ .landing-wrap .login-form{
+    display: block;
+}
+input.register-view:checked ~ .landing-wrap .register-form{
+    display: block;
+}
+
+@media screen and (min-width:1365px){
+    .container {
+    p.landing-info-desc{
+        font-family: 'Rajdhani', sans-serif;
+        display: block;
+        margin: 10px 100px;
+        font-size: 18px;
+        line-height: 24px;
+        color: #fff;
+    }
+    .landing-wrap{
+        position: relative;
+        height: 100vh;
+        .rocket-icon{
+            display: block;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            transform: translate(-50% ,-50%);
+        }
+        .login-form{
+            display: initial;
+            position: absolute;
+            top:0px;
+            left: 50px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(50%);
+            z-index: 1;
+            transition-property:transform opacity visibility z-index;
+            transition: 1s ease-in-out;
+        }
+        .register-form{
+            display: initial;
+            position: absolute;
+            top:-100px;
+            left: 50px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(50%);
+            z-index: 2;
+            transition-property:transform opacity visibility z-index;
+            transition: 1s ease-in-out;
+        }
+    }
+    input.login-view:checked ~.landing-wrap .login-form{
+        transform: translateX(0%);
+        opacity: 1;
+        visibility: visible;
+        z-index: 1;
+    }
+    input.register-view:checked ~ .landing-wrap .register-form{
+        transform: translateX(0%);
+        opacity: 1;
+        visibility: visible;
+        z-index: 1;
+    }
+  
+}
+}
+@media screen and (min-width:1500px){
+    .landing-wrap::after{
+        display: block;
+        content: " ";
+        position: absolute;
+        background: url(../image/dot-texture.png);
+        background-color: #f3f1f1;
+        background-repeat: repeat;
+        width: 120%;
+        height: 155%;
+        right: -65%;
+        top: -30%;
+        border-radius: 50% 0 0 50%;
+        z-index: -1;
+    }
+
+}

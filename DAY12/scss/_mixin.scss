@@ -1,0 +1,19 @@
+@mixin btn{
+    display: block;
+    width: 180px;
+    height: 54px;
+    border: 1px solid #fff;
+    text-align: center;
+    span{ 
+        display: inline-block;
+        width: 180px;
+        height: 54px;
+        text-align: center;
+        font-size: 16px;
+        line-height: 54px;
+        font-family: 'Rajdhani', sans-serif;
+        color: #fff;
+        font-weight: 700;
+}
+}
+
