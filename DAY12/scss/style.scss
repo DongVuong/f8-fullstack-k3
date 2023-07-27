@@ -280,6 +280,9 @@ input.register-view:checked ~ .landing-wrap .register-form{
 
 @media screen and (min-width:1365px){
     .container {
+        .landing-info{
+            margin-top: 100px;
+        }
     p.landing-info-desc{
         font-family: 'Rajdhani', sans-serif;
         display: block;
@@ -346,9 +349,9 @@ input.register-view:checked ~ .landing-wrap .register-form{
         background: url(../image/dot-texture.png);
         background-color: #f3f1f1;
         background-repeat: repeat;
-        width: 120%;
+        width: 150%;
         height: 155%;
-        right: -65%;
+        right: -100%;
         top: -30%;
         border-radius: 50% 0 0 50%;
         z-index: -1;
