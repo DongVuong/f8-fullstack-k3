@@ -286,7 +286,18 @@ input.register-view:checked ~ .landing-wrap .register-form {
   display: block;
 }
 
+input.register-view:checked ~ .landing-wrap .login-form {
+  display: none;
+}
+
 @media screen and (min-width: 1365px) {
+  body {
+    height: 100vh;
+    overflow: hidden;
+  }
+  input.register-view:checked ~ .landing-wrap .login-form {
+    display: block;
+  }
   .container .landing-info {
     margin-top: 100px;
   }
