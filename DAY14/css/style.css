@@ -147,7 +147,7 @@ footer .container .social-media .row .col-10 .row .social-app a img {
   min-height: 20px;
 }
 
-@media screen and (max-width: 767.98px) {
+@media screen and (max-width: 991.98px) {
   footer .container .row {
     align-items: center;
     justify-content: center;
