@@ -1,4 +1,5 @@
 .section-intro {
+  margin-top: 130px;
     .green-chop {
         margin: 0 auto;
       .green-intro {
@@ -82,6 +83,15 @@
 
   }
   @media screen and (max-width:1299px) {
+    .section-intro {
+        .green-chop {
+          .green-intro {
+            .green-intro-inner {
+              .intro-title h1{
+                font-size: 3.2rem;
+                font-weight: 800;
+              }
+            }}}}
     .green-product{
       .product-img {
         top:120px;
@@ -1043,6 +1053,7 @@
   @media screen and (max-width:991.98px){
     .contact{
       margin-top: 100px;
+      margin-bottom: 50px;
       .container{
         .row{
             .contact-img{
