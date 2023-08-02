@@ -65,6 +65,12 @@ h1, h2, h3, h4, h5, h6 {
   align-items: flex-end;
 }
 
+footer {
+  background-color: #F2FFEC;
+}
+footer .container {
+  padding-top: 28px;
+}
 footer .container .row {
   align-items: stretch;
 }
@@ -107,6 +113,9 @@ footer .container .row .line {
   width: 100%;
   height: 1px;
   background-color: #a3a3a3;
+}
+footer .container .social-media .row {
+  margin-bottom: 0px;
 }
 footer .container .social-media .row .col-10 .row {
   align-items: center;
@@ -907,7 +916,7 @@ footer .container .social-media .row .col-10 .row .social-app a img {
   left: 0px;
   content: "";
   position: absolute;
-  width: 100vw;
+  width: 100%;
   height: 360px;
   background-color: #fff0e7;
   z-index: -1;
@@ -967,6 +976,9 @@ footer .container .social-media .row .col-10 .row .social-app a img {
 }
 
 @media screen and (max-width: 991.98px) {
+  br {
+    display: none;
+  }
   .protect {
     background-color: #fff0e7;
     padding-bottom: 20px;
@@ -980,10 +992,6 @@ footer .container .social-media .row .col-10 .row .social-app a img {
   .protect .protect-list > [class^=col-] .protect-item .protect-heading h3 {
     margin-top: 10px;
     margin-bottom: 10px;
-    padding-left: 0px;
-  }
-  .protect .protect-list > [class^=col-] .protect-item .protect-text-01, .protect .protect-list > [class^=col-] .protect-item .protect-text-02, .protect .protect-list > [class^=col-] .protect-item .protect-text-03 {
-    margin-left: 0px;
   }
   .protect::after {
     display: none;
@@ -997,13 +1005,20 @@ footer .container .social-media .row .col-10 .row .social-app a img {
   }
   .protect .container .protect-header p {
     margin-top: 10px;
-    text-align: center br;
-    text-align-display: none;
+    text-align: center;
   }
 }
 @media screen and (max-width: 767.98px) {
   .protect .protect-list {
     justify-content: flex-start;
+  }
+}
+@media screen and (max-width: 575.98px) {
+  .protect .protect-list > [class^=col-] .protect-item .protect-heading h3 {
+    padding-left: 0px;
+  }
+  .protect .protect-list > [class^=col-] .protect-item .protect-text-01, .protect .protect-list > [class^=col-] .protect-item .protect-text-02, .protect .protect-list > [class^=col-] .protect-item .protect-text-03 {
+    margin-left: 0px;
   }
 }
 .quality {
@@ -1063,7 +1078,7 @@ footer .container .social-media .row .col-10 .row .social-app a img {
 }
 .contact {
   margin-top: 133px;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 .contact .row {
   margin: 0 auto;

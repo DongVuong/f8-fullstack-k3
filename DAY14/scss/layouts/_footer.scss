@@ -1,5 +1,7 @@
 footer{
+    background-color: #F2FFEC;
     .container{
+        padding-top: 28px;
         .row{
             align-items: stretch;
             .logo{
@@ -46,6 +48,7 @@ footer{
         }
         .social-media{
             .row{
+                margin-bottom: 0px;
                 .col-10{
                     .row{
                         align-items: center;
