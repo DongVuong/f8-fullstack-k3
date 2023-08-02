@@ -8,7 +8,9 @@
         height: 99px;
         overflow: hidden;
         img{
+            display: block;
             max-height: 100%;
+            margin-left: 0px;
         }
     }
     .header-nav{
