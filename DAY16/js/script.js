@@ -18,7 +18,8 @@ console.log(`gia tri sau khi hoan vi: a = ${a}, b= ${b}`);
 console.log(`Bai 2`);
 
 S = 10 + 20 + 5 ** 10 / 2;
-console.log(S);
+console.log(` tinh S = 10 + 20 + 5 ** 10 / 2`);
+console.log(`ket qua cua phep tinh la ${S}`);
 
 //# Bài 3: Tìm số lớn nhất
 //Học viên tìm hiểu về câu lệnh rẽ nhánh và giải bài tập sau
@@ -37,6 +38,7 @@ var c = "10";
 a = +a;
 b = +b;
 c = +c;
+console.log(` tim so lon nhat trong 3 so ${a}, ${b}, ${c}`);
 if (a == b) {
   if (b >= c) {
     console.log(`so lon nhat la ${a}`);
@@ -70,6 +72,7 @@ var a = 10;
 var b = 5.5;
 a = +a;
 b = +b;
+console.log(`kiem tra 2 so a= ${a} va b =${b} co cung dau nhau khong?`);
 if (a != 0 && b != 0) {
   if (a * b > 0) {
     console.log(`2 so a va b cung dau`);
@@ -94,6 +97,7 @@ var c = "8";
 a = +a;
 b = +b;
 c = +c;
+console.log(`day so truoc khi duoc sap xep ${a}, ${b}, ${c}`);
 if (a > b) {
   w = a;
   a = b;
