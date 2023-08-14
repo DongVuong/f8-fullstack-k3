@@ -111,7 +111,7 @@ var check = function (w) {
   if (w == 2) {
     return ` day la so nguyen to`;
   } else if (w > 2 && w % 1 === 0) {
-    for (i = 2; i < Math.sqrt(w); i++) {
+    for (i = 2; i <= Math.sqrt(w); i++) {
       if (w % i === 0) {
         return `so ${w} khong phai so nguyen to`;
       }
