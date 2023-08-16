@@ -1,27 +1,28 @@
-const $ = (tag) => document.querySelector(tag);
-const saveContent = $(".content").innerText.trim();
-let content = saveContent.split(" ");
-let i = 0;
-function resetContent() {
-  $(".content").innerHTML = saveContent;
-  i = 0;
-  content = saveContent.split(" ");
-}
-function highlightNextWord() {
-  if (i >= content.length) {
-    resetContent();
-  } else {
-    for (let j = 0; j < i; j++) {
-      content[j] = content[j]
-        .replace('<span class="highlight">', "")
-        .replace("</span>", "");
-    }
-    const span = document.createElement("span");
-    span.className = "highlight";
-    span.innerText = content[i];
-    content[i] = span.outerHTML;
-    $(".content").innerHTML = content.join(" ");
-    i++;
+var content =
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
+
+content = content.replaceAll(" ", "</span> <span>");
+
+content = `<span>${content}</span>`;
+
+console.log(content);
+
+var index = 0;
+setInterval(function () {
+  var char = content.charAt(index);
+  var charNext = content.charAt(index + 1);
+
+  if (char === ">" && charNext !== " ") {
+    var html =
+      content.slice(0, index) + ` class="highlight"` + content.slice(index);
+    document.body.innerHTML = html;
   }
-}
-setInterval(highlightNextWord, 500);
+
+  index++;
+
+  if (index === content.length) {
+    index = 0;
+  }
+}, 50);
+
+document.write(content);
