@@ -42,10 +42,9 @@ const resultThree = function (arr) {
     var newArr3 = concatArr(arr);
     return newArr3.reduce(function (prev, element) {
       if (!Object.keys(prev).includes(typeof element)) {
-        prev[typeof element] = [element];
-      } else {
-        prev[typeof element].push(element);
+        prev[typeof element] = [];
       }
+      prev[typeof element].push(element);
       return prev;
     }, {});
   } else return `khong phai mang`;
