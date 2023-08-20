@@ -49,7 +49,8 @@ const resultThree = function (arr) {
     }, {});
   } else return `khong phai mang`;
 };
-console.log(resultThree(arr3));
+var result3 = Object.values(resultThree(arr3));
+console.log(result3);
 /*# Bài 4
 Dựa vào hình ảnh giao diện sau, hãy thiết kế 1 mảng phù hợp và thực hiện đổ dữ liệu lên giao diện
 */
