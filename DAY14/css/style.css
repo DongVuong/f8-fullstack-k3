@@ -979,12 +979,12 @@ footer .container .social-media .row .col-10 .row .social-app a img {
 }
 
 @media screen and (max-width: 991.98px) {
-  br {
-    display: none;
-  }
   .protect {
     background-color: #fff0e7;
     padding-bottom: 20px;
+  }
+  .protect br {
+    display: none;
   }
   .protect .protect-list {
     margin: 0;

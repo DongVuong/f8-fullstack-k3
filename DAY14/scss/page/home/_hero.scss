@@ -834,10 +834,10 @@
 }
 //responsive protect
 @media screen and (max-width:991.98px){
-  br {
-    display: none;
-  }
   .protect{
+    br {
+      display: none;
+    }
     background-color: #fff0e7;
     padding-bottom: 20px;
     .protect-list{
