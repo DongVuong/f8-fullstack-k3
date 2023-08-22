@@ -54,3 +54,57 @@ console.log(result3);
 /*# Bài 4
 Dựa vào hình ảnh giao diện sau, hãy thiết kế 1 mảng phù hợp và thực hiện đổ dữ liệu lên giao diện
 */
+console.log(`bai tap 4`);
+var posts = [
+  {
+    title: "Tieu de bai viet 1",
+    thumbnail:
+      "https://fastly.picsum.photos/id/962/500/300.jpg?hmac=u0s-ZaVFueyCDUeuFxtPjwO7EmtjcCxcVGoZ6N7V9wU",
+    excerpt:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum fuga excepturi iure fugiat aliquid quidem vero, quaerat corporis praesentium laborum molestiae, iste unde voluptatibus minus id adipisci accusamus ut! Adipisci eum facere officiis quidem quasi dolorem obcaecati cum sed repellat, perferendis ducimus ipsam dolorum atque fugit quod, omnis at praesentium?",
+  },
+  {
+    title: "Tieu de bai viet 2",
+    thumbnail:
+      "https://fastly.picsum.photos/id/962/500/300.jpg?hmac=u0s-ZaVFueyCDUeuFxtPjwO7EmtjcCxcVGoZ6N7V9wU",
+    excerpt:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum fuga excepturi iure fugiat aliquid quidem vero, quaerat corporis praesentium laborum molestiae, iste unde voluptatibus minus id adipisci accusamus ut! Adipisci eum facere officiis quidem quasi dolorem obcaecati cum sed repellat, perferendis ducimus ipsam dolorum atque fugit quod, omnis at praesentium?",
+  },
+  {
+    title: "Tieu de bai viet 3",
+    thumbnail:
+      "https://fastly.picsum.photos/id/962/500/300.jpg?hmac=u0s-ZaVFueyCDUeuFxtPjwO7EmtjcCxcVGoZ6N7V9wU",
+    excerpt:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum fuga excepturi iure fugiat aliquid quidem vero, quaerat corporis praesentium laborum molestiae, iste unde voluptatibus minus id adipisci accusamus ut! Adipisci eum facere officiis quidem quasi dolorem obcaecati cum sed repellat, perferendis ducimus ipsam dolorum atque fugit quod, omnis at praesentium?",
+  },
+  {
+    title: "Tieu de bai viet 4",
+    thumbnail:
+      "https://fastly.picsum.photos/id/962/500/300.jpg?hmac=u0s-ZaVFueyCDUeuFxtPjwO7EmtjcCxcVGoZ6N7V9wU",
+    excerpt:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum fuga excepturi iure fugiat aliquid quidem vero, quaerat corporis praesentium laborum molestiae, iste unde voluptatibus minus id adipisci accusamus ut! Adipisci eum facere officiis quidem quasi dolorem obcaecati cum sed repellat, perferendis ducimus ipsam dolorum atque fugit quod, omnis at praesentium?",
+  },
+];
+
+var html = `<div class="content-wrap">
+<!--content1-->
+${posts
+  .map(function (post, index) {
+    return `<div class="post ${index % 2 === 0 ? "" : "post-right"}">
+  <img
+    src="${post.thumbnail}"
+    alt=""
+  />
+
+  <div>
+    <h2>${post.title}</h2>
+    <p>
+     ${post.excerpt}
+    </p>
+  </div>
+</div>`;
+  })
+  .join("")}
+<!--end content1-->
+</div>`;
+document.write(html);
