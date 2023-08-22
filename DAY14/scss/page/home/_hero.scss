@@ -264,10 +264,10 @@
       &::before {
         content: "";
         position: absolute;
-        top: -135px;
-        left: -135px;
-        width: 270px;
-        height: 270px;
+        top: -80px;
+        left: -80px;
+        width: 250px;
+        height: 250px;
         border-radius: 50%;
         background-color: $greeColor;
         z-index: -1;
@@ -281,10 +281,10 @@
       &::after {
         content: "";
         position: absolute;
-        bottom: -165px;
-        right: -135px;
-        width: 270px;
-        height: 270px;
+        bottom: -110px;
+        right: -80px;
+        width: 250px;
+        height: 250px;
         border-radius: 50%;
         background-color: #ffd5bd;
         z-index: -1;
@@ -292,6 +292,26 @@
     }
   }
   //responsive comment
+  @media screen and (max-width: 1200px){
+    .comment{
+      .container{
+        .row{
+          .comment-content{
+            .comment-escutcheon{
+              &::before{
+                display: none;
+              }
+            }
+            .comment-city{
+              &::after{
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+    }
 @media screen and (max-width: 991.98px){
 .comment{
   .container{
@@ -306,16 +326,6 @@
           width: 100%;
           max-width: 100%;
           padding: 34px;
-        }
-        .comment-escutcheon{
-          &::before{
-            display: none;
-          }
-        }
-        .comment-city{
-          &::after{
-            display: none;
-          }
         }
       }
     }
@@ -648,7 +658,6 @@
   }
   
   .news-inner {
-    padding: 0;
     margin-top: 30px;
   }
   
@@ -952,7 +961,7 @@
 
 //begin-contact
   .contact {
-    margin-top: 133px;
+    margin-top: 250px;
     margin-bottom: 100px;
   .row{
     margin: 0 auto;
