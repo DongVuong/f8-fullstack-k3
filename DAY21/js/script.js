@@ -61,7 +61,7 @@ function createCustomers(customers) {
   var newArr = customers.sort?.(function (a, b) {
     return a.age - b.age;
   });
-  newArr = newArr.map(function (customer) {
+  newArr = newArr?.map(function (customer) {
     shortName = `${customer.name.split(" ")[0]} ${customer.name
       .split(" ")
       .slice(-1)}`;
