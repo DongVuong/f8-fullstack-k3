@@ -49,20 +49,7 @@ overlay.addEventListener("click", function () {
   formUp.reset();
   resetAction();
   resetActionIn();
-  // email.value = "";
-  // inputPassword.value = "";
   userAction.classList.remove("show");
-  // error.classList.remove("show-error");
-  // passwordError.classList.remove("show-error");
-  // alertAccount.classList.remove("show-alert");
-  // inputPassword.style.border = "1px solid #ccc";
-  // passwordSignup.style.border = "1px solid #ccc";
-  // email.style.border = "1px solid #ccc";
-  // emailSignup.style.border = "1px solid #ccc";
-  // signIn.classList.add("active");
-  // signUp.classList.remove("active");
-  // formSignIn.classList.add("active");
-  // formSignUp.classList.remove("active");
 });
 
 email.addEventListener("input", function () {
