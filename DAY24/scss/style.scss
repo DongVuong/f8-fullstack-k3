@@ -52,7 +52,7 @@ body {
       .todos {
         li {
           display: flex;
-          justify-content: space-between;
+          // justify-content: space-between;
           width: 372px;
           list-style: none;
           border: 1px solid #8758ff;
@@ -60,10 +60,16 @@ body {
           color: #fff;
           border-radius: 5px;
           margin-bottom: 1rem;
-          padding: 0.75rem 1rem;
+   
           cursor: pointer;
+          span{
+            display: block;min-width: 300px;
+            padding: 0.75rem 1rem;
+          }
           .icon {
+            padding: 0.75rem 0px;
             i {
+              
               margin: 0 5px;
             }
           }
