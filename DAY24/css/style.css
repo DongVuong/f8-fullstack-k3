@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #8758ff;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
+
+.container .info-tasks {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #1a1a40;
+  border-radius: 5px;
+  min-height: 200px;
+  width: 442px;
+  margin: 60px auto;
+}
+.container .info-tasks h2 {
+  padding: 20px 0;
+  font-size: 1.75rem;
+  color: #fff;
+}
+.container .info-tasks .write-tasks {
+  display: flex;
+  align-items: baseline;
+}
+.container .info-tasks .write-tasks .todo-input {
+  background: none;
+  border: 1px solid #8758ff;
+  color: #fff;
+  margin-bottom: 30px;
+  outline: none;
+  padding: 0.5rem 1rem;
+  width: 300px;
+}
+.container .info-tasks .write-tasks .btn {
+  border: none;
+  padding: 0.55rem 0.55rem 25px;
+  background: #8758ff;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  max-height: 30px;
+}
+.container .info-tasks .todos li {
+  display: flex;
+  justify-content: space-between;
+  width: 372px;
+  list-style: none;
+  border: 1px solid #8758ff;
+  background-color: #8758ff;
+  color: #fff;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+.container .info-tasks .todos li .icon i {
+  margin: 0 5px;
+}
+.container .info-tasks .todos li.completed span {
+  text-decoration: line-through;
+  color: #e5e5e5;
+}
+
+/*# sourceMappingURL=style.css.map */
