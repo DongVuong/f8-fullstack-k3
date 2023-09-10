@@ -18,10 +18,6 @@ var handleChange = function (width) {
     value = 0;
   }
   progress.style.width = `${value}%`;
-  if (!isDrag) {
-    // update currentTime
-    audio.currentTime = (value / 100) * audio.duration;
-  }
 };
 
 progressBar.addEventListener("mousedown", function (e) {
@@ -32,6 +28,7 @@ progressBar.addEventListener("mousedown", function (e) {
     current = e.offsetX;
   }
 });
+
 progressSpan.addEventListener("mousedown", function (e) {
   e.stopPropagation();
   isDrag = true;
@@ -110,4 +107,8 @@ progressSpan.addEventListener("mousemove", function (e) {
 audio.addEventListener("ended", function () {
   audio.currentTime = 0;
   playBtn.innerHTML = playIcon;
+  isDrag = false;
+  initialClientX = 0;
+  current = 0;
+  currentWidth = 0;
 });
