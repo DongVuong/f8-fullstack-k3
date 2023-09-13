@@ -105,7 +105,8 @@ progressSpan.addEventListener("mousemove", function (e) {
 });
 // reset khi het
 audio.addEventListener("ended", function () {
-  audio.currentTime = 0;
+  // audio.currentTime = 0;
+  // value = progressBarWidth;
   playBtn.innerHTML = playIcon;
   isDrag = false;
   initialClientX = 0;
