@@ -64,6 +64,7 @@ add_to_cart.forEach(function (btn, index) {
         +existProduct.quantity + +quantityProduct[index].value;
       existProduct.total = existProduct.quantity * existProduct.price;
       renderCart();
+      customBtn();
     } else {
       var dataProduct = {
         product_id: stt,
@@ -74,20 +75,17 @@ add_to_cart.forEach(function (btn, index) {
       };
       carts.push(dataProduct);
       renderCart();
+      customBtn();
     }
   });
   setLocalStorage();
-  //   customBtn();
 });
 
 var cartData = document.getElementById("cart_data");
 var tableCart = document.createElement("table");
 
 var css = {
-  cellpadding: "0",
-  cellspacing: "0",
   width: "100%",
-  border: "1",
   id: "cart_table",
   textAlign: "center",
 };
@@ -146,8 +144,54 @@ var renderCart = function () {
         carts.splice(index, 1);
         setLocalStorage();
         renderCart();
+        customBtn();
         alert("Xóa sản phẩm thành công");
       }
     });
   });
+};
+
+var customBtn = function () {
+  var btnCart = document.querySelector(".btn");
+  if (!carts.length) {
+    btnCart.innerHTML = "";
+  } else {
+    var html = `  <hr />
+  <button type="button" id="update_cart">Cập nhật giỏ hàng</button>
+  <button type="button" id="delete_cart">Xoá giỏ hàng</button>`;
+    btnCart.innerHTML = html;
+    const updateCart = document.getElementById("update_cart");
+    const deleteAllCart = document.getElementById("delete_cart");
+    if (deleteAllCart) {
+      deleteAllCart.addEventListener("click", function () {
+        if (confirm("Are you sure?") === true) {
+          carts.length = 0;
+          renderCart();
+          customBtn();
+          setLocalStorage();
+          alert("Xóa giỏ hàng thành công");
+        }
+      });
+    }
+    if (updateCart) {
+      updateCart.addEventListener("click", function () {
+        var totalNum = document.querySelectorAll(".quantity");
+        totalNum.forEach(function (item, index) {
+          if (+item.value <= 0) {
+            carts.splice(index, 1);
+            renderCart();
+            customBtn();
+            setLocalStorage();
+            alert("Cập nhật giỏ hàng thành công");
+            return;
+          }
+          carts[index].quantity = +item.value;
+          carts[index].total = carts[index].quantity * carts[index].price;
+          setLocalStorage();
+        });
+        renderCart();
+        alert("Cập nhật giỏ hàng thành công");
+      });
+    }
+  }
 };

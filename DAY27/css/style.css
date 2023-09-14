@@ -11,4 +11,13 @@ h3 {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-weight: bold;
+   
+}
+table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+input{
+    width: 100%;
+    text-align: center;
 }
