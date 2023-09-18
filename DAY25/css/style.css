@@ -15,7 +15,13 @@ img{
 .carousel .carousel-inner{
     display: flex;
     transition: translate 0.4s ease;
+    touch-action: manipulation;
 }
+.carousel.drag{
+  cursor: grab;
+  
+}
+
 .carousel .carousel-nav span{
     position: absolute;
     top: 50%;

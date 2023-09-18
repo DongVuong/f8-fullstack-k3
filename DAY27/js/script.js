@@ -29,60 +29,9 @@ var productData = [
   },
 ];
 var cartData = document.getElementById("cart-data");
-
-//creat product list
-productData.forEach(function (item) {
-  var productItem = "<tbody><tr>";
-  productItem += "<td>" + item.product_id + "</td>";
-  productItem += "<td>" + item.product_name + "</td>";
-  productItem += "<td>" + item.product_price + "</td>";
-  productItem +=
-    '<td><input type="number" id="quantity_' +
-    item.product_id +
-    '" value="1" style="width: 90%; display: block; margin: 0 auto;"><button type="button" style="width: 100%;" id="add_to_cart_' +
-    item.product_id +
-    '">Thêm vào giỏ</button></td>';
-  productItem += "</tr></tbody>";
-  document.querySelector("table").innerHTML += productItem;
-});
-
-//add to cart
-var add_to_cart = document.querySelectorAll("h3 + table button");
-var quantityProduct = document.querySelectorAll("h3 + table input");
-// console.log(add_to_cart);
-add_to_cart.forEach(function (btn, index) {
-  var stt = index + 1;
-  btn.addEventListener("click", function () {
-    if (quantityProduct[index].value < 0) {
-      quantityProduct[index].value = 1;
-    }
-    var existProduct = carts.find(function (item) {
-      return item.product_id === stt;
-    });
-    if (existProduct) {
-      existProduct.quantity =
-        +existProduct.quantity + +quantityProduct[index].value;
-      existProduct.total = existProduct.quantity * existProduct.price;
-      renderCart();
-      customBtn();
-    } else {
-      var dataProduct = {
-        product_id: stt,
-        name: productData[index].product_name,
-        price: productData[index].product_price,
-        quantity: quantityProduct[index].value,
-        total: productData[index].product_price * quantityProduct[index].value,
-      };
-      carts.push(dataProduct);
-      renderCart();
-      customBtn();
-    }
-  });
-  setLocalStorage();
-});
-
 var cartData = document.getElementById("cart_data");
 var tableCart = document.createElement("table");
+var btnCart = document.querySelector(".btn");
 
 var css = {
   width: "100%",
@@ -90,12 +39,14 @@ var css = {
   textAlign: "center",
 };
 Object.assign(tableCart.style, css);
+
 var renderCart = function () {
   if (!carts.length) {
     cartData.innerHTML = "Giỏ hàng không có sản phẩm";
   } else {
     cartData.innerHTML = "";
     cartData.append(tableCart);
+    customBtn();
   }
   tableCart.innerHTML = ` <thead>
   <tr>
@@ -150,9 +101,7 @@ var renderCart = function () {
     });
   });
 };
-
 var customBtn = function () {
-  var btnCart = document.querySelector(".btn");
   if (!carts.length) {
     btnCart.innerHTML = "";
   } else {
@@ -195,3 +144,50 @@ var customBtn = function () {
     }
   }
 };
+
+//creat product list
+productData.forEach(function (item) {
+  var productItem = "<tbody><tr>";
+  productItem += "<td>" + item.product_id + "</td>";
+  productItem += "<td>" + item.product_name + "</td>";
+  productItem += "<td>" + item.product_price + "</td>";
+  productItem +=
+    '<td><input type="number" id="quantity_' +
+    item.product_id +
+    '" value="1" min="1" style="width: 90%; display: block; margin: 0 auto;"><button type="button" style="width: 100%;" id="add_to_cart_' +
+    item.product_id +
+    '">Thêm vào giỏ</button></td>';
+  productItem += "</tr></tbody>";
+  document.querySelector("table").innerHTML += productItem;
+});
+renderCart();
+//add to cart
+var add_to_cart = document.querySelectorAll("h3 + table button");
+var quantityProduct = document.querySelectorAll("h3 + table input");
+// console.log(add_to_cart);
+add_to_cart.forEach(function (btn, index) {
+  var stt = index + 1;
+  btn.addEventListener("click", function () {
+    var existProduct = carts.find(function (item) {
+      return item.product_id === stt;
+    });
+    if (existProduct) {
+      existProduct.quantity =
+        +existProduct.quantity + +quantityProduct[index].value;
+      existProduct.total = existProduct.quantity * existProduct.price;
+      renderCart();
+    } else {
+      var dataProduct = {
+        product_id: stt,
+        name: productData[index].product_name,
+        price: productData[index].product_price,
+        quantity: quantityProduct[index].value,
+        total: productData[index].product_price * quantityProduct[index].value,
+      };
+      carts.push(dataProduct);
+      renderCart();
+    }
+  });
+  setLocalStorage();
+  customBtn();
+});

@@ -70,3 +70,47 @@ dots.forEach(function (dot) {
 });
 
 //keo tha
+var isDrag;
+var initialOffsetX = 0;
+var moveWidth;
+carousel.addEventListener("mousedown", function (e) {
+  e.preventDefault();
+  carousel.classList.add("drag");
+});
+carousel.addEventListener("mouseup", function (e) {
+  e.preventDefault();
+  carousel.classList.remove("drag");
+});
+carouselInner.addEventListener("mousedown", function (e) {
+  if (e.which === 1) {
+    isDrag = true;
+    initialOffsetX = e.offsetX;
+  }
+});
+carouselInner.addEventListener("mouseup", function () {
+  isDrag = false;
+  // carouselInner.style.transition = "null";
+  if (moveWidth < 0) {
+    if (Math.abs(moveWidth) > 100 && index < items.length - 1) {
+      index++;
+    }
+    position = -index * itemWidth;
+    carouselInner.style.translate = `${position}px`;
+    moveDots();
+  } else if (moveWidth > 0) {
+    if (Math.abs(moveWidth) > 100 && index > 0) {
+      index--;
+    }
+    position = -index * itemWidth;
+    carouselInner.style.translate = `${position}px`;
+    moveDots();
+  }
+});
+carouselInner.addEventListener("mousemove", function (e) {
+  e.preventDefault();
+  if (isDrag) {
+    moveWidth = e.offsetX - initialOffsetX;
+    // carouselInner.style.transition = "none";
+    carouselInner.style.translate = `${position + moveWidth}px`;
+  }
+});
