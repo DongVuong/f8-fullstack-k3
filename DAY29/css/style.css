@@ -1,0 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+  }
+  :root {
+    --background-color: #4286f4;
+    --background-color-item: #8bb3f4;
+    --background-color-active: #ff6f00;
+  }
+  
+  .list {
+    padding: 1rem;
+    background-color: var(--background-color);
+    width: 500px;
+
+  }
+  .list-item {
+    margin: 1px 0;
+    padding: 0.5rem;
+    border: 1px solid #fff;
+    color: black;
+    background-color: var(--background-color-item);
+  }
+  
+  .list-item:not(.list-item:last-child) {
+    margin-bottom: 5px;
+  }
+  .list .list-item.active {
+    background-color: var(--background-color-active);
+  }
+  
+  .list-item.dragging {
+    opacity: 0.5;
+  }

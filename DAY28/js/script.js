@@ -3690,7 +3690,7 @@ closeBtn.addEventListener("click", function () {
 
 // Lấy ra mảng chứa các đoạn lyric trong bài hát
 let sentences = lyric.data.sentences;
-
+// console.log(sentences);
 // Trước khi xử lý, cần ghép các từ trong một câu lại với nhau
 // Lấy beginTime và endTime của câu đó
 // Đưa cả 3 vào một object
@@ -3719,7 +3719,6 @@ for (let i = 0; i < sentences.length; i++) {
 // Kiểm tra thời gian nằm trong khoảng từ bắt đầu đến kết thúc thì hiển thị
 sentences = [];
 audio.addEventListener("timeupdate", function () {
-  let runningTime = audio.currentTime;
   let tempArr = [];
   for (let i = 0; i < newSentences.length; i += 2) {
     if (newSentences[i + 1]) {
@@ -3748,4 +3747,3 @@ audio.addEventListener("timeupdate", function () {
     nameSong.innerHTML = ` <p> À Lôi - Double2T, Masew</p>`;
   }
 });
-console.log(newSentences);
