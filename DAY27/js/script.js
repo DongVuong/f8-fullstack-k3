@@ -35,11 +35,9 @@ var btnCart = document.querySelector(".btn");
 
 var css = {
   width: "100%",
-  id: "cart_table",
   textAlign: "center",
 };
 Object.assign(tableCart.style, css);
-
 var renderCart = function () {
   if (!carts.length) {
     cartData.innerHTML = "Giỏ hàng không có sản phẩm";

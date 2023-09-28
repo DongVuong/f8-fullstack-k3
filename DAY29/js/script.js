@@ -79,7 +79,9 @@ list.addEventListener("dragover", function (e) {
   var nodeElementNext = Array.from(listNotDragging).find(function (
     itemNotDragging
   ) {
-    return e.pageY <= itemNotDragging.offsetTop + itemDragging.offsetHeight / 2;
+    return (
+      e.clientY <= itemNotDragging.offsetTop + itemDragging.offsetHeight / 2
+    );
   });
   list.insertBefore(itemDragging, nodeElementNext);
 });
