@@ -51,10 +51,7 @@ const fetchPosts = () => {
 };
 fetchPosts();
 window.onscroll = function () {
-  if (
-    window.innerHeight + window.scrollY >=
-    document.body.offsetHeight - 2000
-  ) {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
     fetchPosts();
   }
 };
