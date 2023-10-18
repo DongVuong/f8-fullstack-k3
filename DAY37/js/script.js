@@ -134,7 +134,6 @@ const renderLogin = () => {
           type="email"
           class="form-control email"
           placeholder="Email..."
-          value ="vuongtridong1995@yahoo.com"
         />
       </div>
       <div class="mb-3">
@@ -143,7 +142,6 @@ const renderLogin = () => {
           type="password"
           class="form-control password"
           placeholder="Mật khẩu..."
-          value="dong6395"
         />
       </div>
       <div class="d-grid">
