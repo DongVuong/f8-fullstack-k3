@@ -18,14 +18,16 @@ const fetchData = async function () {
     const { response, data: _data } = await client.get(
       `/blogs?page=${currentPage}`
     );
+    currentPage++;
     const data = _data.data;
-    // console.log(data);
+    console.log(data);
     const stripHtml = (html) => {
       return html.replace(/(<([^>]+)>)/gi, "");
     };
     isFetching = false;
-    if (data.length === 0) {
+    if (data === undefined) {
       hasMore = false;
+      hideLoading();
       return;
     }
     for (let post of data) {
@@ -47,13 +49,11 @@ const fetchData = async function () {
       list.appendChild(separate);
       list.appendChild(div);
     }
-    currentPage++;
     hideLoading();
     window.addEventListener("scroll", () => {
       if (isFetching || !hasMore) {
         return;
-      }
-      if (
+      } else if (
         window.innerHeight + window.scrollY >=
         document.body.offsetHeight - 100
       ) {
