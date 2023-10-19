@@ -134,6 +134,7 @@ const renderLogin = () => {
           type="email"
           class="form-control email"
           placeholder="Email..."
+          value="vuongtridong1995@yahoo.com"
         />
       </div>
       <div class="mb-3">
@@ -142,6 +143,7 @@ const renderLogin = () => {
           type="password"
           class="form-control password"
           placeholder="Mật khẩu..."
+          value="dong6395"
         />
       </div>
       <div class="d-grid">
@@ -249,39 +251,39 @@ const app = {
       this.render();
     }
   },
-  getProfile: async function (el) {
+  getToken: function () {
     let loginTokens = localStorage.getItem(`login_tokens`);
     loginTokens = JSON.parse(loginTokens);
     const { data: _data } = loginTokens;
-    const { accessToken, refreshToken } = _data;
-    // them token vao request header
+    if (_data.accessToken === undefined) {
+      const { token } = _data;
+      const { accessToken, refreshToken } = token;
+      return { accessToken, refreshToken };
+    } else {
+      const { accessToken, refreshToken } = _data;
+      return { accessToken, refreshToken };
+    }
+  },
+  getProfile: async function (el) {
+    const { accessToken, refreshToken } = this.getToken();
     client.setToken(accessToken);
-    // console.log(await client.get("/auth/profile"));
     const { response, data } = await client.get("/users/profile");
-    // console.log(data);
-    // console.log(response);
-
     if (response.ok) {
       el.innerText = data.data.name;
     } else {
       const newToken = await requestRefresh(refreshToken);
       if (!newToken) {
+        // xu ly logout
         this.handleLogout();
       } else {
         //cap nhat token moi vao local storage
+        // console.log(newToken);
         localStorage.setItem(`login_tokens`, JSON.stringify(newToken));
-        render;
-        this.render();
       }
-      // xu ly logout
-      this.handleLogout();
+      this.render();
     }
   },
-  handleLogout: function () {
-    localStorage.removeItem("login_tokens");
-    this.render();
-  },
-  addLoading: function (a) {
+  addLoading: function () {
     const form = document.querySelector(".login");
     const btn = form.querySelector(".btn");
     btn.innerHTML = `<span class="spinner-border spinner-border-sm"></span>Loading`;
@@ -344,22 +346,45 @@ const app = {
       this.handleRegister({ name, email, password }, msg);
     });
   },
-
+  handleLogout: async function (data) {
+    const { data: tokens, response } = await client.post("/auth/logout", data);
+    localStorage.removeItem("login_tokens");
+    console.log(tokens);
+    console.log(response);
+    this.render();
+  },
   eventLogout: function () {
     const logout = document.querySelector(".profile .logout");
     logout.addEventListener("click", (e) => {
       e.preventDefault();
-      this.handleLogout();
+      let loginTokens = localStorage.getItem(`login_tokens`);
+      loginTokens = JSON.parse(loginTokens);
+      const { data: _data } = loginTokens;
+      const { accessToken, refreshToken } = _data;
+      this.handleLogout({ accessToken, refreshToken });
     });
   },
   handlePost: async function (data, msg) {
     msg.innerText = "";
     app.addLoadingPost();
     const { data: tokens, response } = await client.post("/blogs", data);
-    app.removeLoadingPost();
     if (!response.ok) {
-      msg.innerText = `${tokens.message}`;
+      msg.innerText = "refresh token";
+      const { refreshToken } = this.getToken();
+      const newToken = await requestRefresh(refreshToken);
+      if (!newToken) {
+        // xu ly logout
+        this.handleLogout();
+      } else {
+        //cap nhat token moi vao local storage
+        localStorage.setItem(`login_tokens`, JSON.stringify(newToken));
+        const { accessToken } = this.getToken();
+        client.setToken(accessToken);
+        this.handlePost(data, msg);
+        app.removeLoadingPost();
+      }
     } else {
+      app.removeLoadingPost();
       this.render();
     }
   },
@@ -372,7 +397,7 @@ const app = {
       e.preventDefault();
       const title = titleEl.value;
       const content = contentEl.value;
-      console.log({ title, content }, msg);
+      // console.log({ title, content }, msg);
       app.handlePost({ title, content }, msg);
     });
   },
