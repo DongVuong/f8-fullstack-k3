@@ -4,6 +4,49 @@ client.setUrl("https://api-auth-two.vercel.app");
 let currentPage = 1;
 let isFetching = false;
 let hasMore = true;
+let timeUp = null;
+let remaining = null;
+let waitingTime = null;
+const AddPostSchedule = function () {
+  const postBtn = document.querySelector("#post-option");
+  postBtn.classList.add("btn-info");
+  postBtn.classList.remove("btn-warning");
+};
+const RemovePostSchedule = function () {
+  const postBtn = document.querySelector("#post-option");
+  postBtn.classList.remove("btn-info");
+  postBtn.classList.add("btn-warning");
+};
+const changeTimeBlog = (check) => {
+  let minutes = Math.floor((check / (1000 * 60)) % 60);
+  let hours = Math.floor((check / (1000 * 60 * 60)) % 24);
+  let days = Math.floor((check / (1000 * 60 * 60 * 24)) % 30);
+  if (days > 0 && days < 31) {
+    return `${days} ngày`;
+  } else if (days == 0 && hours > 0) {
+    return ` ${hours} giờ ${minutes} phút`;
+  } else if (days == 0 && hours == 0 && minutes > 0) {
+    return `${minutes} phút`;
+  } else if (days == 0 && hours == 0 && minutes == 0) {
+    return `vài giây`;
+  } else {
+    return false;
+  }
+};
+const changeTimeSchedule = (today, schedule) => {
+  remaining = schedule - today;
+  let minutes = Math.floor((remaining / (1000 * 60)) % 60);
+  let hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
+  let days = Math.floor((remaining / (1000 * 60 * 60 * 24)) % 30);
+  let years = Math.floor((remaining / (1000 * 60 * 60 * 24 * 30)) % 365);
+
+  return (
+    (years > 0 ? `${years} năm ` : "") +
+    (days > 0 ? `${days} ngày ` : "") +
+    (hours > 0 ? `${hours} giờ ` : "") +
+    (minutes > 0 ? `${minutes} phút ` : "")
+  );
+};
 const showLoading = () => {
   document.getElementById("loading").style.display = "block";
 };
@@ -20,7 +63,7 @@ const fetchData = async function () {
     );
     currentPage++;
     const data = _data.data;
-    console.log(data);
+    // console.log(data);
     const stripHtml = (html) => {
       return html.replace(/(<([^>]+)>)/gi, "");
     };
@@ -35,17 +78,41 @@ const fetchData = async function () {
       const separate = document.createElement("hr");
       const { createdAt } = post;
       const date = new Date(createdAt);
+      const today = new Date();
+      const check = today.getTime() - date.getTime();
+      if (changeTimeBlog(check)) {
+        timeUp = changeTimeBlog(check);
+      } else {
+        if (today.getMonth() - date.getMonth() < 12) {
+          timeUp = `${today.getMonth() - date.getMonth()} tháng`;
+        } else {
+          timeUp = `${today.getFullYear() - date.getFullYear()} năm`;
+        }
+      }
       const dateString = `${date.getDate()} - ${
         date.getMonth() + 1
-      } - ${date.getFullYear()} || ${date.getHours()}:${
-        date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()
+      } - ${date.getFullYear()}`;
+      const HoursString = `${date.getHours()} giờ ${
+        date.getMinutes() < 10
+          ? "0" + date.getMinutes() + " phút"
+          : date.getMinutes() + " phút"
       }`;
       div.innerHTML = `
+      <div class="container">
+          <div class="row">
+          <div class="col-3">
+          <div>${stripHtml(dateString)}</div>
+          <div>${stripHtml(HoursString)}</div>
+          </div>
+          <div class = "col-9">
           <h2>${stripHtml(post.userId.name)}</h2>
           <h4>${stripHtml(post.title)}</h4>
           <p>${stripHtml(post.content)}</p>
-          <p class="date">${stripHtml(dateString)}</p>
-          `;
+          <p class="date">
+          ${timeUp} trước</p>
+          </div>
+          </div>
+          </div>`;
       list.appendChild(separate);
       list.appendChild(div);
     }
@@ -190,11 +257,11 @@ const app = {
           <label class="w-100" for="content" class="label-form">Nhập nội dung bài viết</label>
           <textarea class="w-100" name="" id="content" cols="30" rows="10"></textarea>
       </div>
-      <div class="form-group text-left" style="display: none">
+      <div class="form-group text-left">
           <label class="w-100" for="content" class="label-form">Chọn thời gian đăng bài</label>
-          <input class="w-100" id="date" type="date">
+          <input class="w-100" id="date" type="datetime-local">
       </div>
-      <button class="btn btn-warning text-left w-100 my-3">Đăng bài</button>
+      <button id="post-option"class="btn btn-warning text-left w-100 my-3">Đăng bài</button>
   </form>
   <div class ="msgTwo text-danger"></div>
       </div>
@@ -364,47 +431,102 @@ const app = {
       this.handleLogout({ accessToken, refreshToken });
     });
   },
-  handlePost: async function (data, msg) {
+  handlePost: async function (data, timePost, msg) {
     msg.innerText = "";
     app.addLoadingPost();
-    const { data: tokens, response } = await client.post("/blogs", data);
-    if (!response.ok && response.status != 400) {
-      msg.innerText = "refresh token";
-      const { refreshToken } = this.getToken();
-      const newToken = await requestRefresh(refreshToken);
-      if (!newToken) {
-        // xu ly logout
-        this.handleLogout();
+    if (timePost === "") {
+      const { data: tokens, response } = await client.post("/blogs", data);
+      if (!response.ok && response.status != 400) {
+        msg.innerText = "refresh token";
+        const { refreshToken } = this.getToken();
+        const newToken = await requestRefresh(refreshToken);
+        if (!newToken) {
+          // xu ly logout
+          this.handleLogout();
+        } else {
+          //cap nhat token moi vao local storage
+          localStorage.setItem(`login_tokens`, JSON.stringify(newToken));
+          const { accessToken } = this.getToken();
+          client.setToken(accessToken);
+          this.handlePost(data, msg);
+          app.removeLoadingPost();
+        }
+      } else if (!response.ok && response.status === 400) {
+        msg.innerText = "Mời nhập tiêu đề và nội dung cần post";
+        app.removeLoadingPost();
       } else {
-        //cap nhat token moi vao local storage
-        localStorage.setItem(`login_tokens`, JSON.stringify(newToken));
-        const { accessToken } = this.getToken();
-        client.setToken(accessToken);
-        this.handlePost(data, msg);
-        app.removeLoadingPost();
+        msg.classList.remove("text-danger");
+        msg.classList.add("text-success");
+        msg.innerText = "Post bài thành công! Đang làm mới";
+        setTimeout(() => {
+          app.removeLoadingPost();
+          app.render();
+        }, 2000);
       }
-    } else if (!response.ok && response.status === 400) {
-      msg.innerText = "Mời nhập tiêu đề và nội dung cần post";
-      app.removeLoadingPost();
     } else {
-      msg.innerText = "post bài thành công! Đang làm mới";
-      setTimeout(() => {
+      const { title, content } = data;
+      const postBtn = document.querySelector("#post-option");
+      if (!title || !content) {
+        msg.innerText = "Mời nhập tiêu đề và nội dung cần post";
         app.removeLoadingPost();
-        app.render();
-      }, 2000);
+        postBtn.innerText = `Đặt lịch`;
+      } else {
+        const today = new Date();
+        const schedule = new Date(timePost);
+        if (today > schedule) {
+          msg.innerText =
+            "Thời gian đã trôi qua, vui lòng chọn thời gian phù hợp";
+          app.removeLoadingPost();
+          postBtn.innerText = `Đặt lịch`;
+        } else if (+today + 300000 > +schedule) {
+          msg.innerText = "Đặt hẹn đăng bài trước tối thiểu 5 phút";
+          app.removeLoadingPost();
+          postBtn.innerText = `Đặt lịch`;
+        } else {
+          msg.classList.remove("text-danger");
+          msg.classList.add("text-success");
+          waitingTime = changeTimeSchedule(today, schedule);
+          msg.innerText = `Bai viết sẽ được đăng sau ${waitingTime}`;
+          RemovePostSchedule();
+          app.removeLoadingPost();
+          this.resetPost();
+        }
+      }
     }
+  },
+  resetPost: function () {
+    const post = document.querySelector(".post");
+    const titleEl = post.querySelector("#title");
+    const contentEl = post.querySelector("#content");
+    const timeEl = post.querySelector("#date");
+    titleEl.value = "";
+    contentEl.value = "";
+    timeEl.value = "";
   },
   eventPost: function () {
     const post = document.querySelector(".post");
     const titleEl = post.querySelector("#title");
     const contentEl = post.querySelector("#content");
+    const timeEl = post.querySelector("#date");
+    const postBtn = post.querySelector("#post-option");
     const msg = document.querySelector(".msgTwo");
+    timeEl.addEventListener("change", function () {
+      AddPostSchedule();
+      postBtn.innerText = `Đặt lịch`;
+      if (!timeEl.value == "") {
+      } else {
+        RemovePostSchedule();
+        postBtn.innerText = `Đăng bài`;
+        msg.innerText = "";
+      }
+    });
     post.addEventListener("submit", function (e) {
       e.preventDefault();
       const title = titleEl.value;
       const content = contentEl.value;
+      const timePost = timeEl.value;
       // console.log({ title, content }, msg);
-      app.handlePost({ title, content }, msg);
+      app.handlePost({ title, content }, timePost, msg);
     });
   },
 };
