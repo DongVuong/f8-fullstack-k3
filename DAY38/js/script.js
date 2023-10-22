@@ -63,7 +63,7 @@ const fetchData = async function () {
     );
     currentPage++;
     const data = _data.data;
-    // console.log(data);
+    console.log(data);
     const stripHtml = (html) => {
       return html.replace(/(<([^>]+)>)/gi, "");
     };
@@ -128,6 +128,7 @@ const fetchData = async function () {
       }
     });
   } catch {
+    hideLoading();
     return;
   }
 };
@@ -469,6 +470,17 @@ const app = {
         }, 2000);
       }
     } else {
+      const { refreshToken } = this.getToken();
+      const newToken = await requestRefresh(refreshToken);
+      if (!newToken) {
+        // xu ly logout
+        this.handleLogout();
+      } else {
+        //cap nhat token moi vao local storage
+        localStorage.setItem(`login_tokens`, JSON.stringify(newToken));
+        const { accessToken } = this.getToken();
+        client.setToken(accessToken);
+      }
       const { title, content } = data;
       const postBtn = document.querySelector("#post-option");
       if (!title || !content) {
