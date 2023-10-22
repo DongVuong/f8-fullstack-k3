@@ -24,7 +24,7 @@ const changeTimeBlog = (check) => {
   if (days > 0 && days < 31) {
     return `${days} ngày`;
   } else if (days == 0 && hours > 0) {
-    return ` ${hours} giờ ${minutes} phút`;
+    return ` ${hours} giờ` + (minutes > 0 ? ` ${minutes} phút` : "");
   } else if (days == 0 && hours == 0 && minutes > 0) {
     return `${minutes} phút`;
   } else if (days == 0 && hours == 0 && minutes == 0) {
@@ -291,8 +291,6 @@ const app = {
     msg.innerText = "";
     this.addLoading();
     const { data: tokens, response } = await client.post("/auth/login", data);
-    // console.log(response);
-    // console.log(tokens);
     this.removeLoading();
     if (!response.ok) {
       msg.innerText = `${tokens.message}`;
@@ -332,22 +330,25 @@ const app = {
     }
   },
   getProfile: async function (el) {
-    const { accessToken, refreshToken } = this.getToken();
-    client.setToken(accessToken);
-    const { response, data } = await client.get("/users/profile");
-    if (response.ok) {
-      el.innerText = data.data.name;
-    } else {
-      const newToken = await requestRefresh(refreshToken);
-      if (!newToken) {
-        // xu ly logout
-        this.handleLogout();
+    if (this.isLogin()) {
+      const { accessToken, refreshToken } = this.getToken();
+      client.setToken(accessToken);
+      const { response, data } = await client.get("/users/profile");
+      if (response.ok) {
+        el.innerText = data.data.name;
       } else {
-        //cap nhat token moi vao local storage
-        // console.log(newToken);
-        localStorage.setItem(`login_tokens`, JSON.stringify(newToken));
+        const newToken = await requestRefresh(refreshToken);
+        localStorage.removeItem("login_tokens");
+        if (!newToken) {
+          // xu ly logout
+          this.handleLogout();
+        } else {
+          //cap nhat token moi vao local storage
+          // console.log(newToken);
+          localStorage.setItem(`login_tokens`, JSON.stringify(newToken));
+        }
+        this.render();
       }
-      this.render();
     }
   },
   addLoading: function () {
@@ -409,15 +410,15 @@ const app = {
       const name = nameEl.value;
       const email = emailEl.value;
       const password = passwordEl.value;
-      console.log({ name, email, password });
+      // console.log({ name, email, password });
       this.handleRegister({ name, email, password }, msg);
     });
   },
   handleLogout: async function (data) {
     const { data: tokens, response } = await client.post("/auth/logout", data);
     localStorage.removeItem("login_tokens");
-    console.log(tokens);
-    console.log(response);
+    // console.log(tokens);
+    // console.log(response);
     this.render();
   },
   eventLogout: function () {
@@ -432,11 +433,18 @@ const app = {
     });
   },
   handlePost: async function (data, timePost, msg) {
+    if (msg.classList.contains("text-success")) {
+      msg.classList.add("text-danger");
+      msg.classList.remove("text-success");
+    }
     msg.innerText = "";
     app.addLoadingPost();
     if (timePost === "") {
       const { data: tokens, response } = await client.post("/blogs", data);
-      if (!response.ok && response.status != 400) {
+      if (!response.ok && response.status === 400) {
+        msg.innerText = "Mời nhập tiêu đề và nội dung cần post";
+        app.removeLoadingPost();
+      } else if (!response.ok && response.status === 401) {
         msg.innerText = "refresh token";
         const { refreshToken } = this.getToken();
         const newToken = await requestRefresh(refreshToken);
@@ -448,12 +456,9 @@ const app = {
           localStorage.setItem(`login_tokens`, JSON.stringify(newToken));
           const { accessToken } = this.getToken();
           client.setToken(accessToken);
-          this.handlePost(data, msg);
+          this.handlePost(data, timePost, msg);
           app.removeLoadingPost();
         }
-      } else if (!response.ok && response.status === 400) {
-        msg.innerText = "Mời nhập tiêu đề và nội dung cần post";
-        app.removeLoadingPost();
       } else {
         msg.classList.remove("text-danger");
         msg.classList.add("text-success");
@@ -487,21 +492,14 @@ const app = {
           msg.classList.add("text-success");
           waitingTime = changeTimeSchedule(today, schedule);
           msg.innerText = `Bai viết sẽ được đăng sau ${waitingTime}`;
-          RemovePostSchedule();
-          app.removeLoadingPost();
-          this.resetPost();
+          setTimeout(() => {
+            RemovePostSchedule();
+            app.removeLoadingPost();
+            app.render();
+          }, 2000);
         }
       }
     }
-  },
-  resetPost: function () {
-    const post = document.querySelector(".post");
-    const titleEl = post.querySelector("#title");
-    const contentEl = post.querySelector("#content");
-    const timeEl = post.querySelector("#date");
-    titleEl.value = "";
-    contentEl.value = "";
-    timeEl.value = "";
   },
   eventPost: function () {
     const post = document.querySelector(".post");
@@ -525,7 +523,6 @@ const app = {
       const title = titleEl.value;
       const content = contentEl.value;
       const timePost = timeEl.value;
-      // console.log({ title, content }, msg);
       app.handlePost({ title, content }, timePost, msg);
     });
   },
