@@ -1,5 +1,13 @@
 import { client } from "./client.js";
 import { requestRefresh } from "./token.js";
+import { Default, register, login, renderLoginContent } from "./function.js";
+import {
+  youtube,
+  telephone,
+  email,
+  linkWebHttps,
+  linkWebNonHttps,
+} from "./regex.js";
 client.setUrl("https://api-auth-two.vercel.app");
 let currentPage = 1;
 let isFetching = false;
@@ -63,10 +71,65 @@ const fetchData = async function () {
     );
     currentPage++;
     const data = _data.data;
-    console.log(data);
     const stripHtml = (html) => {
+      html = html.split("\n");
+
+      html = html.filter((element) => {
+        if (element) {
+          return true;
+        }
+        return false;
+      });
+      // console.log(html);
+      html = html.map((element) => {
+        element = element.split(" ");
+        element = element.filter((elementChild) => {
+          if (elementChild) {
+            return true;
+          }
+          return false;
+        });
+        element = element.map((child) => {
+          if (youtube.test(child)) {
+            const url = child.replace(
+              /(.*\/(watch\?v=)*)/,
+              "https://www.youtube.com/embed/"
+            );
+            console.log(url);
+            child = `<iframe
+            width="560"
+            height="315"
+            src="${url}"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>`;
+            // child = `<iframe width="560" height="315" src="${child}" title="YouTube video player" value ="1"></iframe>`;
+          } else {
+            child = child.replace(
+              telephone,
+              `<a href="tel:$1" target="_blank" class="telephoneNumber">$1</a>`
+            );
+            child = child.replace(
+              linkWebHttps,
+              `<a href="$1" target="_blank" class="link">$1</a>`
+            );
+            child = child.replace(
+              email,
+              `<a href="mailto:$1" target="_blank" class="email">$1</a>`
+            );
+            child = child.replace(
+              linkWebNonHttps,
+              `<a href="https://$1" target="_blank" class="link">$1</a>`
+            );
+          }
+          return child;
+        });
+        element = element.join(" ");
+        return element;
+      });
+      html = html.join("</br>");
       return html;
-      //.replace(/(<([^>]+)>)/gi, "")
     };
     isFetching = false;
     if (data === undefined) {
@@ -102,12 +165,13 @@ const fetchData = async function () {
       <div class="container">
           <div class="row">
           <div class="col-3">
-          <div>${stripHtml(dateString)}</div>
-          <div>${stripHtml(HoursString)}</div>
+          <div>${dateString}</div>
+          <div>${HoursString}</div>
           </div>
           <div class = "col-9">
-          <h2>${stripHtml(post.userId.name)}</h2>
-          <h4>${stripHtml(post.title)}</h4>
+          <h2>
+          <a class="profileLink" href="#!">${post.userId.name}</a></h2>
+          <h4>${post.title}</h4>
           <p>${stripHtml(post.content)}</p>
           <p class="date">
           ${timeUp} trước</p>
@@ -128,58 +192,19 @@ const fetchData = async function () {
         fetchData();
       }
     });
-  } catch {
+  } catch (e) {
+    console.log(e.message);
     hideLoading();
     return;
   }
 };
 const renderDefault = () => {
-  root.innerHTML = `<h1>Blogger</h1><button type="submit" class="btn btn-primary">Đăng nhập</button>
-      <div class="block-list"></div>`;
+  root.innerHTML = Default();
   currentPage = 1;
   fetchData();
 };
 const renderRegister = () => {
-  root.innerHTML = `<div class="container py-3">
-  <div class="row justify-content-center">
-    <div class="col-7">
-      <form class="register">
-      <div class="mb-3">
-      <label for="">Tên</label>
-      <input
-        type="text"
-        class="form-control name"
-        placeholder="Name..."
-      />
-    </div>
-      <div class="mb-3">
-        <label for="">Email</label>
-        <input
-          type="email"
-          class="form-control email"
-          placeholder="Email..."
-        />
-      </div>
-      <div class="mb-3">
-        <label for="">Mật khẩu</label>
-        <input
-          type="password"
-          class="form-control password"
-          placeholder="Mật khẩu..."
-        />
-      </div>
-      <div class="d-grid">
-        <button type="submit" class="btn btn-primary">Đăng kí</button>
-      </div>
-      </form>
-      <div class ="msg text-danger"></div>
-      <div>
-      <span>Bạn đã có tài khoản?</span> <a class="login-button" href="#!">Đăng nhập</a>
-      </div>
-      <a class="default" href="#!">Quay lại trang chủ</a>
-    </div>
-  </div>
-</div>`;
+  root.innerHTML = register();
   const login = document.querySelector(".login-button");
   login.addEventListener("click", function (e) {
     e.preventDefault;
@@ -193,40 +218,7 @@ const renderRegister = () => {
   });
 };
 const renderLogin = () => {
-  root.innerHTML = `<div class="container py-3">
-  <div class="row justify-content-center">
-    <div class="col-7">
-      <form class="login">
-      <div class="mb-3">
-        <label for="">Email</label>
-        <input
-          type="email"
-          class="form-control email"
-          placeholder="Email..."
-          value="vuongtridong1995@yahoo.com"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="">Mật khẩu</label>
-        <input
-          type="password"
-          class="form-control password"
-          placeholder="Mật khẩu..."
-          value="dong6395"
-        />
-      </div>
-      <div class="d-grid">
-        <button type="submit" class="btn btn-primary">Đăng nhập</button>
-      </div>
-      </form>
-      <div class ="msg text-danger"></div>
-      <div>
-      <span>Tạo tài khoản?</span> <a class="register-button" href="#!">Đăng Ký</a>
-      </div>
-      <a class="default" href="#!">Quay lại trang chủ</a>
-    </div>
-  </div>
-</div>`;
+  root.innerHTML = login();
   const register = document.querySelector(".register-button");
   register.addEventListener("click", function (e) {
     e.preventDefault;
@@ -243,31 +235,7 @@ const app = {
   render: function () {
     const root = document.querySelector("#root");
     if (this.isLogin()) {
-      root.innerHTML = `<div class="container py-3">
-        <h2 class="text-center">Chào mừng bạn đã quay trở lại</h2>
-        <hr/>
-        <ul class="list-unstyled d-flex gap-3 profile">
-          <li>Chào bạn: <b class="name">Loading...</b></li>
-          <li><a href="#"class="logout">Đăng xuất</a></li>
-        </ul>
-        <form class=" post container w-90">
-      <div class="form-group text-left">
-          <label class="w-100" for="title" class="label-form">Tiêu đề bài viết</label>
-          <input class="w-100" id="title" placeholder="Nhập tiêu đề bài viết"/>
-      </div>
-      <div class="form-group text-left">
-          <label class="w-100" for="content" class="label-form">Nhập nội dung bài viết</label>
-          <textarea class="w-100" name="" id="content" cols="30" rows="10"></textarea>
-      </div>
-      <div class="form-group text-left">
-          <label class="w-100" for="content" class="label-form">Chọn thời gian đăng bài</label>
-          <input class="w-100" id="date" type="datetime-local">
-      </div>
-      <button id="post-option"class="btn btn-warning text-left w-100 my-3">Đăng bài</button>
-  </form>
-  <div class ="msgTwo text-danger"></div>
-      </div>
-      <div class="block-list"></div>`;
+      root.innerHTML = renderLoginContent();
       currentPage = 1;
       fetchData();
       const profileName = document.querySelector(".profile .name");
