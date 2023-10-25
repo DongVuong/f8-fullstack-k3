@@ -79,7 +79,7 @@ const stripHtml = (html) => {
         );
         child = child.replace(
           linkWebNonHttps,
-          `<a href="https://$1" target="_blank" class="link">$1</a>`
+          `<a href="http://$1" target="_blank" class="link">$1</a>`
         );
       }
       return child;
@@ -106,9 +106,9 @@ const handleSeeUserPost = async function (UserPostButton) {
     const backHome = document.createElement("div");
     backHome.innerHTML = `<a class="btn btn-info" href="#!">Trang chủ </a>`;
     const separate = document.createElement("hr");
-    list.appendChild(separate);
     list.appendChild(title);
     list.appendChild(backHome);
+    list.appendChild(separate);
     for (let post of data) {
       const div = document.createElement("div");
       const separate = document.createElement("hr");
@@ -154,8 +154,8 @@ const handleSeeUserPost = async function (UserPostButton) {
             </div>
             </div>
             </div>`;
-      list.appendChild(separate);
       list.appendChild(div);
+      list.appendChild(separate);
       const seeMoreButton = div.querySelector(".see-more");
       handleSeeMore(dateString, HoursString, seeMoreButton);
       const UserPostButton = div.querySelector(".profileLink");
@@ -194,8 +194,8 @@ const handleSeeMore = async function (dateString, HoursString, seeMoreButton) {
       }
     }
     div.innerHTML = `
-      <hr>
         <h3>Chi tiết bài viết:<i style="color:blue">${data.title}</i></h3>
+        <a class="back-home btn btn-info"href="#!">Trang chủ </a>
         <hr>
       <div class="container">
           <div class="row">
@@ -212,8 +212,6 @@ const handleSeeMore = async function (dateString, HoursString, seeMoreButton) {
           ${timeUp} trước</p>
           <h4>${data.title}</h4>
           <p>${stripHtml(data.content)}</p>
-          <a class="back-home btn btn-outline-info"href="#!">Trang chủ </a>
-        
           </div>
           </div>
           </div>`;
@@ -292,8 +290,8 @@ const fetchData = async function () {
           </div>
           </div>
           </div>`;
-    list.appendChild(separate);
     list.appendChild(div);
+    list.appendChild(separate);
     const seeMoreButton = div.querySelector(".see-more");
     handleSeeMore(dateString, HoursString, seeMoreButton);
     const UserPostButton = div.querySelector(".profileLink");

@@ -1,6 +1,6 @@
 export const Default = () => {
-  return `<h1>Blogger</h1><button type="submit" class="btn btn-primary">Đăng nhập</button>
-    <div class="block-list"></div>`;
+  return `<button type="submit" class="default-setting btn btn-primary">Đăng nhập</button>
+  <div class="block-list"></div>`;
 };
 export const register = () => {
   return `<div class="container py-3">
