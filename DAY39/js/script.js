@@ -104,7 +104,7 @@ const handleSeeUserPost = async function (UserPostButton) {
     const title = document.createElement("h3");
     title.innerHTML = `Tất cả bài viết của của <i style="color:green">${name}</i>`;
     const backHome = document.createElement("div");
-    backHome.innerHTML = `<a class="btn btn-info" href="#!">Về trang chủ </a>`;
+    backHome.innerHTML = `<a class="btn btn-info" href="#!">Trang chủ </a>`;
     const separate = document.createElement("hr");
     list.appendChild(separate);
     list.appendChild(title);
@@ -205,14 +205,14 @@ const handleSeeMore = async function (dateString, HoursString, seeMoreButton) {
           </div>
           <div class = "col-9">
           <h2>
-          <a class="profileLink" href="users/${data.userId._id}">${
+          <a class="profileLink" href="/users/${data.userId._id}">${
       data.userId.name
     }</a></h2>
           <p class="date">
           ${timeUp} trước</p>
           <h4>${data.title}</h4>
           <p>${stripHtml(data.content)}</p>
-          <a class="back-home btn btn-outline-info"href="#!">Về trang chủ </a>
+          <a class="back-home btn btn-outline-info"href="#!">Trang chủ </a>
         
           </div>
           </div>
