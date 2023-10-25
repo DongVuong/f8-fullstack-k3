@@ -324,7 +324,7 @@ const renderRegister = () => {
   root.innerHTML = register();
   const login = document.querySelector(".login-button");
   login.addEventListener("click", function (e) {
-    e.preventDefault;
+    e.preventDefault();
     renderLogin();
     app.eventLogin();
   });
@@ -338,7 +338,7 @@ const renderLogin = () => {
   root.innerHTML = login();
   const register = document.querySelector(".register-button");
   register.addEventListener("click", function (e) {
-    e.preventDefault;
+    e.preventDefault();
     renderRegister();
     app.eventRegister();
   });
@@ -362,7 +362,7 @@ const app = {
     } else {
       renderDefault();
       const btn = root.querySelector("button");
-      btn.addEventListener("click", function () {
+      btn.addEventListener("click", function (e) {
         renderLogin();
         app.eventLogin();
       });
