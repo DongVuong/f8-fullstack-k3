@@ -2,141 +2,113 @@ import { client } from "./client.js";
 import { requestRefresh } from "./token.js";
 import { Default, register, login, renderLoginContent } from "./function.js";
 import {
+  telephoneNoPlus,
   youtube,
   telephone,
   email,
   linkWebHttps,
   linkWebNonHttps,
 } from "./regex.js";
+import {
+  AddPostSchedule,
+  RemovePostSchedule,
+  showLoading,
+  hideLoading,
+  changeTimeBlog,
+  changeTimeSchedule,
+} from "./effect.js";
 client.setUrl("https://api-auth-two.vercel.app");
 let currentPage = 1;
 let isFetching = false;
 let hasMore = true;
 let timeUp = null;
-let remaining = null;
 let waitingTime = null;
-const AddPostSchedule = function () {
-  const postBtn = document.querySelector("#post-option");
-  postBtn.classList.add("btn-info");
-  postBtn.classList.remove("btn-warning");
-};
-const RemovePostSchedule = function () {
-  const postBtn = document.querySelector("#post-option");
-  postBtn.classList.remove("btn-info");
-  postBtn.classList.add("btn-warning");
-};
-const changeTimeBlog = (check) => {
-  let minutes = Math.floor((check / (1000 * 60)) % 60);
-  let hours = Math.floor((check / (1000 * 60 * 60)) % 24);
-  let days = Math.floor((check / (1000 * 60 * 60 * 24)) % 30);
-  if (days > 0 && days < 31) {
-    return `${days} ngày`;
-  } else if (days == 0 && hours > 0) {
-    return ` ${hours} giờ` + (minutes > 0 ? ` ${minutes} phút` : "");
-  } else if (days == 0 && hours == 0 && minutes > 0) {
-    return `${minutes} phút`;
-  } else if (days == 0 && hours == 0 && minutes == 0) {
-    return `vài giây`;
-  } else {
-    return false;
-  }
-};
-const changeTimeSchedule = (today, schedule) => {
-  remaining = schedule - today;
-  let minutes = Math.floor((remaining / (1000 * 60)) % 60);
-  let hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
-  let days = Math.floor((remaining / (1000 * 60 * 60 * 24)) % 30);
-  let years = Math.floor((remaining / (1000 * 60 * 60 * 24 * 30)) % 365);
+const stripHtml = (html) => {
+  html = html.split("\n");
 
-  return (
-    (years > 0 ? `${years} năm ` : "") +
-    (days > 0 ? `${days} ngày ` : "") +
-    (hours > 0 ? `${hours} giờ ` : "") +
-    (minutes > 0 ? `${minutes} phút ` : "")
-  );
-};
-const showLoading = () => {
-  document.getElementById("loading").style.display = "block";
-};
-const hideLoading = () => {
-  document.getElementById("loading").style.display = "none";
-};
-const fetchData = async function () {
-  showLoading();
-  const list = document.querySelector(".block-list");
-  isFetching = true;
-  try {
-    const { response, data: _data } = await client.get(
-      `/blogs?page=${currentPage}`
-    );
-    currentPage++;
-    const data = _data.data;
-    const stripHtml = (html) => {
-      html = html.split("\n");
-
-      html = html.filter((element) => {
-        if (element) {
-          return true;
-        }
-        return false;
-      });
-      // console.log(html);
-      html = html.map((element) => {
-        element = element.split(" ");
-        element = element.filter((elementChild) => {
-          if (elementChild) {
-            return true;
-          }
-          return false;
-        });
-        element = element.map((child) => {
-          if (youtube.test(child)) {
-            const url = child.replace(
-              /(.*\/(watch\?v=)*)/,
-              "https://www.youtube.com/embed/"
-            );
-            console.log(url);
-            child = `<iframe
-            width="560"
-            height="315"
-            src="${url}"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>`;
-            // child = `<iframe width="560" height="315" src="${child}" title="YouTube video player" value ="1"></iframe>`;
-          } else {
-            child = child.replace(
-              telephone,
-              `<a href="tel:$1" target="_blank" class="telephoneNumber">$1</a>`
-            );
-            child = child.replace(
-              linkWebHttps,
-              `<a href="$1" target="_blank" class="link">$1</a>`
-            );
-            child = child.replace(
-              email,
-              `<a href="mailto:$1" target="_blank" class="email">$1</a>`
-            );
-            child = child.replace(
-              linkWebNonHttps,
-              `<a href="https://$1" target="_blank" class="link">$1</a>`
-            );
-          }
-          return child;
-        });
-        element = element.join(" ");
-        return element;
-      });
-      html = html.join("</br>");
-      return html;
-    };
-    isFetching = false;
-    if (data === undefined) {
-      hasMore = false;
-      hideLoading();
-      return;
+  html = html.filter((element) => {
+    if (element) {
+      return true;
     }
+    return false;
+  });
+  // console.log(html);
+  html = html.map((element) => {
+    element = element.split(" ");
+    element = element.filter((elementChild) => {
+      if (elementChild) {
+        return true;
+      }
+      return false;
+    });
+    element = element.map((child) => {
+      if (youtube.test(child)) {
+        const url = child.replace(
+          /(.*\/(watch\?v=)*)/,
+          "https://www.youtube.com/embed/"
+        );
+        // console.log(url);
+        //   child = `<div class="embed-responsive embed-responsive">
+        //   <iframe class="embed-responsive-item" src="${url}" allowfullscreen></iframe>
+        // </div>`;
+        child = `<iframe
+        width="560"
+        height="315"
+        src="${url}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>`;
+        // child = `<iframe width="560" height="315" src="${child}" title="YouTube video player" value ="1"></iframe>`;
+      } else {
+        child = child.replace(
+          telephone,
+          `<a href="tel:$1" target="_blank" class="telephoneNumber">$1</a>`
+        );
+        child = child.replace(
+          telephoneNoPlus,
+          `<a href="tel:+$1" target="_blank" class="telephoneNumber">+$1</a>`
+        );
+        child = child.replace(
+          linkWebHttps,
+          `<a href="$1" target="_blank" class="link">$1</a>`
+        );
+        child = child.replace(
+          email,
+          `<a href="mailto:$1" target="_blank" class="email">$1</a>`
+        );
+        child = child.replace(
+          linkWebNonHttps,
+          `<a href="https://$1" target="_blank" class="link">$1</a>`
+        );
+      }
+      return child;
+    });
+    element = element.join(" ");
+    return element;
+  });
+  html = html.join("</br>");
+  return html;
+};
+const handleSeeUserPost = async function (UserPostButton) {
+  UserPostButton.addEventListener("click", async function (e) {
+    e.preventDefault();
+    let UserId = UserPostButton.getAttribute("href");
+    // console.log(UserId);
+    const { response, data: _data } = await client.get(UserId);
+    const data = _data.data.blogs;
+    const name = _data.data.name;
+    const list = document.querySelector(".block-list");
+    list.innerHTML = "";
+    isFetching = true;
+    const title = document.createElement("h3");
+    title.innerHTML = `Tất cả bài viết của của <i style="color:green">${name}</i>`;
+    const backHome = document.createElement("div");
+    backHome.innerHTML = `<a class="btn btn-info" href="#!">Về trang chủ </a>`;
+    const separate = document.createElement("hr");
+    list.appendChild(separate);
+    list.appendChild(title);
+    list.appendChild(backHome);
     for (let post of data) {
       const div = document.createElement("div");
       const separate = document.createElement("hr");
@@ -162,6 +134,69 @@ const fetchData = async function () {
           : date.getMinutes() + " phút"
       }`;
       div.innerHTML = `
+        <div class="container">
+            <div class="row">
+            <div class="col-3">
+            <div>${dateString}</div>
+            <div>${HoursString}</div>
+            </div>
+            <div class = "col-9">
+            <h2>
+            <a class="profileLink" href="/users/${post.userId}">${name}</a></h2>
+            <p class="date">
+            ${timeUp} trước</p>
+            <h4>${post.title}</h4>
+            <p>${stripHtml(post.content)}</p>
+            <a class="see-more btn btn-outline-info"href="/blogs/${
+              post._id
+            }">Chi tiết</a>
+
+            </div>
+            </div>
+            </div>`;
+      list.appendChild(separate);
+      list.appendChild(div);
+      const seeMoreButton = div.querySelector(".see-more");
+      handleSeeMore(dateString, HoursString, seeMoreButton);
+      const UserPostButton = div.querySelector(".profileLink");
+      handleSeeUserPost(UserPostButton);
+    }
+    backHome.addEventListener("click", function (e) {
+      e.preventDefault();
+      app.render();
+    });
+  });
+};
+const handleSeeMore = async function (dateString, HoursString, seeMoreButton) {
+  seeMoreButton.addEventListener("click", async function (e) {
+    e.preventDefault();
+    // console.log("ok");
+    const list = document.querySelector(".block-list");
+    let id = seeMoreButton.getAttribute("href");
+    id = id.replace(/\/.*\//, "");
+    list.innerHTML = "";
+    isFetching = true;
+    // console.log(id);
+    const { response, data: _data } = await client.get(`/blogs/${id}`);
+    const data = _data.data;
+    const div = document.createElement("div");
+    const { createdAt } = data;
+    const date = new Date(createdAt);
+    const today = new Date();
+    const check = today.getTime() - date.getTime();
+    if (changeTimeBlog(check)) {
+      timeUp = changeTimeBlog(check);
+    } else {
+      if (today.getMonth() - date.getMonth() < 12) {
+        timeUp = `${today.getMonth() - date.getMonth()} tháng`;
+      } else {
+        timeUp = `${today.getFullYear() - date.getFullYear()} năm`;
+      }
+    }
+    div.innerHTML = `
+      <hr>
+        <h3>Chi tiết bài viết:<i style="color:blue">${data.title}</i></h3>
+        <hr>
       <div class="container">
           <div class="row">
           <div class="col-3">
@@ -170,33 +205,117 @@ const fetchData = async function () {
           </div>
           <div class = "col-9">
           <h2>
-          <a class="profileLink" href="#!">${post.userId.name}</a></h2>
-          <h4>${post.title}</h4>
-          <p>${stripHtml(post.content)}</p>
+          <a class="profileLink" href="users/${data.userId._id}">${
+      data.userId.name
+    }</a></h2>
           <p class="date">
           ${timeUp} trước</p>
+          <h4>${data.title}</h4>
+          <p>${stripHtml(data.content)}</p>
+          <a class="back-home btn btn-outline-info"href="#!">Về trang chủ </a>
+        
           </div>
           </div>
           </div>`;
-      list.appendChild(separate);
-      list.appendChild(div);
-    }
-    hideLoading();
-    window.addEventListener("scroll", () => {
-      if (isFetching || !hasMore) {
-        return;
-      } else if (
-        window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - 100
-      ) {
-        fetchData();
-      }
+    list.appendChild(div);
+    const UserPostButton = div.querySelector(".profileLink");
+    handleSeeUserPost(UserPostButton);
+    const back = list.querySelector(".back-home");
+    back.addEventListener("click", function (e) {
+      e.preventDefault();
+      app.render();
     });
-  } catch (e) {
-    console.log(e.message);
+  });
+};
+const fetchData = async function () {
+  // console.log("chay");
+  showLoading();
+  const list = document.querySelector(".block-list");
+  isFetching = true;
+  // try {
+  const { response, data: _data } = await client.get(
+    `/blogs?page=${currentPage}`
+  );
+  const data = _data.data;
+  currentPage++;
+  isFetching = false;
+
+  if (data === undefined) {
+    hasMore = false;
     hideLoading();
     return;
   }
+  for (let post of data) {
+    const div = document.createElement("div");
+    const separate = document.createElement("hr");
+    const { createdAt } = post;
+    const date = new Date(createdAt);
+    const today = new Date();
+    const check = today.getTime() - date.getTime();
+    if (changeTimeBlog(check)) {
+      timeUp = changeTimeBlog(check);
+    } else {
+      if (today.getMonth() - date.getMonth() < 12) {
+        timeUp = `${today.getMonth() - date.getMonth()} tháng`;
+      } else {
+        timeUp = `${today.getFullYear() - date.getFullYear()} năm`;
+      }
+    }
+    const dateString = `${date.getDate()} - ${
+      date.getMonth() + 1
+    } - ${date.getFullYear()}`;
+    const HoursString = `${date.getHours()} giờ ${
+      date.getMinutes() < 10
+        ? "0" + date.getMinutes() + " phút"
+        : date.getMinutes() + " phút"
+    }`;
+    div.innerHTML = `
+      <div class="container">
+          <div class="row">
+          <div class="col-3">
+          <div>${dateString}</div>
+          <div>${HoursString}</div>
+          </div>
+          <div class = "col-9">
+          <h2>
+          <a class="profileLink" href="/users/${post.userId._id}">${
+      post.userId.name
+    }</a></h2>
+          <p class="date">
+          ${timeUp} trước</p>
+          <h4>${post.title}</h4>
+          <p>${stripHtml(post.content)}</p>
+          <a class="see-more btn btn-outline-info"href="/blogs/${
+            post._id
+          }">Chi tiết</a>
+        
+          </div>
+          </div>
+          </div>`;
+    list.appendChild(separate);
+    list.appendChild(div);
+    const seeMoreButton = div.querySelector(".see-more");
+    handleSeeMore(dateString, HoursString, seeMoreButton);
+    const UserPostButton = div.querySelector(".profileLink");
+    handleSeeUserPost(UserPostButton);
+  }
+
+  hideLoading();
+  window.addEventListener("scroll", () => {
+    if (isFetching || !hasMore) {
+      return;
+    } else if (
+      window.innerHeight + window.scrollY >=
+      document.body.offsetHeight - 100
+    ) {
+      fetchData();
+    }
+  });
+  // } catch (e) {
+  //   console.log(e.message);
+  //   hideLoading();
+  //   return;
+  // }
 };
 const renderDefault = () => {
   root.innerHTML = Default();
@@ -435,6 +554,10 @@ const app = {
         msg.innerText = "Post bài thành công! Đang làm mới";
         setTimeout(() => {
           app.removeLoadingPost();
+          // currentPage = 1;
+          // const list = document.querySelector(".block-list");
+          // list.innerHTML = "";
+          // fetchData();
           app.render();
         }, 2000);
       }

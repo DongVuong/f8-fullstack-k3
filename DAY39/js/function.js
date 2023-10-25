@@ -96,7 +96,7 @@ export const renderLoginContent = () => {
   </div>
   <div class="form-group text-left">
       <label class="w-100" for="content" class="label-form">Nhập nội dung bài viết</label>
-      <textarea class="w-100" name="" id="content" cols="30" rows="10"></textarea>
+      <textarea class="w-100" name="" id="content" cols="30" rows="5"></textarea>
   </div>
   <div class="form-group text-left">
       <label class="w-100" for="content" class="label-form">Chọn thời gian đăng bài</label>
