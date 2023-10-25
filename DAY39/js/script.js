@@ -23,6 +23,7 @@ let isFetching = false;
 let hasMore = true;
 let timeUp = null;
 let waitingTime = null;
+let disScroll = null;
 const stripHtml = (html) => {
   html = html.split("\n");
 
@@ -227,6 +228,7 @@ const handleSeeMore = async function (dateString, HoursString, seeMoreButton) {
 };
 const fetchData = async function () {
   // console.log("chay");
+  disScroll = null;
   showLoading();
   const list = document.querySelector(".block-list");
   isFetching = true;
@@ -297,10 +299,9 @@ const fetchData = async function () {
     const UserPostButton = div.querySelector(".profileLink");
     handleSeeUserPost(UserPostButton);
   }
-
   hideLoading();
   window.addEventListener("scroll", () => {
-    if (isFetching || !hasMore) {
+    if (isFetching || !hasMore || disScroll) {
       return;
     } else if (
       window.innerHeight + window.scrollY >=
@@ -363,6 +364,7 @@ const app = {
       renderDefault();
       const btn = root.querySelector("button");
       btn.addEventListener("click", function (e) {
+        disScroll = 1;
         renderLogin();
         app.eventLogin();
       });

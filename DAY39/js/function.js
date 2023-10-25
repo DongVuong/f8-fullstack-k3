@@ -74,7 +74,7 @@ export const login = () => {
         </form>
         <div class ="msg text-danger"></div>
         <div>
-        <span>Tạo tài khoản?</span> <a class="register-button" href="#!">Đăng Ký</a>
+        <span>Tạo tài khoản?</span> <a class="register-button" href="#!">Đăng Kí</a>
         </div>
         <a class="default" href="#!">Quay lại trang chủ</a>
       </div>
