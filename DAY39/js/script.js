@@ -48,6 +48,7 @@ const stripHtml = (html) => {
           "https://www.youtube.com/embed/"
         );
         child = child.replace(/&.*/, "");
+        child = child.replace(/(\.|\,)$/, "");
         child = `<iframe
         width="560"
         height="315"
