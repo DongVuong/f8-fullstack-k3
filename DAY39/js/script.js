@@ -33,7 +33,6 @@ const stripHtml = (html) => {
     }
     return false;
   });
-  // console.log(html);
   html = html.map((element) => {
     element = element.split(" ");
     element = element.filter((elementChild) => {
@@ -44,23 +43,19 @@ const stripHtml = (html) => {
     });
     element = element.map((child) => {
       if (youtube.test(child)) {
-        const url = child.replace(
+        child = child.replace(
           /(.*\/(watch\?v=)*)/,
           "https://www.youtube.com/embed/"
         );
-        // console.log(url);
-        //   child = `<div class="embed-responsive embed-responsive">
-        //   <iframe class="embed-responsive-item" src="${url}" allowfullscreen></iframe>
-        // </div>`;
+        child = child.replace(/&.*/, "");
         child = `<iframe
         width="560"
         height="315"
-        src="${url}"
+        src="${child}"
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen></iframe>`;
-        // child = `<iframe width="560" height="315" src="${child}" title="YouTube video player" value ="1"></iframe>`;
       } else {
         child = child.replace(
           telephone,
@@ -95,7 +90,6 @@ const handleSeeUserPost = async function (UserPostButton) {
   UserPostButton.addEventListener("click", async function (e) {
     e.preventDefault();
     let UserId = UserPostButton.getAttribute("href");
-    // console.log(UserId);
     const { response, data: _data } = await client.get(UserId);
     const data = _data.data.blogs;
     const name = _data.data.name;
@@ -171,13 +165,11 @@ const handleSeeUserPost = async function (UserPostButton) {
 const handleSeeMore = async function (dateString, HoursString, seeMoreButton) {
   seeMoreButton.addEventListener("click", async function (e) {
     e.preventDefault();
-    // console.log("ok");
     const list = document.querySelector(".block-list");
     let id = seeMoreButton.getAttribute("href");
     id = id.replace(/\/.*\//, "");
     list.innerHTML = "";
     isFetching = true;
-    // console.log(id);
     const { response, data: _data } = await client.get(`/blogs/${id}`);
     const data = _data.data;
     const div = document.createElement("div");
@@ -227,12 +219,10 @@ const handleSeeMore = async function (dateString, HoursString, seeMoreButton) {
   });
 };
 const fetchData = async function () {
-  // console.log("chay");
   disScroll = null;
   showLoading();
   const list = document.querySelector(".block-list");
   isFetching = true;
-  // try {
   const { response, data: _data } = await client.get(
     `/blogs?page=${currentPage}`
   );
@@ -310,11 +300,6 @@ const fetchData = async function () {
       fetchData();
     }
   });
-  // } catch (e) {
-  //   console.log(e.message);
-  //   hideLoading();
-  //   return;
-  // }
 };
 const renderDefault = () => {
   root.innerHTML = Default();
@@ -499,15 +484,12 @@ const app = {
       const name = nameEl.value;
       const email = emailEl.value;
       const password = passwordEl.value;
-      // console.log({ name, email, password });
       this.handleRegister({ name, email, password }, msg);
     });
   },
   handleLogout: async function (data) {
     const { data: tokens, response } = await client.post("/auth/logout", data);
     localStorage.removeItem("login_tokens");
-    // console.log(tokens);
-    // console.log(response);
     this.render();
   },
   eventLogout: function () {
@@ -554,10 +536,6 @@ const app = {
         msg.innerText = "Post bài thành công! Đang làm mới";
         setTimeout(() => {
           app.removeLoadingPost();
-          // currentPage = 1;
-          // const list = document.querySelector(".block-list");
-          // list.innerHTML = "";
-          // fetchData();
           app.render();
         }, 2000);
       }
