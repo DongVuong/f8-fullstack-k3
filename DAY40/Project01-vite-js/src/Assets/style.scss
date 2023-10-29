@@ -1,0 +1,43 @@
+#app{
+    text-align: center;
+    header{
+        background-color: rgba(71, 226, 71, 0.476);
+        margin-bottom: 50px;
+        h2{
+            text-align: center;
+            a{
+                text-decoration: none;
+                color: violet;
+            }
+        }
+    }
+    main{
+      .container{
+        text-align: left;
+        h2{
+            color: violet;
+        }
+        ul{
+            list-style: none;
+            padding-left: 0px;
+            a{
+                text-decoration: none;
+            }
+        }
+      }
+    }
+    footer{
+        background-color: rgba(71, 226, 71, 0.476); 
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        h2{
+            color: #4b0707;
+        text-align: center;
+        }
+    }
+    img{
+        
+        width: 500px;
+    }
+}

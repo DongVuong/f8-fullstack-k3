@@ -1,5 +1,5 @@
 export const Products = () => {
-  return `<h1>Products List</h1>
+  return `<h2>Products List</h2>
     <ul>
     <li><a href="/product/1" data-navigo>Product 1</a></li>
     <li><a href="/product/2" data-navigo>Product 2</a></li>
