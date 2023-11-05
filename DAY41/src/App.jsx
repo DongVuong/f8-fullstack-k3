@@ -28,7 +28,8 @@ export default function App() {
     if (apiKey) {
       let name = sessionStorage.getItem("email");
       name = name.split("@")[0];
-      window.alert(`Chao mung ${name} quay tro lai`);
+      // window.alert(`Chao mung ${name} quay tro lai`);
+      toast.success(`Chào mừng ${name} quay trở lại`);
     } else if (!apiKey) {
       const email = window.prompt(
         "Please enter your email:",
@@ -37,7 +38,8 @@ export default function App() {
       if (email && emailRegex(email)) {
         getApiKey(email);
       } else {
-        window.alert("Email không hợp lệ");
+        // window.alert("Email không hợp lệ");
+        toast.error("Email không hợp lệ");
         window.location.reload();
       }
     }
@@ -54,6 +56,7 @@ export default function App() {
 
   return (
     <>
+      <ToastContainer />
       {isLoading && <DoubleBubble />}
       {
         <GetTodo

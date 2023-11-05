@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { client } from "../api/client";
 import { HtmlScript } from "../helper/StripHtml";
+import { toast } from "react-toastify";
 
 export default function GetTodo({
   apiKey,
@@ -15,13 +16,15 @@ export default function GetTodo({
       client.delete(`/todos/${id}`).then(({ response, data }) => {
         if (response.ok) {
           removeLoading();
-          window.alert("Thao tác thành công");
+          toast.success("Thao tác thành công");
+          // window.alert("Thao tác thành công");
           client.get("/todos").then(({ response, data }) => {
             setTodoList(data.data.listTodo);
           });
         } else {
           removeLoading();
-          window.alert("Thao tác thất bại");
+          toast.error("Thao tác thất bại");
+          // window.alert("Thao tác thất bại");
         }
       });
     }
@@ -37,20 +40,24 @@ export default function GetTodo({
         client.post("/todos", { todo }).then(({ response, data }) => {
           if (response.ok) {
             removeLoading();
-            window.alert("Thao tác thành công");
+            toast.success("Thao tác thành công");
+            // window.alert("Thao tác thành công");
             client.get("/todos").then(({ response, data }) => {
               setTodoList(data.data.listTodo);
             });
           } else {
             removeLoading();
-            window.alert("Thao tác thất bại");
+            toast.error("Thao tác thất bại");
+            // window.alert("Thao tác thất bại");
           }
         });
       } else {
-        window.alert("Không được để trống công việc");
+        toast.warning("Không được để trống công việc");
+        // window.alert("Không được để trống công việc");
       }
     } else {
-      window.alert("Vui lòng đăng nhập để sử dụng dịch vụ");
+      // window.alert("Vui lòng đăng nhập để sử dụng dịch vụ");
+      toast.warning("Vui lòng đăng nhập để sử dụng dịch vụ");
     }
   }
 
@@ -71,7 +78,8 @@ export default function GetTodo({
           setTodoList(data.data.listTodo);
         } else {
           addLoading();
-          window.alert("Mất kết nối, vui lòng đăng nhập lại");
+          toast.error("Mất kết nối, vui lòng đăng nhập lại");
+          // window.alert("Mất kết nối, vui lòng đăng nhập lại");
           sessionStorage.clear();
           window.location.reload();
         }
@@ -114,10 +122,12 @@ export default function GetTodo({
           setEditData({
             editingId: null,
           });
-          window.alert(`${data.message}`);
+          toast.success(`${data.message}`);
+          // window.alert(`${data.message}`);
         } else {
           handleCannelClick();
-          window.alert("Đã xảy ra lỗi, hãy thử lại!");
+          toast.error("Đã xảy ra lỗi, hãy thử lại!");
+          // window.alert("Đã xảy ra lỗi, hãy thử lại!");
         }
         removeLoading();
       });
