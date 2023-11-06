@@ -9,6 +9,9 @@ export default function GetTodo({
   addLoading,
   removeLoading,
 }) {
+  let isSearch = false;
+  let isLogin = false;
+  let checkAlert = false;
   function handleDelete(id) {
     if (window.confirm("Bạn chắc chắn muốn xoá?")) {
       addLoading();
@@ -29,9 +32,24 @@ export default function GetTodo({
       });
     }
   }
+  const handleClick = (e) => {
+    isLogin = sessionStorage.getItem("apiKey");
+    if (!isLogin) {
+      toast.warning(`Hãy đăng nhập để bắt đầu tìm kiếm!`);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      return;
+    }
+
+    if (!isSearch) {
+      toast.success(`Đã sẵn sàng để tìm kiếm!`);
+    }
+  };
   function handleSubmit(e) {
     e.preventDefault();
-    if (status) {
+    isLogin = sessionStorage.getItem("apiKey");
+    if (isLogin) {
       let todo = e.target.todo.value;
       if (todo) {
         addLoading();
@@ -58,6 +76,9 @@ export default function GetTodo({
     } else {
       // window.alert("Vui lòng đăng nhập để sử dụng dịch vụ");
       toast.warning("Vui lòng đăng nhập để sử dụng dịch vụ");
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
     }
   }
 
@@ -175,6 +196,7 @@ export default function GetTodo({
             </button>
             <button
               type="button"
+              onClick={(e) => handleClick(e)}
               className="bg-orange-500 hover:bg-orange-700 text-white  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline absolute translate-x-4 left-full w-max"
             >
               Tìm kiếm
