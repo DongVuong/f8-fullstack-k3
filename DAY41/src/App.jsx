@@ -42,7 +42,6 @@ export default function App() {
       throw new Error(data.message);
     }
   };
-  console.log(isLoading);
   return (
     <>
       <ToastContainer />

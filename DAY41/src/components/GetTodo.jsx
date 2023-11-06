@@ -3,11 +3,11 @@ import { client } from "../api/client";
 import { HtmlScript } from "../helper/StripHtml";
 import { toast } from "react-toastify";
 let isSearch = false;
+let editDataInfo = {};
 export default function GetTodo({ apiKey = "", setIsLoading = () => {} }) {
   let isLogin = false;
   let checkAlert = false;
   const [todoList, setTodoList] = useState([]);
-  let editDataInfo = {};
   const [editData, setEditData] = useState({
     editingId: null,
     inputText: "",
@@ -147,6 +147,7 @@ export default function GetTodo({ apiKey = "", setIsLoading = () => {} }) {
       editingId: id,
       inputText: todo,
     });
+    console.log(editDataInfo);
   }
   const handleUpdateClick = (id, e) => {
     const body = todoList.find((item) => {
