@@ -2,16 +2,25 @@ import React, { useEffect, useState } from "react";
 import { client } from "../api/client";
 import { HtmlScript } from "../helper/StripHtml";
 import { toast } from "react-toastify";
-
+let isSearch = false;
 export default function GetTodo({
   apiKey,
   handleLoading,
   addLoading,
   removeLoading,
 }) {
-  let isSearch = false;
   let isLogin = false;
   let checkAlert = false;
+  const [todoList, setTodoList] = useState([]);
+  let editDataInfo = {};
+  const [editData, setEditData] = useState({
+    editingId: null,
+    inputText: "",
+  });
+  const [inputValue, setInputValue] = useState("");
+  // const [debouncedInputValue, setDebouncedInputValue] = useState("");
+  let status = null;
+  status = apiKey;
   function handleDelete(id) {
     if (window.confirm("Bạn chắc chắn muốn xoá?")) {
       addLoading();
@@ -32,6 +41,29 @@ export default function GetTodo({
       });
     }
   }
+  const handleKeyUp = (event) => {
+    setInputValue(event.target.value);
+  };
+  useEffect(() => {
+    if (isSearch) {
+      const timeoutId = setTimeout(() => {
+        // setDebouncedInputValue(inputValue);
+        callApi(inputValue);
+      }, 300);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [inputValue]);
+
+  const callApi = (value) => {
+    client.get(`/todos?q=${value}`).then(({ response, data }) => {
+      if (response.ok) {
+        setTodoList(data.data.listTodo);
+      } else {
+        toast.error(data.message);
+      }
+    });
+  };
+
   const handleClick = (e) => {
     isLogin = sessionStorage.getItem("apiKey");
     if (!isLogin) {
@@ -41,11 +73,12 @@ export default function GetTodo({
       }, 2000);
       return;
     }
-
     if (!isSearch) {
+      isSearch = true;
       toast.success(`Đã sẵn sàng để tìm kiếm!`);
     }
   };
+
   function handleSubmit(e) {
     e.preventDefault();
     isLogin = sessionStorage.getItem("apiKey");
@@ -81,15 +114,6 @@ export default function GetTodo({
       }, 3000);
     }
   }
-
-  const [todoList, setTodoList] = useState([]);
-  let editDataInfo = {};
-  const [editData, setEditData] = useState({
-    editingId: null,
-    inputText: "",
-  });
-  let status = null;
-  status = apiKey;
   useEffect(() => {
     client.setApiKey(apiKey);
     if (status) {
@@ -182,6 +206,7 @@ export default function GetTodo({
         <form action="" className="w-full max-w-sm" onSubmit={handleSubmit}>
           <div className="flex items-center border-b border-teal-500 py-2 relative">
             <input
+              onKeyUp={(e) => handleKeyUp(e)}
               type="text"
               name="todo"
               placeholder="Thêm một việc làm mới"
