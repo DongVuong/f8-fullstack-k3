@@ -1,29 +1,15 @@
 import React, { useEffect, useState } from "react";
-import GetTodo from "./component/GetTodo";
+import GetTodo from "./components/GetTodo";
 import { emailRegex } from "./helper/matchEmail";
 import { client } from "./api/client";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import DoubleBubble from "./helper/DoubleBubble.jsx";
+import DoubleBubble from "./components/DoubleBubble.jsx";
 
 export default function App() {
   const [apiKey, setApiKey] = useState(sessionStorage.getItem("apiKey"));
   const [isLoading, setIsLoading] = useState(false);
-  const handleLoading = (boolean) => {
-    setIsLoading(boolean);
-  };
-  const addLoading = (btn) => {
-    if (btn) {
-      btn.disabled = true;
-    }
-    handleLoading(true);
-  };
-  const removeLoading = (btn) => {
-    if (btn) {
-      btn.disabled = false;
-    }
-    handleLoading(false);
-  };
+
   useEffect(() => {
     if (apiKey) {
       let name = sessionStorage.getItem("email");
@@ -36,7 +22,8 @@ export default function App() {
         `donguet.vnu@gmail.com`
       );
       if (email && emailRegex(email)) {
-        getApiKey(email);
+        setIsLoading(true);
+        getApiKey(email).finally(() => setIsLoading(false));
       } else {
         // window.alert("Email không hợp lệ");
         toast.error("Email không hợp lệ");
@@ -51,21 +38,16 @@ export default function App() {
       sessionStorage.setItem("apiKey", apiKey);
       sessionStorage.setItem("email", email);
       setApiKey(apiKey);
+    } else {
+      throw new Error(data.message);
     }
   };
-
+  console.log(isLoading);
   return (
     <>
       <ToastContainer />
       {isLoading && <DoubleBubble />}
-      {
-        <GetTodo
-          apiKey={apiKey}
-          handleLoading={handleLoading}
-          addLoading={addLoading}
-          removeLoading={removeLoading}
-        />
-      }
+      {<GetTodo apiKey={apiKey} setIsLoading={setIsLoading} />}
     </>
   );
 }

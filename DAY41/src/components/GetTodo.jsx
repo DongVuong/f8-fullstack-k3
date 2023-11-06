@@ -3,12 +3,7 @@ import { client } from "../api/client";
 import { HtmlScript } from "../helper/StripHtml";
 import { toast } from "react-toastify";
 let isSearch = false;
-export default function GetTodo({
-  apiKey,
-  handleLoading,
-  addLoading,
-  removeLoading,
-}) {
+export default function GetTodo({ apiKey = "", setIsLoading = () => {} }) {
   let isLogin = false;
   let checkAlert = false;
   const [todoList, setTodoList] = useState([]);
@@ -19,22 +14,20 @@ export default function GetTodo({
   });
   const [inputValue, setInputValue] = useState("");
   // const [debouncedInputValue, setDebouncedInputValue] = useState("");
-  let status = null;
-  status = apiKey;
   function handleDelete(id) {
     if (window.confirm("Bạn chắc chắn muốn xoá?")) {
-      addLoading();
+      setIsLoading(true);
       client.setApiKey(apiKey);
       client.delete(`/todos/${id}`).then(({ response, data }) => {
         if (response.ok) {
-          removeLoading();
+          setIsLoading(false);
           toast.success("Thao tác thành công");
           // window.alert("Thao tác thành công");
           client.get("/todos").then(({ response, data }) => {
             setTodoList(data.data.listTodo);
           });
         } else {
-          removeLoading();
+          setIsLoading(false);
           toast.error("Thao tác thất bại");
           // window.alert("Thao tác thất bại");
         }
@@ -55,13 +48,17 @@ export default function GetTodo({
   }, [inputValue]);
 
   const callApi = (value) => {
-    client.get(`/todos?q=${value}`).then(({ response, data }) => {
-      if (response.ok) {
-        setTodoList(data.data.listTodo);
-      } else {
-        toast.error(data.message);
-      }
-    });
+    setIsLoading(true);
+    client
+      .get(`/todos?q=${value}`)
+      .then(({ response, data }) => {
+        if (response.ok) {
+          setTodoList(data.data.listTodo);
+        } else {
+          toast.error(data.message);
+        }
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const handleClick = (e) => {
@@ -85,23 +82,29 @@ export default function GetTodo({
     if (isLogin) {
       let todo = e.target.todo.value;
       if (todo) {
-        addLoading();
+        setIsLoading(true);
         e.target.todo.value = "";
         client.setApiKey(apiKey);
-        client.post("/todos", { todo }).then(({ response, data }) => {
-          if (response.ok) {
-            removeLoading();
-            toast.success("Thao tác thành công");
-            // window.alert("Thao tác thành công");
-            client.get("/todos").then(({ response, data }) => {
-              setTodoList(data.data.listTodo);
-            });
-          } else {
-            removeLoading();
-            toast.error("Thao tác thất bại");
-            // window.alert("Thao tác thất bại");
-          }
-        });
+        client
+          .post("/todos", { todo })
+          .then(({ response, data }) => {
+            if (response.ok) {
+              setIsLoading(false);
+              toast.success("Thao tác thành công");
+              // window.alert("Thao tác thành công");
+              client.get("/todos").then(({ response, data }) => {
+                setTodoList(data.data.listTodo);
+              });
+            } else {
+              setIsLoading(false);
+              toast.error("Thao tác thất bại");
+              // window.alert("Thao tác thất bại");
+            }
+          })
+          .finally(() => {
+            isSearch = false;
+            callApi("");
+          });
       } else {
         toast.warning("Không được để trống công việc");
         // window.alert("Không được để trống công việc");
@@ -115,23 +118,25 @@ export default function GetTodo({
     }
   }
   useEffect(() => {
-    client.setApiKey(apiKey);
-    if (status) {
-      addLoading();
-      client.get("/todos").then(({ response, data }) => {
-        if (response.ok) {
-          setTodoList(data.data.listTodo);
-        } else {
-          addLoading();
-          toast.error("Mất kết nối, vui lòng đăng nhập lại");
-          // window.alert("Mất kết nối, vui lòng đăng nhập lại");
-          sessionStorage.clear();
-          window.location.reload();
-        }
-      });
-      removeLoading();
+    if (apiKey) {
+      client.setApiKey(apiKey);
+      setIsLoading(true);
+      client
+        .get("/todos")
+        .then(({ response, data }) => {
+          if (response.ok) {
+            setTodoList(data.data.listTodo);
+          } else {
+            setIsLoading(true);
+            toast.error("Mất kết nối, vui lòng đăng nhập lại");
+            // window.alert("Mất kết nối, vui lòng đăng nhập lại");
+            sessionStorage.clear();
+            window.location.reload();
+          }
+        })
+        .finally(() => setIsLoading(false));
     }
-  }, [status]);
+  }, [apiKey]);
   function handleEdit(id, todo, isCompleted) {
     editDataInfo = {
       id,
@@ -147,7 +152,7 @@ export default function GetTodo({
     const body = todoList.find((item) => {
       return id === item._id;
     });
-    addLoading();
+    setIsLoading(true);
     client.setApiKey(apiKey);
     client
       .patch(`/todos/${id}`, {
@@ -155,7 +160,7 @@ export default function GetTodo({
         isCompleted: body.isCompleted,
       })
       .then(({ response, data }) => {
-        removeLoading();
+        setIsLoading(false);
         if (response.status === 401) {
           this.reloadPage();
         } else if (response.ok) {
@@ -174,7 +179,7 @@ export default function GetTodo({
           toast.error("Đã xảy ra lỗi, hãy thử lại!");
           // window.alert("Đã xảy ra lỗi, hãy thử lại!");
         }
-        removeLoading();
+        setIsLoading(false);
       });
   };
   const handleChecked = (id) => {
@@ -203,6 +208,7 @@ export default function GetTodo({
     <main className="__className_6a793a flex items-center justify-center p-8">
       <div className="container bg-slate-700 p-4 flex flex-col justify-center items-center">
         <h1 className="font-bold text-white">Wellcome to App!</h1>
+        {/* Form */}
         <form action="" className="w-full max-w-sm" onSubmit={handleSubmit}>
           <div className="flex items-center border-b border-teal-500 py-2 relative">
             <input
@@ -228,6 +234,7 @@ export default function GetTodo({
             </button>
           </div>
         </form>
+        {/* List */}
         <ul className="list-disc w-full max-w-3xl flex flex-col gap-4">
           {todoList.length === 0 ? (
             <li className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
