@@ -6,11 +6,11 @@ let isSearch = false;
 let editDataInfo = {};
 export default function GetTodo({ apiKey = "", setIsLoading = () => {} }) {
   let isLogin = false;
-  let checkAlert = false;
   const [todoList, setTodoList] = useState([]);
   const [editData, setEditData] = useState({
     editingId: null,
     inputText: "",
+    isCompleted: "",
   });
   const [inputValue, setInputValue] = useState("");
   // const [debouncedInputValue, setDebouncedInputValue] = useState("");
@@ -40,7 +40,6 @@ export default function GetTodo({ apiKey = "", setIsLoading = () => {} }) {
   useEffect(() => {
     if (isSearch) {
       const timeoutId = setTimeout(() => {
-        // setDebouncedInputValue(inputValue);
         callApi(inputValue);
       }, 300);
       return () => clearTimeout(timeoutId);
@@ -138,16 +137,22 @@ export default function GetTodo({ apiKey = "", setIsLoading = () => {} }) {
     }
   }, [apiKey]);
   function handleEdit(id, todo, isCompleted) {
-    editDataInfo = {
-      id,
-      todo,
-      isCompleted,
-    };
-    setEditData({
-      editingId: id,
-      inputText: todo,
-    });
-    console.log(editDataInfo);
+    try {
+      editData.editingId ? handleCannelClick() : "";
+    } catch (e) {
+      throw new Error("lỗi thao tác");
+    } finally {
+      editDataInfo = {
+        id,
+        todo,
+        isCompleted,
+      };
+      setEditData({
+        editingId: id,
+        inputText: todo,
+        isCompleted,
+      });
+    }
   }
   const handleUpdateClick = (id, e) => {
     const body = todoList.find((item) => {
@@ -268,6 +273,9 @@ export default function GetTodo({ apiKey = "", setIsLoading = () => {} }) {
                         checked={isCompleted}
                         onChange={() => handleChecked(id)}
                         className="form-checkbox h-5 w-5 text-gray-600 "
+                        style={
+                          isCompleted ? { textDecoration: "line-through" } : {}
+                        }
                       />
                     </div>
                     <div className="flex items-center">

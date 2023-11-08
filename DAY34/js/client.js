@@ -2,25 +2,16 @@ import { config } from "./config.js";
 const { SERVER_API } = config;
 export const client = {
   serverApi: SERVER_API,
-  apiKey: null,
   setUrl: function (url) {
     this.serverApi = url;
   },
-
-  setApiKey: function (apiKey) {
-    this.apiKey = apiKey;
-  },
   send: async function (url, method = "GET", body = null) {
     url = `${this.serverApi}${url}`;
-    const headers = {
-      "Content-Type": "application/json",
-    };
-    if (this.apiKey) {
-      headers["X-Api-Key"] = this.apiKey;
-    }
     const options = {
       method,
-      headers,
+      headers: {
+        "Content-Type": "application/json",
+      },
     };
     if (body) {
       options.body = JSON.stringify(body);

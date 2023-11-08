@@ -6,6 +6,7 @@
         h2{
             text-align: center;
             a{
+                -webkit-animation: my 700ms infinite;
                 text-decoration: none;
                 color: violet;
             }
@@ -27,6 +28,7 @@
       }
     }
     footer{
+        
         background-color: rgba(71, 226, 71, 0.476); 
         position: absolute;
         width: 100%;
@@ -40,4 +42,9 @@
         
         width: 500px;
     }
+}
+@-webkit-keyframes my {
+    0% { color: #f80a0a; } 
+    50% { color: #fff;  } 
+    100% { color: #f80a0a;  } 
 }

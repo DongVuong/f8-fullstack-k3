@@ -2,9 +2,10 @@ var timer = document.querySelector(".timer");
 var counter = timer.querySelector(".counter");
 var action = timer.querySelector(".action");
 var btn = action.querySelector(".btn");
-var count = 5;
+var count = 60;
 var timer = 1000;
 const interval = 1000;
+btn.disabled = true;
 
 var handleCountDown = function (currentTime) {
   if (timer <= currentTime) {
@@ -13,7 +14,8 @@ var handleCountDown = function (currentTime) {
     timer = currentTime + interval;
   }
   if (count === 0) {
-    btn.removeAttribute("disabled");
+    btn.disabled = false;
+    // btn.removeAttribute("disabled");
     return;
   } else {
     requestAnimationFrame(handleCountDown);
