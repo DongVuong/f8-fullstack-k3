@@ -6,7 +6,7 @@ import { useDispatch } from "../core/hook";
 import { toast } from "react-toastify";
 
 export default function Products() {
-  const { apiKey, setIsLoading } = useContext(DefaultContext);
+  const { apiKey, setApiKey, setIsLoading } = useContext(DefaultContext);
   const [productList, setProductList] = useState([]);
   const dispatch = useDispatch();
   const handleAdd = (id, name, image, quantity, price) => {

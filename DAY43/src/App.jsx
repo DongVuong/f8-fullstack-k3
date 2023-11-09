@@ -14,8 +14,17 @@ export default function App() {
     if (apiKey) {
       client.setApiKey(apiKey);
       client.get(`/users/profile`).then(({ response, data }) => {
-        let name = data.data.emailId.name;
-        toast.success(`Chào mừng ${name} quay trở lại`);
+        if (response.ok) {
+          let name = data.data.emailId.name;
+          toast.success(`Chào mừng ${name} quay trở lại`);
+        } else {
+          toast.error("Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại");
+          sessionStorage.setItem("apiKey", "");
+          sessionStorage.setItem("email", "");
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        }
       });
     } else if (!apiKey) {
       const email = window.prompt(

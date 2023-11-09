@@ -22,17 +22,21 @@ export default function Carts() {
         client.setApiKey(apiKey);
         client.post("/orders", body).then(({ response, data }) => {
           if (response.ok) {
-            toast.success("Thanh toán thành công!!");
+            console.log(response);
+            toast.success(data.message);
             dispatch({
               type: "pay",
               payload: {},
             });
+            window.scroll(0, 0);
           } else {
-            throw Error();
+            toast.error(data.message);
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
           }
         });
-      } catch {
-        throw new Error("Thanh toán thất bại");
+      } catch (e) {
       } finally {
         setIsLoading(false);
       }
