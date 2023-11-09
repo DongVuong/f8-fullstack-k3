@@ -22,7 +22,7 @@ export default function Products() {
     });
   };
   useEffect(() => {
-    if (apiKey & !isLoading) {
+    if (apiKey) {
       client.setApiKey(apiKey);
       setIsLoading(true);
       client
@@ -31,7 +31,6 @@ export default function Products() {
           if (response.ok) {
             setProductList(data.data);
           } else {
-            setIsLoading(true);
             toast.error("Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại");
             sessionStorage.clear();
             window.location.reload();

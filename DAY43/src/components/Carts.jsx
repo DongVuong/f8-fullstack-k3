@@ -9,10 +9,8 @@ import { DefaultContext } from "../App";
 export default function Carts() {
   const { apiKey, isLoading, setIsLoading } = useContext(DefaultContext);
   const { productList, setProductList } = useContext(DefaultContext);
-  let { loading } = useContext(DefaultContext);
   const carts = useSelector();
   const dispatch = useDispatch();
-  console.log(carts);
   const handleSubmit = () => {
     let body = [];
     body = carts.map(({ id, quantity }) => ({
@@ -46,7 +44,7 @@ export default function Carts() {
     }
   };
   useEffect(() => {
-    if (Array.isArray(carts) & !carts.length & !isLoading) {
+    if (Array.isArray(carts) & !carts.length) {
       if (apiKey) {
         client.setApiKey(apiKey);
         setIsLoading(true);
@@ -56,12 +54,10 @@ export default function Carts() {
             if (response.ok) {
               setProductList(data.data);
             } else {
-              setIsLoading(true);
               toast.error("Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại");
               sessionStorage.clear();
               window.location.reload();
             }
-            loading = false;
           })
           .finally(() => setIsLoading(false));
       }
