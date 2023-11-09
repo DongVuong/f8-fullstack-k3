@@ -10,7 +10,7 @@ export default function Products() {
   const [productList, setProductList] = useState([]);
   const dispatch = useDispatch();
   const handleAdd = (id, name, image, quantity, price) => {
-    toast.success("Đã thêm vào giỏ hàng thành công");
+    toast.success(`Đã thêm ${name}vào giỏ hàng thành công`);
     dispatch({
       type: "addProductItem",
       payload: {

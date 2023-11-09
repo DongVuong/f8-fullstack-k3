@@ -6,32 +6,33 @@ export const rootReducer = (state, action) => {
   const { id, name, quantity, price } = payload;
   switch (action.type) {
     case "addProductItem": {
+      let newState = state;
       if (
-        state.some((item) => {
+        newState.some((item) => {
           return item.id === id;
         })
       ) {
-        state.map((item) =>
+        newState = newState.map((item) =>
           item.id === id
             ? {
                 ...item,
                 quantity: ++item.quantity,
-                remain: quantity - item.quantity,
-                price: item.quantity + price,
+                remain: --item.remain,
+                price: item.price + price,
               }
             : item
         );
       } else {
-        state[state.length] = {
+        newState = newState.concat({
           id,
           name,
           quantity: 1,
           remain: quantity - 1,
           price,
-        };
+        });
       }
-      sessionStorage.setItem("carts", JSON.stringify(state));
-      return state;
+      sessionStorage.setItem("carts", JSON.stringify(newState));
+      return newState;
     }
     case "pay": {
       sessionStorage.setItem("carts", []);

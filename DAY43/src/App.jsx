@@ -9,6 +9,7 @@ export const DefaultContext = createContext();
 export default function App() {
   const [apiKey, setApiKey] = useState(sessionStorage.getItem("apiKey"));
   const [isLoading, setIsLoading] = useState(false);
+  const [render, setRender] = useState(false);
 
   useEffect(() => {
     if (apiKey) {

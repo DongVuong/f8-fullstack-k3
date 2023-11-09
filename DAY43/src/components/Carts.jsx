@@ -8,38 +8,34 @@ import { DefaultContext } from "../App";
 
 export default function Carts() {
   const { apiKey, setIsLoading } = useContext(DefaultContext);
-  const [carts, setCarts] = useState(useSelector());
+  const carts = useSelector();
   const dispatch = useDispatch();
-  let body = [];
+  console.log(carts);
   const handleSubmit = () => {
+    let body = [];
     body = carts.map(({ id, quantity }) => ({
       productId: id,
       quantity: quantity,
     }));
     if (body && apiKey) {
-      try {
-        setIsLoading(true);
-        client.setApiKey(apiKey);
-        client.post("/orders", body).then(({ response, data }) => {
-          if (response.ok) {
-            console.log(response);
-            toast.success(data.message);
-            dispatch({
-              type: "pay",
-              payload: {},
-            });
-            window.scroll(0, 0);
-          } else {
-            toast.error(data.message);
-            setTimeout(() => {
-              window.location.reload();
-            }, 2000);
-          }
-        });
-      } catch (e) {
-      } finally {
-        setIsLoading(false);
-      }
+      setIsLoading(true);
+      client.setApiKey(apiKey);
+      client.post("/orders", body).then(({ response, data }) => {
+        if (response.ok) {
+          setIsLoading(false);
+          toast.success(data.message);
+          dispatch({
+            type: "pay",
+            payload: {},
+          });
+          window.scroll(0, 0);
+        } else {
+          toast.error(data.message);
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        }
+      });
     } else {
       toast.error("Phiên đăng nhập hết hạn, vui lòng đăng nhập lại");
       setTimeout(() => {
@@ -47,7 +43,6 @@ export default function Carts() {
       }, 3000);
     }
   };
-
   return carts.length === 0 ? (
     <p className="text-white font-light mt-4">
       Chưa có gì trong giỏ hàng cả!!!!
@@ -64,9 +59,9 @@ export default function Carts() {
               <th className="px-4 py-3">Tổng tiền</th>
             </tr>
           </thead>
-          {carts.map(({ name, quantity, remain, price, id }) => (
-            <tbody className="bg-white divide-y" key={id}>
-              <tr className="text-gray-700">
+          <tbody className="bg-white divide-y">
+            {carts.map(({ name, quantity, remain, price, id }) => (
+              <tr className="text-gray-700" key={id}>
                 <td className="px-4 py-3">
                   <div className="flex items-center text-sm">
                     <p className="font-semibold">{name}</p>
@@ -76,8 +71,8 @@ export default function Carts() {
                 <td className="px-4 py-3 text-sm">{remain}</td>
                 <td className="px-4 py-3 text-sm">{price}</td>
               </tr>
-            </tbody>
-          ))}
+            ))}
+          </tbody>
         </table>
         <button
           onClick={handleSubmit}
