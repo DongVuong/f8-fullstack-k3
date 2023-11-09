@@ -8,6 +8,8 @@ import { DefaultContext } from "../App";
 
 export default function Carts() {
   const { apiKey, setIsLoading } = useContext(DefaultContext);
+  const { productList, setProductList } = useContext(DefaultContext);
+  let { loading } = useContext(DefaultContext);
   const carts = useSelector();
   const dispatch = useDispatch();
   console.log(carts);
@@ -43,6 +45,30 @@ export default function Carts() {
       }, 3000);
     }
   };
+  useEffect(() => {
+    if (Array.isArray(carts) & !carts.length & !loading) {
+      if (apiKey) {
+        loading = true;
+        client.setApiKey(apiKey);
+        setIsLoading(true);
+        client
+          .get("/products?limit=8")
+          .then(({ response, data }) => {
+            if (response.ok) {
+              setProductList(data.data);
+            } else {
+              setIsLoading(true);
+              toast.error("Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại");
+              sessionStorage.clear();
+              window.location.reload();
+            }
+            loading = false;
+          })
+          .finally(() => setIsLoading(false));
+      }
+    }
+  }, [carts]);
+
   return carts.length === 0 ? (
     <p className="text-white font-light mt-4">
       Chưa có gì trong giỏ hàng cả!!!!
