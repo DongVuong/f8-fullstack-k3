@@ -1,18 +1,47 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useSelector } from "../core/hook";
 import { useDispatch } from "../core/hook";
 import { toast } from "react-toastify";
+import { client } from "../api/client";
+import { DefaultContext } from "../App";
 
 export default function Carts() {
+  const { apiKey, setIsLoading } = useContext(DefaultContext);
   const [carts, setCarts] = useState(useSelector());
   const dispatch = useDispatch();
+  let body = [];
   const handleSubmit = () => {
-    toast.success("Thanh toán thành công!!");
-    dispatch({
-      type: "pay",
-      payload: {},
-    });
+    body = carts.map(({ id, quantity }) => ({
+      productId: id,
+      quantity: quantity,
+    }));
+    if (body && apiKey) {
+      try {
+        setIsLoading(true);
+        client.setApiKey(apiKey);
+        client.post("/orders", body).then(({ response, data }) => {
+          if (response.ok) {
+            toast.success("Thanh toán thành công!!");
+            dispatch({
+              type: "pay",
+              payload: {},
+            });
+          } else {
+            throw Error();
+          }
+        });
+      } catch {
+        throw new Error("Thanh toán thất bại");
+      } finally {
+        setIsLoading(false);
+      }
+    } else {
+      toast.error("Phiên đăng nhập hết hạn, vui lòng đăng nhập lại");
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+    }
   };
 
   return carts.length === 0 ? (
