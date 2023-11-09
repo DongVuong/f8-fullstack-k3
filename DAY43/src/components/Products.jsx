@@ -5,10 +5,9 @@ import { client } from "../api/client";
 import { useDispatch } from "../core/hook";
 import { toast } from "react-toastify";
 export default function Products() {
-  const { apiKey, setIsLoading } = useContext(DefaultContext);
+  const { apiKey, isLoading, setIsLoading } = useContext(DefaultContext);
   const { productList, setProductList } = useContext(DefaultContext);
   const dispatch = useDispatch();
-  let { loading } = useContext(DefaultContext);
   const handleAdd = (id, name, image, quantity, price) => {
     toast.success(`Đã thêm ${name}vào giỏ hàng thành công`);
     dispatch({
@@ -23,8 +22,7 @@ export default function Products() {
     });
   };
   useEffect(() => {
-    if (apiKey & !loading) {
-      loading = true;
+    if (apiKey & !isLoading) {
       client.setApiKey(apiKey);
       setIsLoading(true);
       client
@@ -38,7 +36,6 @@ export default function Products() {
             sessionStorage.clear();
             window.location.reload();
           }
-          loading = false;
         })
         .finally(() => setIsLoading(false));
     }

@@ -9,9 +9,7 @@ export const DefaultContext = createContext();
 export default function App() {
   const [apiKey, setApiKey] = useState(sessionStorage.getItem("apiKey"));
   const [isLoading, setIsLoading] = useState(false);
-  const [render, setRender] = useState(false);
   const [productList, setProductList] = useState([]);
-  let loading = false;
 
   useEffect(() => {
     if (apiKey) {
@@ -65,7 +63,6 @@ export default function App() {
         setIsLoading,
         productList,
         setProductList,
-        loading,
       }}
     >
       <ToastContainer />

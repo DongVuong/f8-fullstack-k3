@@ -7,7 +7,7 @@ import { client } from "../api/client";
 import { DefaultContext } from "../App";
 
 export default function Carts() {
-  const { apiKey, setIsLoading } = useContext(DefaultContext);
+  const { apiKey, isLoading, setIsLoading } = useContext(DefaultContext);
   const { productList, setProductList } = useContext(DefaultContext);
   let { loading } = useContext(DefaultContext);
   const carts = useSelector();
@@ -46,9 +46,8 @@ export default function Carts() {
     }
   };
   useEffect(() => {
-    if (Array.isArray(carts) & !carts.length & !loading) {
+    if (Array.isArray(carts) & !carts.length & !isLoading) {
       if (apiKey) {
-        loading = true;
         client.setApiKey(apiKey);
         setIsLoading(true);
         client
