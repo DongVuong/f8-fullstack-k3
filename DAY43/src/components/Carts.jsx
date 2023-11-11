@@ -18,11 +18,11 @@ export default function Carts() {
       quantity: quantity,
     }));
     if (body && apiKey) {
-      setIsLoading(true);
+      // setIsLoading(true);
       client.setApiKey(apiKey);
       client.post("/orders", body).then(({ response, data }) => {
         if (response.ok) {
-          setIsLoading(false);
+          // setIsLoading(false);
           toast.success(data.message);
           dispatch({
             type: "pay",

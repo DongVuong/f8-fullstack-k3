@@ -33,8 +33,9 @@ export default function App() {
         `donguet.vnu@gmail.com`
       );
       if (email && emailRegex(email)) {
-        setIsLoading(true);
-        getApiKey(email).finally(() => setIsLoading(false));
+        // setIsLoading(true);
+        getApiKey(email);
+        // .finally(() => setIsLoading(false));
       } else {
         toast.error("Email không hợp lệ");
         setTimeout(() => {
