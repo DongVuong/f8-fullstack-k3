@@ -7,17 +7,17 @@ function EmailJs() {
   const { user } = useAuth0();
   const handleSubmit = (e, name) => {
     e.preventDefault();
-    const options = {
+    const templateParams = {
       to_name: "Ngài",
       name,
       message: e.target.message.value,
-      email: e.target.email.value,
+      from_email: e.target.email.value,
     };
     const serviceId = "service_2eibrhs";
     const templateId = "template_ls0owo1";
-    const userId = "fQB14WxSFpj731fAU";
+    const publicKey = "fQB14WxSFpj731fAU";
     emailjs
-      .send(serviceId, templateId, options, userId)
+      .send(serviceId, templateId, templateParams, publicKey)
       .then(() => {
         toast.success("Gửi email thành công!");
       })
