@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-toastify";
 import emailjs from "@emailjs/browser";
+import "bootstrap/dist/css/bootstrap.css";
 
 function EmailJs() {
+  const addLoading = () => {
+    buttonRef.current.innerHTML = `<span class="spinner-border spinner-border-sm"></span>Loading`;
+    buttonRef.current.disabled = true;
+  };
+  const buttonRef = useRef();
+  const removeLoading = () => {
+    buttonRef.current.innerHTML = `Yêu cầu hỗ trợ`;
+    buttonRef.current.disabled = false;
+  };
   const { user } = useAuth0();
   const handleSubmit = (e, name) => {
+    addLoading();
     e.preventDefault();
     const templateParams = {
       to_name: "Ngài",
@@ -25,6 +36,7 @@ function EmailJs() {
         toast.error("Gửi email thất bại! Hãy thử lại!");
       })
       .finally(() => {
+        removeLoading();
         setTimeout(() => {
           window.location.reload();
         }, 2000);
@@ -62,7 +74,7 @@ function EmailJs() {
           ></textarea>
           <label htmlFor="message">Tin nhắn *</label>
         </div>
-        <button>Yêu cầu hỗ trợ</button>
+        <button ref={buttonRef}>Yêu cầu hỗ trợ</button>
       </form>
     </div>
   );
