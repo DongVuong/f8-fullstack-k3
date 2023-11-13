@@ -11,6 +11,7 @@ function EmailJs() {
       to_name: "Ngài",
       name,
       message: e.target.message.value,
+      email: e.target.email.value,
     };
     const serviceId = "service_2eibrhs";
     const templateId = "template_ls0owo1";
