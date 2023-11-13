@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-toastify";
 import emailjs from "@emailjs/browser";
 import "bootstrap/dist/css/bootstrap.css";
 
 function EmailJs() {
+  const [status, setStatus] = useState(false);
   const addLoading = () => {
     buttonRef.current.innerHTML = `<span class="spinner-border spinner-border-sm"></span>Loading`;
     buttonRef.current.disabled = true;
@@ -37,9 +38,7 @@ function EmailJs() {
       })
       .finally(() => {
         removeLoading();
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+        setStatus(!status);
       });
   };
 
