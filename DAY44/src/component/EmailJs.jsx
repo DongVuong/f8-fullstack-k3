@@ -23,7 +23,11 @@ function EmailJs() {
       .catch(() => {
         toast.error("Gửi email thất bại! Hãy thử lại!");
       })
-      .finally(() => {});
+      .finally(() => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      });
   };
 
   return (
