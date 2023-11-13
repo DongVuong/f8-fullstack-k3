@@ -38,7 +38,7 @@ function EmailJs() {
       })
       .finally(() => {
         removeLoading();
-        setStatus(!status);
+        setStatus(true);
       });
   };
 
