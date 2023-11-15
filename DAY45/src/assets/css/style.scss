@@ -1,0 +1,39 @@
+.heading{
+    color: #319795;
+    opacity: 0.6;
+    font-weight: 700;
+    font-size: 36px;
+    margin-top: 10px;
+}
+.prediction{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+main{
+    padding: 16px;
+    position: relative;
+}
+main.dark{
+    height: 100vh;
+    background-color: #1a202c;
+    button i{
+        color: #fff;
+     }
+    
+}
+.change-theme{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+input{
+    color: #319795;
+    background-color: #fff;
+    font-size: 20px;
+    margin-top: 20px;
+}
+input::placeholder{
+    color: #319795;
+ }
