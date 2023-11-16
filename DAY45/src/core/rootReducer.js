@@ -5,6 +5,7 @@ export const initialState = {
     : "light",
   answer: "",
   history: [],
+  playing: false,
 };
 export const rootReducer = (state, action) => {
   switch (action.type) {
@@ -17,11 +18,18 @@ export const rootReducer = (state, action) => {
         return { ...state, themes: "light" };
       }
     }
+    case "finished": {
+      return {
+        ...state,
+        history: [...state.history, action.payload],
+        playing: false,
+      };
+    }
     case "add": {
       return { ...state, history: [...state.history, action.payload] };
     }
     case "setAnswer": {
-      return { ...state, answer: action.payload, history: [] };
+      return { ...state, answer: action.payload, history: [], playing: true };
     }
     default: {
       return state;

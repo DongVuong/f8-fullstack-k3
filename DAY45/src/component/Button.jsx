@@ -6,7 +6,7 @@ import { useSelector } from "../core/hook";
 function Button() {
   const dispatch = useDispatch();
   const { themes } = useSelector();
-  console.log("button render");
+  // console.log("button render");
   const handleChangeThemes = () => {
     dispatch({
       type: "changeThemes",
