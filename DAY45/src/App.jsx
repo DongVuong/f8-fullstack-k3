@@ -41,7 +41,7 @@ function App() {
       </div>
       <InputRange handleChangeNumber={handleChangeNumber} />
       {playing && <InputForm number={number} remainTime={remainTime} />}
-      {!remainTime | !playing && <PlayButton number={number} />}
+      {!playing && <PlayButton number={number} />}
       <Button number={number} />
     </main>
   );
