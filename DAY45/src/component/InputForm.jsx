@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "../core/hook";
 import { toast } from "react-toastify";
 
 function InputForm({ number, remainTime }) {
-  // console.log("input render");
-  const { answer, history, playing } = useSelector();
-  console.log(answer);
+  const { answer, history, playing, allHistory } = useSelector();
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,7 +43,7 @@ function InputForm({ number, remainTime }) {
       toast.warning("Bạn đã nhập số này rồi");
     }
   };
-  // console.log(history);
+  console.log(allHistory);
   return (
     <>
       <form action="" onSubmit={handleSubmit}>

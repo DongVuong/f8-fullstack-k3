@@ -6,6 +6,9 @@ export const initialState = {
   answer: "",
   history: [],
   playing: false,
+  allHistory: localStorage.getItem("allHistory")
+    ? JSON.parse(localStorage.getItem("allHistory"))
+    : [],
 };
 export const rootReducer = (state, action) => {
   switch (action.type) {
@@ -19,11 +22,22 @@ export const rootReducer = (state, action) => {
       }
     }
     case "finished": {
+      localStorage.setItem(
+        "allHistory",
+        JSON.stringify([
+          ...state.allHistory,
+          [...state.history, action.payload],
+        ])
+      );
       return {
         ...state,
         history: [...state.history, action.payload],
         playing: false,
+        allHistory: [...state.allHistory, [...state.history, action.payload]],
       };
+    }
+    case "clear": {
+      return { ...state, allHistory: [] };
     }
     case "add": {
       return { ...state, history: [...state.history, action.payload] };

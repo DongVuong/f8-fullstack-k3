@@ -7,7 +7,6 @@ function PlayButton({ number }) {
   let answerRefresh = Math.floor(Math.random() * number) + 1;
   const handleReturn = (e) => {
     e.preventDefault();
-    // console.log(setAnswer);
     toast("Chúc bạn may mắn!!!");
     dispatch({
       type: "setAnswer",

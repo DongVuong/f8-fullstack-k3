@@ -8,9 +8,10 @@ import maxTime from "./helper/data";
 import { RANGE_NUMBER } from "./helper/data";
 import InputRange from "./component/InputRange";
 import PlayButton from "./component/PlayButton";
+import HistoryShow from "./component/HistoryShow";
 
 function App() {
-  const { themes, history, playing } = useSelector();
+  const { themes, history, playing, allHistory } = useSelector();
   const [number, setNumber] = useState(RANGE_NUMBER);
   const dispatch = useDispatch();
   let remainTime = maxTime(number) - history.length;
@@ -43,6 +44,7 @@ function App() {
       {playing && <InputForm number={number} remainTime={remainTime} />}
       {!playing && <PlayButton number={number} />}
       <Button number={number} />
+      {allHistory.length > 0 && <HistoryShow maxTime={maxTime(number)} />}
     </main>
   );
 }

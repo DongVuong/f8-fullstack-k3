@@ -25,8 +25,13 @@ main.dark{
 }
 .change-theme{
     position: absolute;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
     top: 16px;
     right: 16px;
+    border:  1px solid#319795;
+    border-radius: 5px;
 }
 input{
     color: #319795;
@@ -41,4 +46,25 @@ input::placeholder{
  }
 .btn{
     margin-top: 20px;
+}
+table{
+    width: 100%;
+    text-align: center;
+    border: 1px solid;
+    color: #319795;
+    opacity: 0.6;
+}
+.trash{
+    margin-top: 15px;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    right: 16px;
+    border:  1px solid#319795;
+    border-radius: 5px;
+    z-index: 1;
+}
+button{
+    cursor: pointer;
 }
