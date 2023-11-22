@@ -1,0 +1,124 @@
+@import url("https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-straight/css/uicons-regular-straight.css");
+
+.cart-shopping {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 6rem;
+  .single-product {
+    display: flex;
+    width: 60%;
+    box-shadow: 0 0 2px #252b48;
+    border-radius: 10px;
+    margin-bottom: 0.7rem;
+    margin-top: 0.7rem;
+    padding: 0.8rem;
+    flex-direction: column;
+    .info-single-product {
+      display: flex;
+      .image {
+        img {
+          width: 30rem;
+          height: 20rem;
+          border-radius: 10px;
+          box-shadow: 0 3px #9d174d;
+          margin-bottom: 3rem;
+        }
+      }
+      .details {
+        margin: 2.5rem;
+        font-size: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        p {
+          font-size: 1.6rem;
+          font-weight: 500;
+        }
+        .price {
+          span {
+            color: #9d174d;
+          }
+        }
+      }
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      .edit {
+        width: 30rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        button {
+          width: 50px;
+          height: 40px;
+          border: 1px solid #ccc;
+          font-size: 25px;
+          cursor: pointer;
+          span{
+            display: block;
+            text-align: center;
+
+          }
+          &:active{
+            background-color: orange;
+          }
+        }
+        .quantity {
+          font-size: 25px;
+        }
+      }
+      .total {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        .total-price {
+          font-size: 2rem;
+          font-weight: 500;
+          span {
+            color: #9d174d;
+          }
+        }
+        i {
+          font-size: 2rem;
+          color: #9d174d;
+        }
+      }
+    }
+  }
+  .button-list {
+    width: 1000px;
+    .home {
+      width: 30%;
+      background-color: #ffc107;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      &:hover {
+        background-color: #b79019;
+      }
+    }
+    .pay {
+      width: 70%;
+      background-color: #157347;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      color: #fff;
+      &:hover {
+        background-color: #135e3b;
+      }
+    }
+    .home,
+    .pay {
+      transition: background-color 0.25s ease-in-out;
+      margin-top: 10px;
+      border: none;
+      padding: 10px;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+  }
+}

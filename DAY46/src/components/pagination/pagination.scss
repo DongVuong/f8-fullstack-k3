@@ -1,0 +1,44 @@
+.pagination {
+    .active {
+        a {
+          font-weight: bold;
+          text-decoration: underline;
+          color:  rgb(179, 121, 14);;
+        }
+      }
+    margin-top: 30px;
+    font-size: 20px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    list-style: none;
+    padding: 0;
+    border-radius: 5px;
+    padding: 10px;
+    li {
+        &:hover{
+            color: rgb(179, 121, 14);;
+            opacity: 0.8;
+
+        }
+      margin: 0 5px;
+      a {
+        cursor: pointer;
+      }
+    }
+    .previous,.next{
+        background-color: rgb(179, 121, 14);
+        border-radius: 5px;
+        a{
+            text-decoration: none;
+            padding: 10px 10px;
+            color: #fff;
+            user-select: none;
+        }
+    }
+    .previous:active,.next:active{
+        opacity: 0.5;
+    }
+}
