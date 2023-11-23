@@ -13,7 +13,7 @@ function Pagination() {
   const totalPage = useSelector((state) => state.product.totalPage);
   const status = useSelector((state) => state.product.status);
   const { page } = useParams();
-  console.log(status);
+  // console.log(status);
   const prevPage = useRef(0);
   const navigate = useNavigate();
   const getData = (pageParams) => {
