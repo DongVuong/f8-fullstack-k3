@@ -1,8 +1,11 @@
-import image from "../Assets/image/image01.jpeg";
-export const Error = () => {
+import React from "react";
+import image from "../assets/image/image01.jpeg";
+function Error() {
   return (
-    <>
-      <img src="${image}" />
-    </>
+    <div>
+      <img src={image} alt="" />
+    </div>
   );
-};
+}
+
+export default Error;

@@ -25,77 +25,97 @@ function Cart() {
         <div className="title">
           <h1>SHOPPING CART</h1>
         </div>
-        {cartList.map((item) => (
-          <div className="single-product" key={item._id}>
-            <div className="info-single-product">
-              <div className="image">
-                <img src={item.image} alt={item.name} />
-              </div>
-              <div className="details">
-                <div>
-                  <span style={{ marginRight: 10, color: "rgb(157, 23, 77)" }}>
-                    {item.brand}
-                  </span>
-                  <span>{item.name}</span>
+        {cartList.length !== 0 ? (
+          cartList.map((item) => (
+            <div className="single-product" key={item._id}>
+              <div className="info-single-product">
+                <div className="image">
+                  <img src={item.image} alt={item.name} />
                 </div>
-                <p className="price">
-                  <span>$</span>
-                  {item.price}
-                </p>
-                <p>Còn lại: {item.amount}</p>
+                <div className="details">
+                  <div className="item-brand">
+                    <span>Thương Hiệu:</span>
+                    <span>{item.brand}</span>
+                  </div>
+                  <div className="item-name">
+                    <span>Tên sản phẩm:</span>
+                    <span>{item.name}</span>
+                  </div>
+
+                  <div className="price">
+                    <span className="sub">Giá:</span>
+                    <span className="currency">$</span>
+                    {item.price}
+                  </div>
+                  <div className="remain">
+                    <span>Còn lại:</span> {item.amount}
+                  </div>
+                </div>
+              </div>
+              <div className="footer">
+                <div className="edit">
+                  <button
+                    className="decrement"
+                    onClick={() =>
+                      item.quantity === 1
+                        ? dispatch(deleteProduct(item))
+                        : dispatch(decreaseProduct(item._id))
+                    }
+                  >
+                    <span> -</span>
+                  </button>
+                  <div className="quantity">{item.quantity}</div>
+                  <button
+                    className="increment"
+                    onClick={() => dispatch(increaseProduct(item._id))}
+                  >
+                    <span>+</span>
+                  </button>
+                </div>
+                <div className="total">
+                  <div className="total-price">
+                    <span>$</span>
+                    {item.price * item.quantity}
+                  </div>
+                  <button
+                    style={{
+                      backgroundColor: "#fff",
+                      border: "none",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => dispatch(deleteProduct(item))}
+                  >
+                    <i className="fi fi-rs-trash"></i>
+                  </button>
+                </div>
               </div>
             </div>
-            <div className="footer">
-              <div className="edit">
-                <button
-                  className="decrement"
-                  onClick={() =>
-                    item.quantity === 1
-                      ? dispatch(deleteProduct(item))
-                      : dispatch(decreaseProduct(item._id))
-                  }
-                >
-                  <span> -</span>
-                </button>
-                <div className="quantity">{item.quantity}</div>
-                <button
-                  className="increment"
-                  onClick={() => dispatch(increaseProduct(item._id))}
-                >
-                  <span>+</span>
-                </button>
-              </div>
-              <div className="total">
-                <div className="total-price">
-                  <span>$</span>
-                  {item.price * item.quantity}
-                </div>
-                <button
-                  style={{
-                    backgroundColor: "#fff",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => dispatch(deleteProduct(item))}
-                >
-                  <i className="fi fi-rs-trash"></i>
-                </button>
-              </div>
+          ))
+        ) : (
+          <h2>Không có sản phẩm nào trong giỏ hàng</h2>
+        )}
+        {cartList.length !== 0 ? (
+          <>
+            <h2 style={{ fontSize: "2rem" }}>
+              Total Price: <span style={{ color: "#9d174d" }}>$</span>
+              {totalCart}
+            </h2>
+            <div className="button-list">
+              <button className="home" onClick={() => navigate(-1)}>
+                Go home
+              </button>
+              <button className="pay" onClick={handlePay}>
+                Checkout
+              </button>
             </div>
+          </>
+        ) : (
+          <div className="button-list">
+            <button className="home-alone" onClick={() => navigate(-1)}>
+              Go home
+            </button>
           </div>
-        ))}
-        <h2 style={{ fontSize: "2rem" }}>
-          Total Price: <span style={{ color: "#9d174d" }}>$</span>
-          {totalCart}
-        </h2>
-        <div className="button-list">
-          <button className="home" onClick={() => navigate(-1)}>
-            Go home
-          </button>
-          <button className="pay" onClick={handlePay}>
-            Checkout
-          </button>
-        </div>
+        )}
       </div>
     </>
   );

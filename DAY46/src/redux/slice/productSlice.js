@@ -9,7 +9,10 @@ const initialState = {
     : [],
   status: "idle",
   totalPage: 0,
-  quantity: 0,
+  quantity: localStorage.getItem("quantity")
+    ? JSON.parse(localStorage.getItem("quantity"))
+    : 0,
+  productDetails: {},
 };
 export const productSlice = createSlice({
   name: "product",
@@ -17,6 +20,7 @@ export const productSlice = createSlice({
   reducers: {
     addCart: (state, action) => {
       state.quantity++;
+      localStorage.setItem("quantity", JSON.stringify(state.quantity));
       const prevStateCart = JSON.parse(JSON.stringify(state.cartList));
       const product = action.payload;
       const find = prevStateCart.find((item) => item._id === product._id);
@@ -54,6 +58,7 @@ export const productSlice = createSlice({
           : item
       );
       localStorage.setItem("cart", JSON.stringify(state.cartList));
+      localStorage.setItem("quantity", JSON.stringify(state.quantity));
     },
     increaseProduct: (state, action) => {
       const prevStateCart = JSON.parse(JSON.stringify(state.cartList));
@@ -68,6 +73,7 @@ export const productSlice = createSlice({
           : item
       );
       localStorage.setItem("cart", JSON.stringify(state.cartList));
+      localStorage.setItem("quantity", JSON.stringify(state.quantity));
     },
     deleteProduct: (state, action) => {
       const prevStateCart = JSON.parse(JSON.stringify(state.cartList));
@@ -78,6 +84,7 @@ export const productSlice = createSlice({
       prevStateCart.splice(itemIndex, 1);
       state.cartList = prevStateCart;
       localStorage.setItem("cart", JSON.stringify(state.cartList));
+      localStorage.setItem("quantity", JSON.stringify(state.quantity));
       toast.success(`Đã xóa"${action.payload.name}"!`);
     },
   },

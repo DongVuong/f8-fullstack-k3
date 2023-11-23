@@ -31,11 +31,12 @@ header {
       }
     }
     .icon-cart {
-
+      // transition: transform 0.25s ease-in-out;
       i {
         font-size: 2rem;
         color: white;
         &:hover {
+          // transform: scale(1.2);
           color: red;
         }
       }
