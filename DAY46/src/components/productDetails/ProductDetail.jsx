@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getProductDetails } from "../../redux/slice/productSlice";
-import "./productDetail.scss";
+import "./productdetail.scss";
 import { productSlice } from "../../redux/slice/productSlice";
 const { addCart } = productSlice.actions;
 
