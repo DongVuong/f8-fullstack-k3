@@ -42,6 +42,7 @@ export const productSlice = createSlice({
     },
     payProduct: (state) => {
       state.cartList = [];
+      state.quantity = 0;
       toast.success("Đặt hàng thành công,quay trở lại trang mua sắm");
       localStorage.clear();
     },

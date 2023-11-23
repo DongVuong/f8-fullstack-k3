@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getProducts } from "../../redux/slice/productSlice";
 import { config } from "../../api/config";
-// import DoubleBubble from "../../helper/loading/DoubleBubble.jsx";
+import Loading from "../../helper/Loading";
 const { PAGE_LIMIT } = config;
 
 function Pagination() {
@@ -13,7 +13,7 @@ function Pagination() {
   const totalPage = useSelector((state) => state.product.totalPage);
   const status = useSelector((state) => state.product.status);
   const { page } = useParams();
-  // console.log(page);
+  console.log(status);
   const prevPage = useRef(0);
   const navigate = useNavigate();
   const getData = (pageParams) => {
@@ -24,9 +24,6 @@ function Pagination() {
       })
     );
   };
-  // if (status === "pending") {
-  //   return <DoubleBubble />;
-  // }
   useEffect(() => {
     const pageParams = +page;
     if (!isNaN(pageParams) && pageParams > 0) {
@@ -42,27 +39,23 @@ function Pagination() {
     } else {
       navigate(`/product/1`);
       getData(1);
-      console.log(totalPage);
     }
   }, [page, totalPage]);
   const handlePageClick = (event) => {
     navigate(`/product/${event.selected + 1}`);
-    getData(event.selected + 1);
   };
-  if (status === "pending") {
-    return;
-  }
   return (
     <ReactPaginate
       previousLabel={"previous"}
       nextLabel={"next"}
       breakLabel={"..."}
       pageCount={totalPage}
-      marginPagesDisplayed={3}
-      pageRangeDisplayed={3}
+      marginPagesDisplayed={2}
+      pageRangeDisplayed={5}
       onPageChange={handlePageClick}
       containerClassName={"pagination"}
       activeClassName={"active"}
+      forcePage={page - 1}
     />
   );
 }

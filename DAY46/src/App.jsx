@@ -8,11 +8,16 @@ import Error from "./helper/Error";
 import Navbar from "./components/navbar/Navbar";
 import ProductDetail from "./components/productDetails/ProductDetail";
 import ScrollToTop from "./helper/ScrollToTop";
+import Pagination from "./components/pagination/Pagination";
+import { useSelector } from "react-redux";
+import Loading from "./helper/Loading";
 function App() {
+  const status = useSelector((state) => state.product.status);
   return (
     <>
       <ToastContainer />
       <ScrollToTop />
+      {status === "pending" && <Loading />}
       <Navbar />
       <Routes>
         <Route path="/" element={<Product />}>
