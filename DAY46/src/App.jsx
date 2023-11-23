@@ -15,7 +15,7 @@ function App() {
   const status = useSelector((state) => state.product.status);
   return (
     <>
-      <ToastContainer />
+      <ToastContainer position="bottom-right" autoClose={200} />
       <ScrollToTop />
       {status === "pending" && <Loading />}
       <Navbar />
