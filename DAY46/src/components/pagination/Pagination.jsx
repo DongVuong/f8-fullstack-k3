@@ -55,6 +55,8 @@ function Pagination() {
       onPageChange={handlePageClick}
       containerClassName={"pagination"}
       activeClassName={"active"}
+      // forcePage={page - 1}
+      forcePage={totalPage >= page ? page - 1 : -1}
     />
   );
 }
