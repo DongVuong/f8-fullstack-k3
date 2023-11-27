@@ -1,7 +1,7 @@
 import Home from "../pages/Home/Home";
 import Login from "../pages/Auth/Login";
 import { Route } from "react-router-dom";
-import GuestMiddleware from "../middleWares/GuestMiddleWares";
+import GuestMiddleware from "../middlewares/GuestMiddlewares";
 export const publicRoutes = (
   <>
     <Route element={<GuestMiddleware />}>

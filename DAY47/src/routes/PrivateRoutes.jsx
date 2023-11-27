@@ -1,9 +1,9 @@
 import { Route } from "react-router-dom";
-import AuthMiddleWares from "../middleWares/AuthMiddleWares";
+import AuthMiddlewares from "../middlewares/AuthMiddlewares";
 import Home from "../pages/Home/Home";
 export const privateRoutes = (
   <>
-    <Route element={<AuthMiddleWares />}>
+    <Route element={<AuthMiddlewares />}>
       <Route path="/" element={<Home />}></Route>
     </Route>
   </>

@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 
-function AuthMiddleWares() {
+function AuthMiddlewares() {
   const isLogin = useSelector((state) => state.todo.isLogin);
   return isLogin ? <Outlet /> : <Navigate to="/login" />;
 }
 
-export default AuthMiddleWares;
+export default AuthMiddlewares;
