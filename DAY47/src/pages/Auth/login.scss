@@ -1,0 +1,21 @@
+.login{
+    background-color: orange;
+    width: 100vw;
+    height: 100vh;
+    .login-form {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 26px 30px;
+        border-radius: 10px;
+            .input-box {
+                margin-top: 20px;
+                input {
+                    padding: 10px 0px;
+                    width: 100%;
+                }
+            }
+        }
+    }

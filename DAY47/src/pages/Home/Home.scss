@@ -1,0 +1,12 @@
+.todo {
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 37px 37px 37px;
+    height: 100vh;
+    .btn-add-column{
+        width: 300px;
+        padding: 10px;
+    }
+}
