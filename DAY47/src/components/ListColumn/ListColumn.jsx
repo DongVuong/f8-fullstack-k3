@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import "./ListColumn.scss";
 import {
   DndContext,
   DragOverlay,
@@ -7,6 +8,7 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
+import { CSS } from "@dnd-kit/utilities";
 import Task from "../Tasks/Task";
 import { createPortal } from "react-dom";
 import {
@@ -155,6 +157,9 @@ function ListColumn() {
           document.body
         )}
       </DndContext>
+      <div>
+        <button className="btn-add-column">Add Column</button>
+      </div>
     </div>
   );
 }

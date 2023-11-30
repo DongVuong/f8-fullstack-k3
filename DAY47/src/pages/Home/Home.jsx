@@ -15,7 +15,6 @@ function Home() {
     <main>
       <div className="todo">
         <Content />
-        <button className="btn-add-column">Add Column</button>
       </div>
     </main>
   );
