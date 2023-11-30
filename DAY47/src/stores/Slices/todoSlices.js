@@ -21,6 +21,12 @@ export const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
+    deleteTask: (state, action) => {
+      const index = state.tasks.findIndex(
+        (task) => task._id === action.payload
+      );
+      state.tasks.splice(index, 1);
+    },
     sortColumnsData: (state, action) => {
       state.columns = action.payload;
       localStorage.setItem("columns", action.payload);
