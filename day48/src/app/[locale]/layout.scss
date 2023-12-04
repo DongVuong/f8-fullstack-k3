@@ -1,0 +1,28 @@
+.dark {
+    height: 100vh;
+    a{
+        color: yellow;
+    }
+    background-color: rgb(15, 15, 15);
+    color: white;
+    transition: 0.2s linear;
+    transition-property: background-color, color;
+    .btn-switch-theme {
+        svg {
+            fill: yellow;
+            stroke: yellow;
+        }
+    }
+
+}
+
+.light {
+    height: 100vh;
+    a{
+        color: rgb(28, 21, 21);
+    }
+    background-color: white;
+    color: rgb(50, 10, 10);
+    transition: 0.2s linear;
+    transition-property: background-color, color;
+}
