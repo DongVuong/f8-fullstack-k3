@@ -3,7 +3,6 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import i18nConfig from "../../i18nConfig";
-import Link from "next/link";
 
 function LanguageChange() {
   const { i18n } = useTranslation();
@@ -22,7 +21,7 @@ function LanguageChange() {
       currentLocale === i18nConfig.defaultLocale &&
       !i18nConfig.prefixDefault
     ) {
-      router.push("/" + newLocale);
+      router.push("/" + newLocale + currentPathname);
     } else {
       router.push(
         currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
