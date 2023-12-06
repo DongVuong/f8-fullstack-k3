@@ -1,0 +1,46 @@
+*{
+    padding:0;
+    margin: 0;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.dark {
+    background-color: rgb(67, 67, 67);
+    .btn-switch-theme,.btn-search,.btn-user{
+        svg {
+            fill: yellow;
+        }
+        &:hover{
+            svg {
+                fill: orange;
+            }
+        }
+    }
+    footer{
+        background-color: rgb(67, 67, 67);
+        color: #fff;
+    }
+    #promo,#packages,#services{
+        color: #fff;
+    }
+}
+
+.light {
+    background-color: white;
+    color: black;
+    .btn-switch-theme,.btn-search,.btn-user{
+        svg {
+            fill: #fff;
+        }
+        &:hover{
+            svg {
+                fill: orange;
+            }
+        }
+    }
+    footer{
+        background-color: rgb(67, 67, 67);
+        color: #fff;
+    }
+}
