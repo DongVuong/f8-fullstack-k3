@@ -1,0 +1,118 @@
+.info {
+    width: 100%;
+    .header-title {
+      .title {
+        text-align: center;
+      }
+      .contact {
+        p {
+          line-height: 24px;
+          a {
+            text-decoration: none;
+            color: rgb(251 146 60);
+            &:hover {
+              color: rgb(252, 181, 124);
+            }
+          }
+        }
+      }
+    }
+    .my-project {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      a {
+        text-decoration: none;
+        color: rgb(251 146 60);
+      }
+      .title {
+        h3 {
+          padding: 10px 0 10px 0;
+          font-weight: 400;
+        }
+      }
+      .info-project {
+        .project {
+          line-height: 25px;
+          margin-bottom: 20px;
+          h4 {
+            font-weight: 500;
+            font-size: 18px;
+          }
+          .link-demo {
+            display: flex;
+            margin-top: 16px;
+  
+            .demo {
+              position: relative;
+              margin-right: 16px;
+              .show-demo {
+                width: max-content;
+                position: absolute;
+                top: -38px;
+                transform: translateX(-30%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease-in-out;
+                padding: 6px;
+                border-radius: 6px;
+              }
+              &:hover {
+                .show-demo {
+                  opacity: 1;
+                  visibility: visible;
+                  background-color: chartreuse;
+                }
+              }
+            }
+            .code {
+              position: relative;
+              margin-right: 16px;
+              .show-code {
+                width: max-content;
+                position: absolute;
+                top: -40px;
+                transform: translateX(-30%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease-in-out;
+                padding: 6px;
+                border-radius: 6px;
+              }
+              &:hover {
+                .show-code {
+                  opacity: 1;
+                  visibility: visible;
+                  background-color: coral;
+                  color: #fff;
+                }
+              }
+            }
+          }
+        }
+      }
+      .source-project {
+        margin-top: 30px;
+      }
+    }
+    .my-hobby {
+      margin-top: 8px;
+      padding: 20px;
+      .title {
+        h3 {
+          font-weight: 400;
+        }
+      }
+      .list-hobby {
+        line-height: 22px;
+      }
+    }
+    .footer {
+      p {
+        margin-left: 100px;
+        color: rgb(251 146 60);
+      }
+    }
+  }
+  

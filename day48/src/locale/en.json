@@ -1,3 +1,45 @@
 {
-    "language":"English"
-}
+    "nameBtn": {
+      "language": "en"
+    },
+    "infoTitle": {
+      "hoverTitle": "hello world!!!"
+    },
+    "contact": {
+      "infoContact": "Social contact"
+    },
+    "projects": {
+      "infoProject": "Self project"
+    },
+    "snippet": {
+      "p1": "A small project completed within a day",
+      "p2": "A simple website that allows you to create and share code snippets. Using HTML, CSS, JS and custom elements."
+    },
+    "blog": {
+      "p1": "A bigger project done in three days",
+      "p2": "A personal blog website with posts about programming and learning. Using React.js."
+    },
+    "game": {
+      "p1": "A fun project made in a day",
+      "p2": "A puzzle game based on the 2048 game. Using Next.js and Tailwind CSS."
+    },
+    "myHobby": {
+      "title": "My hobbies",
+      "li1": "Enjoy Relaxing Music, Rap Music From Đen Vâu And Other Artists,…",
+      "li2": "Read Books, Learn More About New Programming Languages. Currently, I Am Self-Studying Python",
+      "li3": "Follow The Technology Trends, News About Famous Products Like Iphone, Huawei, GoogleAI,…"
+    },
+    "mySkill": {
+      "title": "My skills",
+      "work": "Web developer",
+      "otherSkill": "Other skills"
+    },
+    "history": {
+      "title": "Histories",
+      "about1": "One of junior high school",
+      "about2": "Other Junior high school",
+      "about3": "Other high school",
+      "about4": "College studies"
+    },
+    "description": "My name is Dong, this is my portfolio."
+  }

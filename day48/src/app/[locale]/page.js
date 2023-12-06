@@ -1,18 +1,19 @@
-import React from "react";
-import initTranslations from "../i18n";
-import TransitionProvider from "@/context/TransitionProvider";
-import Content from "@/components/Content";
-const i18nNamespaces = ["home"];
+import Info from "@/components/Info";
+import Skills from "@/components/Skills";
+import { getDictionary } from "@/getDictionary";
 
-async function page({ params: { locale } }) {
-  const { t, resources } = await initTranslations(locale, i18nNamespaces);
+export default async function Page({ params }) {
+  const lang = await getDictionary(params.locale);
   return (
-    <TransitionProvider locale={locale} resources={resources}>
-      <main>
-        <Content />
+    <div className="container-main">
+      <div className="title">
+        <p> Vương Đông </p>
+        <p className="info-title">{lang.infoTitle.hoverTitle}</p>
+      </div>
+      <main style={{ display: "flex", gap: "30px" }}>
+        <Skills lang={lang} />
+        <Info lang={lang} />
       </main>
-    </TransitionProvider>
+    </div>
   );
 }
-
-export default page;

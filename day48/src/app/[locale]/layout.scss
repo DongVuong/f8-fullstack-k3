@@ -1,5 +1,11 @@
+*{
+    padding:0;
+    margin: 0;
+}
+.container {
+    position: relative;
+  }
 .dark {
-    height: 100vh;
     a{
         color: yellow;
     }
@@ -17,7 +23,6 @@
 }
 
 .light {
-    height: 100vh;
     a{
         color: rgb(28, 21, 21);
     }
@@ -26,3 +31,35 @@
     transition: 0.2s linear;
     transition-property: background-color, color;
 }
+.container-main {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8px;
+    .title {
+      position: relative;
+      text-align: center;
+      padding: 10px;
+      font-size: 1.5rem;
+      .info-title {
+        transition: all 0.3s ease-in-out;
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        font-size: 16px;
+        top: -23px;
+        left: 15%;
+        background-color: rgb(113, 252, 113);
+        padding: 5px;
+        border-radius: 5px;
+        z-index: 99;
+        color: black;
+      }
+      &:hover {
+        .info-title {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
