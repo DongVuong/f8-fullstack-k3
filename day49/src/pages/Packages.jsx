@@ -1,15 +1,15 @@
 import Image from "next/image";
 import React from "react";
 import "./packages.scss";
-export default async function Packages() {
+export default function Packages() {
   return (
     <section id="packages">
-      <div className="container max-w-7xl mx-auto min-h-[100vh] pt-[85px]">
+      <div className="container max-w-7xl mx-auto min-h-[100vh] pt-[50px]">
         <div className="section-title">
-          <h2 class="heading text-4xl font-bold text-100 flex gap-x-6 justify-center">
+          <h2 className="heading text-4xl font-bold text-100 flex gap-x-6 justify-center">
             <span>Ư</span>
             <span>U</span>
-            <span class="space"></span>
+            <span className="space"></span>
             <span>Đ</span>
             <span>Ã</span>
             <span>I</span>

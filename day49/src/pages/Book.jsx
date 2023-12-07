@@ -4,7 +4,7 @@ import "./book.scss";
 export default function Book() {
   return (
     <section
-      className="h-screen min-h-[740px] container max-w-7xl mx-auto flex flex-col items-center justify-end gap-y-4 pb-5"
+      className="h-screen min-h-[740px] container max-w-7xl mx-auto flex flex-col items-center justify-end gap-y-4 pb-[50px]"
       id="book"
     >
       <h2 className="heading heading text-4xl font-bold text-100 flex gap-x-6 justify-center">
@@ -123,11 +123,13 @@ export default function Book() {
                 <option value="Kazakhstan">Kazakhstan</option>
                 <option value="Kenya">Kenya</option>
                 <option value="Kiribati">Kiribati</option>
-                <option value="Democratic People's Republic of Korea">
-                  Korea, Democratic People's Republic of
+                <option value="Democratic People Republic of Korea">
+                  Korea, Democratic People&apos;s Republic of
                 </option>
                 <option value="Kuwait">Kuwait</option>
-                <option value="Lao">Lao People's Democratic Republic</option>
+                <option value="Lao">
+                  Lao People&apos;s Democratic Republic
+                </option>
                 <option value="Liberia">Liberia</option>
                 <option value="Lithuania">Lithuania</option>
                 <option value="Macau">Macau</option>
