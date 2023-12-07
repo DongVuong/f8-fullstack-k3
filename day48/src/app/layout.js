@@ -1,3 +1,3 @@
 export default async function RootLayout({ children }) {
-  return <html>{children}</html>;
+  return <body>{children}</body>;
 }

@@ -9,36 +9,21 @@ export default function Info({ lang }) {
         </div>
         <div className="contact">
           <p>
-            Phone:{" "}
-            <a target="_blank" href="tel: 0987654321">
-              0987654321
+            Tel:
+            <a target="_blank" href="tel: 0357743621">
+              0357743621
             </a>
           </p>
           <p>
-            Zalo:{" "}
-            <a target="_blank" href="https://zalo.me">
-              https://zalo.me
+            Gmail:
+            <a target="_blank" href="mailto: donguet.vnu@gmail.com">
+              donguet.vnu@gmail.com
             </a>
           </p>
           <p>
-            Email:{" "}
-            <a target="_blank" href="mailto: contact@fullstack.edu.vn">
-              contact@fullstack.edu.vn
-            </a>
-          </p>
-          <p>
-            Facebook:{" "}
-            <a
-              target="_blank"
-              href="https://www.facebook.com/groups/f8official"
-            >
-              https://www.facebook.com/groups/f8official
-            </a>
-          </p>
-          <p>
-            Youtube:{" "}
-            <a target="_blank" href="https://www.youtube.com/c/F8VNOfficial">
-              https://www.youtube.com/c/F8VNOfficial
+            Facebook:
+            <a target="_blank" href="https://www.facebook.com/VuonggDongg">
+              https://www.facebook.com/VuonggDongg
             </a>
           </p>
         </div>
@@ -50,55 +35,30 @@ export default function Info({ lang }) {
         </div>
         <div className="info-project">
           <div className="project">
-            <h4>Project Code snippet</h4>
-            <p>{lang.snippet.p1}</p>
-            <p>{lang.snippet.p2}</p>
-            <div className="link-demo">
-              <div className="demo">
-                <a href="https://codefast.vercel.app/" target="_blank">
-                  Demo
-                </a>
-                <p className="show-demo">https://codefast.vercel.app/</p>
-              </div>
-              <div className="code">
-                <a
-                  href="https://github.com/duongnguyenf8/demo_custom-element"
-                  target="_blank"
-                >
-                  Code
-                </a>
-                <p className="show-code">
-                  https://github.com/duongnguyenf8/demo_custom-element
-                </p>
-              </div>
-            </div>
-            <hr />
-          </div>
-          <div className="project">
             <h4>Project blog</h4>
             <p>{lang.blog.p1}</p>
             <p>{lang.blog.p2}</p>
             <div className="link-demo">
               <div className="demo">
                 <a
-                  href="https://code-exercise-blog.vercel.app/"
+                  href="https://dongvuong.github.io/f8-fullstack-k3/DAY39/index.html"
                   target="_blank"
                 >
                   Demo
                 </a>
                 <p className="show-demo">
-                  https://code-exercise-blog.vercel.app/
+                  https://dongvuong.github.io/f8-fullstack-k3/DAY39/index.html
                 </p>
               </div>
               <div className="code">
                 <a
-                  href="https://github.com/duongnguyenf8/code_exercise-blog"
+                  href="https://github.com/DongVuong/f8-fullstack-k3/tree/main/DAY39"
                   target="_blank"
                 >
                   Code
                 </a>
                 <p className="show-code">
-                  https://github.com/duongnguyenf8/code_exercise-blog
+                  https://github.com/DongVuong/f8-fullstack-k3/tree/main/DAY39
                 </p>
               </div>
             </div>
@@ -133,8 +93,8 @@ export default function Info({ lang }) {
           </div>
         </div>
         <div className="source-project">
-          <a href="https://github.com/duongnguyenf8" target="_blank">
-            https://github.com/duongnguyenf8
+          <a href="https://github.com/DongVuong" target="_blank">
+            https://github.com/DongVuong
           </a>
         </div>
       </div>

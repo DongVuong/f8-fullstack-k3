@@ -28,22 +28,7 @@ function Navigation({ lang }) {
   return (
     <header className="header-main">
       <div className="container">
-        <nav className="nav-main">
-          {/* <Link className="logo" href="/">
-            <Image src={F8} alt="F8" width={25} height={25} />
-          </Link> */}
-
-          {/* <ul className="nav-list">
-            <li className="nav-item">
-              <Link
-                className={pathname === "/" ? "active" : "nav-link"}
-                href={"/"}
-              >
-                <span>Home</span>
-              </Link>
-            </li>
-          </ul> */}
-        </nav>
+        <nav className="nav-main"></nav>
         <div className="action-buttons">
           <a
             className="btn-website-f8"
@@ -97,7 +82,7 @@ function Navigation({ lang }) {
             }}
             onClick={toggleLanguage}
           >
-            {lang.nameBtn.language}
+            {lang.language.language}
           </button>
         </div>
       </div>

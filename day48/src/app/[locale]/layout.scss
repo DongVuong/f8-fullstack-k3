@@ -11,8 +11,8 @@
     }
     background-color: rgb(15, 15, 15);
     color: white;
-    transition: 0.2s linear;
-    transition-property: background-color, color;
+    // transition: 0.2s linear;
+    // transition-property: background-color, color;
     .btn-switch-theme {
         svg {
             fill: yellow;
@@ -28,8 +28,8 @@
     }
     background-color: white;
     color: rgb(50, 10, 10);
-    transition: 0.2s linear;
-    transition-property: background-color, color;
+    // transition: 0.2s linear;
+    // transition-property: background-color, color;
 }
 .container-main {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -47,8 +47,8 @@
         opacity: 0;
         visibility: hidden;
         font-size: 16px;
-        top: -23px;
-        left: 15%;
+        top: -50px;
+        left: 44%;
         background-color: rgb(113, 252, 113);
         padding: 5px;
         border-radius: 5px;

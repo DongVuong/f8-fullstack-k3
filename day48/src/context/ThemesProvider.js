@@ -1,12 +1,12 @@
 "use client";
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useLayoutEffect, useState } from "react";
 
 export const ThemeContext = createContext();
 
 function ThemesProvider({ children }) {
-  const [theme, setTheme] = useState("light");
-  useEffect(() => {
+  const [theme, setTheme] = useState("");
+  useLayoutEffect(() => {
     if (localStorage.getItem("theme"))
       setTheme(JSON.parse(localStorage.getItem("theme")));
     else {
@@ -14,6 +14,7 @@ function ThemesProvider({ children }) {
       setTheme("light");
     }
   }, [theme]);
+
   const handleTheme = (value) => {
     setTheme(value);
     localStorage.setItem("theme", JSON.stringify(value));
@@ -25,7 +26,7 @@ function ThemesProvider({ children }) {
 
   return (
     <ThemeContext.Provider value={data}>
-      <div className={`${theme} transition`}>{children}</div>
+      <div className={theme}>{children}</div>
     </ThemeContext.Provider>
   );
 }
