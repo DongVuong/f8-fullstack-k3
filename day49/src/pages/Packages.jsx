@@ -32,6 +32,7 @@ export default function Packages() {
                 <h4 className="text-xl font-bold">
                   <span>
                     <svg
+                      className="svg"
                       xmlns="http://www.w3.org/2000/svg"
                       height="25"
                       width="25"

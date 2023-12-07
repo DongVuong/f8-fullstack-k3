@@ -16,7 +16,7 @@ export default function Header() {
         <div className="container max-w-7xl xl:mx-auto flex justify-between items-center p-2 z-2">
           <div className="header-logo">
             <Link href={"#"} className=" text-2xl font-bold">
-              <span className="text-100">S</span>TRAVEL
+              STRAVEL
             </Link>
           </div>
           <nav className="header-navbar flex justify-between items-center py-4 px-2">

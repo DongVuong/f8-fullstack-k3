@@ -6,9 +6,11 @@
 @tailwind components;
 @tailwind utilities;
 .dark {
+
     background-color: rgb(67, 67, 67);
     .btn-switch-theme,.btn-search,.btn-user{
         svg {
+          
             fill: yellow;
         }
         &:hover{
@@ -27,10 +29,12 @@
 }
 
 .light {
+ 
     background-color: white;
     color: black;
     .btn-switch-theme,.btn-search,.btn-user{
         svg {
+
             fill: #fff;
         }
         &:hover{

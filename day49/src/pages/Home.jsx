@@ -9,17 +9,20 @@ export default function Home() {
       id="home"
       className="relative h-[100vh] w-full flex justify-center items-center flex-col gap-y-12 min-h-[100vh]"
     >
-      <div className=" text-2xl text-[#fff] text-center flex flex-col gap-y-4 z-10">
-        <h1 className="text-5xl font-bold dark:text-100 transition-colors">
+      <div className=" text-2xl text-white text-center flex flex-col gap-y-4 z-10">
+        <h1 className="text-5xl font-bold transition-colors">
           Mọi chuyến đi đều đáng giá
         </h1>
         <p>Khám phá các vùng đất mới cùng chúng tôi</p>
         <p>Những chuyến đi đang chờ đợi bạn</p>
-        <a href="#" className=" bg-yellow w-fit mx-auto py-2 px-5 text-xl">
+        <a
+          href="#"
+          className=" bg-orange-500 w-fit mx-auto py-2 px-5 text-xl rounded-3xl"
+        >
           Khám phá ngay
         </a>
       </div>
-      <div className=" bg-dark-400 rounded-full p-4 flex gap-x-3 z-10">
+      <div className=" rounded-full p-4 flex gap-x-3 z-10">
         <span
           className={`w-[20px] h-[20px] bg-[#fff] inline-block rounded-full${
             video === 1 ? " bg-yellow-500" : ""

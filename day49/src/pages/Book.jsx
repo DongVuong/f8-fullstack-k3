@@ -4,10 +4,10 @@ import "./book.scss";
 export default function Book() {
   return (
     <section
-      className="h-screen min-h-[740px] container max-w-7xl mx-auto flex flex-col items-center justify-end gap-y-4 pb-[50px]"
+      className="h-screen container mx-auto flex flex-col items-center justify-end gap-y-4 pb-[50px]"
       id="book"
     >
-      <h2 className="heading heading text-4xl font-bold text-100 flex gap-x-6 justify-center">
+      <h2 className=" heading text-4xl font-bold text-100 flex gap-x-6 justify-center">
         <span>T</span>
         <span>Ì</span>
         <span>M</span>
@@ -32,7 +32,7 @@ export default function Book() {
           />
         </div>
         <div className="section-formBox bg-slate-100 shadow-[0_0_10px_10px_rgba(0,0,0,0.2)] rounded-md">
-          <form className="p-5 shadow-[0_0px_15px_1px_rgba(0,0,0,0.1)] rounded-md text-light-200 flex flex-col gap-y-4 text-md">
+          <form className="p-5 shadow-[0_0px_15px_1px_rgba(0,0,0,0.1)] rounded-md flex flex-col gap-y-4 text-md">
             <div className="item">
               <label htmlFor="email" className=" block font-bold">
                 Hãy Liên Hệ Với Tôi Bằng :
