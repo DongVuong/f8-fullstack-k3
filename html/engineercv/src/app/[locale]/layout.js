@@ -9,7 +9,7 @@ export default async function layout({ children, params }) {
     <>
       <head>
         <meta name="description" content={lang.description} />
-        <title>F8 portfolio</title>
+        <title>portfolio of Dong</title>
       </head>
       <body>
         <ThemesProvider>

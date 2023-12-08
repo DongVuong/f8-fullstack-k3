@@ -21,6 +21,8 @@ function Navigation({ lang }) {
   const toggleLanguage = () => {
     if (pathname === "/vi") {
       router.push("/en");
+    } else if (pathname === "/en") {
+      router.push("/jp");
     } else {
       router.push("/vi");
     }
