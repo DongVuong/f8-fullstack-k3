@@ -1,0 +1,51 @@
+.header-main {
+    a{
+        text-decoration: none;
+    }
+    li{
+        list-style: none;
+    }
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 1420px;
+        max-width: 100%;
+        margin: 0px auto;
+        padding: 25px 10px 40px 10px;
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+
+            .nav-link {
+                font-size: 1.8rem;
+                font-weight: 800;
+            }
+        }
+
+        .action-buttons {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+.btn-facebook-f8,
+.btn-youtube-f8,
+.btn-website-f8{
+padding: 10px
+}
+            .btn-switch-theme {
+                appearance: none;
+                outline: none;
+                border: none;
+                background-color: transparent;
+                cursor: pointer;
+
+                svg {
+                    width: 30px;
+                    fill: 2;
+                }
+            }
+        }
+  
+    }
+}

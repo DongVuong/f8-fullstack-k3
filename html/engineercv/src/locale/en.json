@@ -1,0 +1,48 @@
+{
+    "language": {
+      "language": "en"
+    },
+    "infoTitle": {
+      "hoverTitle": "With 5 years of experience working at Nissan Automotive Technology Vietnam as a CAD/CAE engineer, I am confident that I can adapt and complete the job well at your company."
+    },
+    "contact": {
+      "infoContact": "Social contact",
+      "addressTitle":"Address",
+      "address":"Hoai Duc, Ha Noi"
+    },
+
+    "skills":{
+      "name":"Designer Engineer",
+      "name1":"Academic level",
+      "name2":" The VNU University of Engineering and Technology",
+      "name3":"Faculty of Engineering Mechanics and Automation"
+  
+    },
+    "skillsTokkui":{
+      "name":"Skills",
+      "office":"Proficient in Microshoft Office",
+      "japan":"Japanese language level",
+      "english":"English language level",
+      "name2":"Use specialized software"
+  
+      },
+      "experience":{
+        "name":"Work experience",
+        "name1":"Company: Nissan Automotive Technology Vietnam",
+        "name2":"Position: Powertrain design engineer - Powertrain design department",
+        "name3":"Cooling system design (water pipe, oil pipe, oil gauge pipe, BRKT...)",
+        "name4":"Create 2D/3D drawings using NX, develop detailed specifications according to predetermined standards.",
+        "name5":"Analyze the durability of metal parts based on actual conditions using NX.",
+        "name6":"Report to Japanese superiors, release details according to plan."
+      },
+      "experience2":{
+        "name1":"Company: Nissan Automotive Technology Vietnam",
+        "name2":"Position: Powertrain design engineer - Powertrain analysis department",
+        "name3":"Create mesh of details using ANSA, SIMLAB.",
+        "name4":"Analyze detailed durability of gasoline engines when operating using ABAQUS.",
+        "name5":"Analyze the impact durability of electric car battery frames using ABAQUS.",
+        "name6":"Analyze electric motor durability using ABAQUS.",
+        "name7":"Evaluate results, propose solutions, and discuss directly with Japanese superiors."
+      },
+    "description": "My name is Dong, this is my portfolio."
+  }

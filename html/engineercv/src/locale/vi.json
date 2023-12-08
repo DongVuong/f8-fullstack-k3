@@ -1,0 +1,47 @@
+{
+    "language": {
+      "language": "vi"
+    },
+    "infoTitle": {
+      "hoverTitle": "Với 5 năm kinh nghiệm làm việc tại Nissan Automotive Technology Viêt Nam trong cương vị kĩ sư CAD/CAE, tôi tự tin có thể thích nghi, hoàn thành tốt công việc tại quý công ty!!!"
+    },
+    "contact": {
+      "infoContact": "Thông tin liên hệ",
+      "addressTitle":"Địa chỉ",
+      "address":"Huyện Hoài Đức, Thành Phố Hà Nội"
+    },
+    "skills":{
+      "name":"Kĩ sư thiết kế",
+      "name1":"Trình độ học vấn",
+      "name2":"Đại học Công nghệ-ĐHQGHN",
+      "name3":"Khoa Cơ học kĩ thuật và Tự động hoá"
+    },
+    "skillsTokkui":{
+    "name":"Kĩ năng",
+    "office":"Thành tạo tin học văn phòng",
+    "japan":"Năng lực tiếng Nhật",
+    "english":"Năng lực tiếng Anh",
+    "name2":"Sử dụng phần mềm chuyên dụng"
+
+    },
+    "experience":{
+      "name":"Kinh nghiệm làm việc",
+      "name1":"Công ty: Nissan Automotive Technology Việt Nam",
+      "name2":"Vị trí: Kĩ sư thiết kế hệ thống truyền lực-Bộ phận thiết kế hệ thống truyền động",
+      "name3":"Thiết kế hệ thống làm mát (ồng dẫn nước, ống dẫn dầu, ống thăm dầu, BRKT...)",
+      "name4":" Dựng bản vẽ 2D/3D sử dụng NX, xây dựng thông số kĩ thuật của chi tiết theo tiêu chuẩn định trước.",
+      "name5":"Phân tích độ bền của chi tiết kim loại dựa trên những điều kiện thực tế sử dụng NX.",
+      "name6":"Báo cáo với cấp trên Nhật bản, phát hành chi tiết theo kết hoạch."
+    },
+    "experience2":{
+      "name1":"Công ty: Nissan Automotive Technology Việt Nam",
+      "name2":"Vị trí: Kĩ sư thiết kế hệ thống truyền lực-Bộ phận phân tích hệ thống truyền động",
+      "name3":"Tạo lưới của chi tiết sử dụng ANSA, SIMLAB.",
+      "name4":"Phân thích độ bền  chi tiết của động cơ xăng khi hoạt động với ABAQUS.",
+      "name5":"Phân tích độ bền khi va chạm chi tiết khung pin của ô tô điện với ABAQUS.",
+      "name6":"Phân tích độ bền động cơ điện với ABAQUS.",
+      "name7":"Đánh giá kết quả, đưa ra giải pháp, trao đổi trực tiếp với cấp trên Nhật Bản."
+    },
+    "description": "Xin chào, mình là Đông, đây là trang cá nhân của mình."
+  }
+  
