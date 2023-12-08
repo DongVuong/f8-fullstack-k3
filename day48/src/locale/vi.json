@@ -25,21 +25,20 @@
     },
     "myHobby": {
       "title": "Sở thích của tôi",
-      "li1": "Thưởng Thức Nhạc Nhẹ, Nhạc Rap Của Đen Vâu Và Các Nghệ Sĩ Khác,…",
-      "li2": "Đọc Sách, Học Hỏi Thêm Về Các Ngôn Ngữ Lập Trình Mới Mẻ. Hiện Tại,tôi Đang Tự Học Python",
-      "li3": "Theo Dõi Các Xu Hướng Công Nghệ, Tin Tức Về Các Sản Phẩm Nổi Tiếng như Iphone, Huawei, GoogleAI,…"
+      "li1": "Thưởng thức nhạc nhẹ, nhạc rap của Đen Vâu…",
+      "li2": "Đọc sách, học hỏi thêm về các ngôn ngữ lập trình mới mẻ.",
+      "li3": "Theo dõi các xu hướng công nghệ, tin tức về các sản phẩm nổi tiếng như Iphone, Huawei, GoogleAI,…"
     },
     "mySkill": {
       "title": "Các kỹ năng của tôi",
       "work": "Kỹ năng làm việc",
-      "otherSkill": "Các kỹ năng khác"
+      "otherSkill": "Các kỹ năng khác",
+      "skillContent": "Kỹ năng nghiên cứu và tìm kiếm tốt. Tư duy làm việc, kỹ năng làm việc nhóm tốt so với độ tuổi."
     },
     "history": {
       "title": "Lịch sử",
-      "about1": "Trường Trung học Cơ sở nào đó",
-      "about2": "Các trường Trung học Cơ sở khác",
-      "about3": "Trường Trung học Phổ thông khác",
-      "about4": "Học đại học và làm trợ giảng tại F8"
+      "about": "học fullstack tại F8"
+
     },
     "description": "Xin chào, mình là Đông, đây là trang cá nhân của mình."
   }

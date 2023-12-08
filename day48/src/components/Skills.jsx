@@ -26,40 +26,21 @@ export default function Skills({ lang }) {
             <b>{lang.mySkill.work}: </b>
             <span>
               REST API, React.js, Next.js, Redux, Context, CSS3, HTML5, UI/UX,
-              Figma, Photoshop...
+              Figma...
             </span>
           </p>
           <hr />
           <p>
             <b>{lang.mySkill.otherSkill}: </b>
-            <span>
-              Kỹ năng nghiên cứu và tìm kiếm tương đối tốt. Tư duy làm việc, kỹ
-              năng làm việc nhóm tốt so với độ tuổi.
-            </span>
+            <span>{lang.mySkill.skillContent}</span>
           </p>
         </div>
         <div className="history">
           <h3>{lang.history.title}</h3>
           <p>
-            <b>2016: </b>
-            <span>{lang.history.about1}</span>
+            <b>2023: </b>
+            <span>{lang.history.about}</span>
           </p>
-          <hr />
-          <p>
-            <b>2017-2019: </b>
-            <span>{lang.history.about2}</span>
-          </p>
-          <hr />
-          <p>
-            <b>2019-2021: </b>
-            <span>{lang.history.about3}</span>
-          </p>
-          <hr />
-          <p>
-            <b>2022-2026: </b>
-            <span>{lang.history.about4}</span>
-          </p>
-          <hr />
         </div>
       </div>
     </div>

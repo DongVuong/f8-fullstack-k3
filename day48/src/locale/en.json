@@ -25,21 +25,19 @@
     },
     "myHobby": {
       "title": "My hobbies",
-      "li1": "Enjoy Relaxing Music, Rap Music From Đen Vâu And Other Artists,…",
-      "li2": "Read Books, Learn More About New Programming Languages. Currently, I Am Self-Studying Python",
-      "li3": "Follow The Technology Trends, News About Famous Products Like Iphone, Huawei, GoogleAI,…"
+      "li1": "Enjoy relaxing music, rap music from Đen Vâu…",
+      "li2": "Read books, learn more about new programming languages.",
+      "li3": "Follow the technology trends, news about famous products like Iphone, Huawei, GoogleAI,…"
     },
     "mySkill": {
       "title": "My skills",
       "work": "Web developer",
-      "otherSkill": "Other skills"
+      "otherSkill": "Other skills",
+      "skillContent":"Good research and searching skills. Working mindset, good teamwork skills."
     },
     "history": {
       "title": "Histories",
-      "about1": "One of junior high school",
-      "about2": "Other Junior high school",
-      "about3": "Other high school",
-      "about4": "College studies"
+      "about": "Learn fullstack at F8"
     },
     "description": "My name is Dong, this is my portfolio."
   }
