@@ -1,0 +1,22 @@
+.container-login{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    flex-direction: column;
+    inset: 0;
+    background-color: white;
+    button{
+        border: none;
+        min-width: 100px;
+        margin-bottom: 30px;
+        margin-right: 10px;
+        border-radius: 5px;
+        padding: 10px 20px;
+        background-color: orange;
+        &:hover{
+            background-color: green;
+        }
+    }
+}
