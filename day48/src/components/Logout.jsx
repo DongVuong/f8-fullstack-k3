@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Logout() {
   const data = useSession();
-  console.log(data);
+
   return (
     <Fragment>
       <ToastContainer />
@@ -24,9 +24,13 @@ export default function Logout() {
             alt="avatar"
           />
           <h2>{data?.data?.user?.name}</h2>
+          {data?.data?.user?.email ? (
+            <h3 style={{ color: "orange" }}>{data?.data?.user?.email}</h3>
+          ) : (
+            <h3 style={{ color: "orange" }}>Chưa đăng kí email</h3>
+          )}
         </div>
         <div>
-          {" "}
           <button className="btn-logout" onClick={() => signOut()}>
             Đăng Xuất
           </button>
