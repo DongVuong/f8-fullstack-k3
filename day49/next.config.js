@@ -5,6 +5,9 @@ const nextConfig = {
       {
         hostname: "code-fullstack-exercise49.vercel.app",
       },
+      {
+        hostname: "api-pages.vercel.app",
+      },
     ],
   },
 };

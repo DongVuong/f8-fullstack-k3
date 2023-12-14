@@ -7,7 +7,23 @@
 @tailwind components;
 @tailwind utilities;
 .dark {
+form{
+    background-color: rgb(67, 67, 67);
+    color: white;
+    input{
+        background-color: rgb(67, 67, 67);
+        border: 1px solid orange;
+        border-radius: 5px;
 
+   
+    }
+    textarea{
+        background-color: rgb(67, 67, 67);
+        border: 1px solid orange;
+        border-radius: 5px;
+
+    }
+}
     background-color: rgb(67, 67, 67);
     .btn-switch-theme,.btn-search,.btn-user{
         svg {
@@ -19,6 +35,7 @@
                 fill: orange;
             }
         }
+        
     }
     footer{
         background-color: rgb(67, 67, 67);

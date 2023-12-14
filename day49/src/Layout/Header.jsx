@@ -1,15 +1,22 @@
 "use client";
 import { ThemeContext } from "@/context/ThemesProvider";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./header.scss";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const { theme, handleTheme } = useContext(ThemeContext);
+  const pathname = usePathname();
+  const [path, setPath] = useState(null);
   const handleChange = () => {
     if (theme === "light") handleTheme("dark");
     else handleTheme("light");
   };
+  useEffect(() => {
+    const newPath = pathname.split("/");
+    setPath(newPath[1]);
+  }, [pathname]);
   return (
     <header className="header relative z-20">
       <div className="header-inner fixed inset-x-0 top-0 shadow-md z-10 bg-dark-400 transition-colors text-dark-100">
@@ -20,29 +27,55 @@ export default function Header() {
             </Link>
           </div>
           <nav className="header-navbar flex justify-between items-center py-4 px-2">
-            <ul className=" flex gap-5 text-xl">
-              <li>
-                <a href="#home">Trang chủ</a>
-              </li>
-              <li>
-                <a href="#book">Đặt lịch</a>
-              </li>
-              <li>
-                <a href="#packages">Ưu đãi</a>
-              </li>
-              <li>
-                <a href="#services">Dịch vụ</a>
-              </li>
-              <li>
-                <a href="#gallery">Thư viện</a>
-              </li>
-              <li>
-                <a href="#review">Đánh giá</a>
-              </li>
-              <li>
-                <a href="#">Liên hệ</a>
-              </li>
-            </ul>
+            {path === "gallery" ? (
+              <ul className=" flex gap-3 text-xl h-full">
+                <li className="h-full">
+                  <a href="#tonghop">Tổng hợp</a>
+                </li>
+                <li className="h-full">
+                  <a href="#hawaii">Hawaii</a>
+                </li>
+                <li className="h-full">
+                  <a href="#mumbai">Mumbai</a>
+                </li>
+                <li className="h-full">
+                  <a href="#paris">Paris</a>
+                </li>
+                <li className="h-full">
+                  <a href="#sydney">Sydney</a>
+                </li>
+                <li className="h-full">
+                  <a href="#tokyo">Tokyo</a>
+                </li>
+                <li className="h-full">
+                  <a href="#egypt">Egypt</a>
+                </li>
+              </ul>
+            ) : (
+              <ul className=" flex gap-5 text-xl">
+                <li>
+                  <a href="#home">Trang chủ</a>
+                </li>
+                <li>
+                  <a href="#book">Đặt lịch</a>
+                </li>
+                <li>
+                  <a href="#packages">Ưu đãi</a>
+                </li>
+                <li>
+                  <a href="#services">Dịch vụ</a>
+                </li>
+                <li>
+                  <a href="#gallery">Thư viện</a>
+                </li>
+                <li>
+                  <a href="#review">Đánh giá</a>
+                </li>
+                <li>
+                  <a href="#contact">Liên hệ</a>
+                </li>
+              </ul>
+            )}
           </nav>
           <div className="header-button text-2xl flex gap-2 justify-center items-center">
             <button className="btn-switch-theme" onClick={handleChange}>

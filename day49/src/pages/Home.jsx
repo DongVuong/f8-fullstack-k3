@@ -16,7 +16,7 @@ export default function Home() {
         <p>Khám phá các vùng đất mới cùng chúng tôi</p>
         <p>Những chuyến đi đang chờ đợi bạn</p>
         <a
-          href="#"
+          href="#packages"
           className=" bg-orange-500 w-fit mx-auto py-2 px-5 text-xl rounded-3xl"
         >
           Khám phá ngay

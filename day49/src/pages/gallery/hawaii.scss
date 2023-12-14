@@ -1,0 +1,16 @@
+#hawaii{
+    h2.heading{
+        padding: 10px;
+        span{
+            font-size: 3.5rem;
+            background: rgba(255,165,0,.2);
+            color: orange;
+            border-radius: .5rem;
+            padding: .2rem 1rem
+        }
+        span.space{
+            background: none
+        }
+    }
+
+}
