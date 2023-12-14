@@ -30,7 +30,7 @@ function Navigation({ lang }) {
       <div className="container">
         <nav className="nav-main"></nav>
         <div className="action-buttons">
-          <Link href="/auth">
+          <Link href="/login">
             <button
               style={{
                 border: "none",
