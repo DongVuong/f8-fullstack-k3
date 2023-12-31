@@ -1,0 +1,37 @@
+{
+  "name": "minmap-flow-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@auth0/nextjs-auth0": "^3.5.0",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@reduxjs/toolkit": "^2.0.1",
+    "cookies-next": "^4.1.0",
+    "i": "^0.3.7",
+    "next": "14.0.3",
+    "npm": "^10.2.5",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-redux": "^9.0.4",
+    "reactflow": "^11.10.1",
+    "sass": "^1.69.5",
+    "vercel": "^32.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.45",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.7"
+  }
+}

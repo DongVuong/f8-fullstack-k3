@@ -1,0 +1,192 @@
+.wrapper {
+  flex-grow: 1;
+  width: 100%; 
+  height: 500px;
+}
+.react-flow__node-myCustomNode {
+  background: #8bc34a;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  padding: 2px 5px;
+  font-weight: 700;
+}
+.react-flow__handle.target {
+  top: -10px;
+  width: 40px;
+  height: 20px;
+ border-radius: 1px;
+  pointer-events: none;
+  /* color: orange; */
+  background-color: orange;
+  border-radius: 5px;
+  
+}
+
+.react-flow__handle.source {
+  cursor: pointer;
+  width: 40px;
+  height: 20px;
+  bottom: -10px;
+ border-radius: 1px;
+ background-color: orange;
+ border-radius: 5px;
+}
+
+.react-flow .react-flow__connectionline {
+  z-index: 0;
+}
+
+.inputWrapper {
+  height: 20px;
+  margin: 20px 5px;
+  position: relative;
+  /* pointer-events: none; */
+  background-color:transparent;
+
+}
+.input {
+  text-align: center;
+  border: none;
+  padding: 0 2px;
+  border-radius: 1px;
+  font-weight: 700;
+  background: transparent;
+  height: 100%;
+  font-size: 1.2rem;
+  color: white
+  /* pointer-events: none; */
+ 
+}
+
+.input:focus {
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.25);
+  pointer-events: all;
+}
+
+  /* <div>
+"use client";
+import React, { useCallback, useRef } from "react";
+import ReactFlow, {
+  Background,
+  useNodesState,
+  useEdgesState,
+  addEdge,
+  useReactFlow,
+  ReactFlowProvider,
+  getIncomers,
+  getOutgoers,
+  getConnectedEdges,
+  Controls,
+} from "reactflow";
+import "reactflow/dist/style.css";
+
+import "./index.css";
+const initialNodes = [
+  {
+    id: "0",
+    type: "input",
+    data: { label: "Node" },
+    position: { x: 0, y: 50 },
+  },
+];
+
+let id = 1;
+const getId = () => `${id++}`;
+
+const AddNodeOnEdgeDrop = () => {
+  const reactFlowWrapper = useRef(null);
+  const connectingNodeId = useRef(null);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const { screenToFlowPosition } = useReactFlow();
+  const onConnect = useCallback((params) => {
+    // reset the start node on connections
+    connectingNodeId.current = null;
+    setEdges((eds) => addEdge(params, eds));
+  }, []);
+
+  const onConnectStart = useCallback((_, { nodeId }) => {
+    connectingNodeId.current = nodeId;
+  }, []);
+
+  const onConnectEnd = useCallback(
+    (event) => {
+      if (!connectingNodeId.current) return;
+
+      const targetIsPane = event.target.classList.contains("react-flow__pane");
+
+      if (targetIsPane) {
+        // we need to remove the wrapper bounds, in order to get the correct position
+        const id = getId();
+        const newNode = {
+          id,
+          position: screenToFlowPosition({
+            x: event.clientX,
+            y: event.clientY,
+          }),
+          data: { label: `Node ${id}` },
+          origin: [0.5, 0.0],
+        };
+
+        setNodes((nds) => nds.concat(newNode));
+        setEdges((eds) =>
+          eds.concat({ id, source: connectingNodeId.current, target: id })
+        );
+      }
+    },
+    [screenToFlowPosition]
+  );
+  const onNodesDelete = useCallback(
+    (deleted) => {
+      setEdges(
+        deleted.reduce((acc, node) => {
+          const incomers = getIncomers(node, nodes, edges);
+          const outgoers = getOutgoers(node, nodes, edges);
+          const connectedEdges = getConnectedEdges([node], edges);
+          const remainingEdges = acc.filter(
+            (edge) => !connectedEdges.includes(edge)
+          );
+
+          const createdEdges = incomers.flatMap(({ id: source }) =>
+            outgoers.map(({ id: target }) => ({
+              id: `${source}->${target}`,
+              source,
+              target,
+            }))
+          );
+
+          return [...remainingEdges, ...createdEdges];
+        }, edges)
+      );
+    },
+    [nodes, edges]
+  );
+  return (
+    <div className="wrapper" ref={reactFlowWrapper}>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        onConnectStart={onConnectStart}
+        onConnectEnd={onConnectEnd}
+        onNodesDelete={onNodesDelete}
+        fitView
+        fitViewOptions={{ padding: 2 }}
+        nodeOrigin={[0.5, 0]}
+      />
+      <Background style={{ zIndex: -1 }} />
+      <Controls />
+    </div>
+  );
+};
+
+export default () => (
+  <ReactFlowProvider>
+    <AddNodeOnEdgeDrop />
+  </ReactFlowProvider>
+);
+</div> */
