@@ -8,7 +8,7 @@ import DoubleBubble from "./helper/DoubleBubble.jsx";
 export const DefaultContext = createContext();
 export default function App() {
   const [apiKey, setApiKey] = useState(sessionStorage.getItem("apiKey"));
-  const [isLoading, setIsLoading] = useState(false);
+
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {

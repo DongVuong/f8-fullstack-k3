@@ -12,6 +12,7 @@
     width: 100%;
 }
 main{
+    overflow: auto;
     padding: 16px;
     position: relative;
 }
@@ -48,14 +49,14 @@ input::placeholder{
     margin-top: 20px;
 }
 table{
+    font-size: 20px;
     width: 100%;
     text-align: center;
     border: 1px solid;
-    color: #319795;
+    color: #139896;
     opacity: 0.6;
 }
 .trash{
-    margin-top: 15px;
     position: absolute;
     width: 40px;
     height: 40px;

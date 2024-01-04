@@ -12,7 +12,7 @@ function InputRange({ handleChangeNumber }) {
   const [showTooltip, setShowTooltip] = React.useState(false);
   return (
     <Slider
-      width="99%"
+      width="98.5%"
       id="slider"
       defaultValue={1}
       min={1}
@@ -25,19 +25,19 @@ function InputRange({ handleChangeNumber }) {
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
-      <SliderMark color="#319795" value={0} mt="1" ml="-1" fontSize="sm">
+      <SliderMark color="#319795" value={0} mt="2" ml="-2" fontSize="lg">
         0
       </SliderMark>
-      <SliderMark color="#319795" value={512} mt="1" ml="-1" fontSize="sm">
+      <SliderMark color="#319795" value={512} mt="2" ml="-2" fontSize="lg">
         512
       </SliderMark>
-      <SliderMark color="#319795" value={1024} mt="1" ml="-1" fontSize="sm">
+      <SliderMark color="#319795" value={1024} mt="2" ml="-2" fontSize="lg">
         1024
       </SliderMark>
-      <SliderMark color="#319795" value={1536} mt="1" ml="-1" fontSize="sm">
+      <SliderMark color="#319795" value={1536} mt="2" ml="-2" fontSize="lg">
         1536
       </SliderMark>
-      <SliderMark color="#319795" value={2048} mt="1" ml="-1" fontSize="sm">
+      <SliderMark color="#319795" value={2048} mt="2" ml="-2" fontSize="lg">
         2048
       </SliderMark>
       <SliderTrack>

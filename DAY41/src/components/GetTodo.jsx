@@ -128,7 +128,6 @@ export default function GetTodo({ apiKey = "", setIsLoading = () => {} }) {
           } else {
             setIsLoading(true);
             toast.error("Mất kết nối, vui lòng đăng nhập lại");
-            // window.alert("Mất kết nối, vui lòng đăng nhập lại");
             sessionStorage.clear();
             window.location.reload();
           }

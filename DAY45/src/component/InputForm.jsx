@@ -43,7 +43,6 @@ function InputForm({ number, remainTime }) {
       toast.warning("Bạn đã nhập số này rồi");
     }
   };
-  console.log(allHistory);
   return (
     <>
       <form action="" onSubmit={handleSubmit}>
