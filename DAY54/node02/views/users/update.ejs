@@ -1,0 +1,42 @@
+<h1>Sua thong tin</h1>
+<form action="" method="post">
+  <div class="mb-3">
+    <label for="">Tên</label>
+    <input
+      type="text"
+      name="name"
+      value="<%= user.name %>"
+      class="form-control"
+      placeholder="Tên..."
+    />
+  </div>
+  <div class="mb-3">
+    <label for="">Email</label>
+    <input
+      type="text"
+      name="email"
+      value="<%= user.email %>"
+      class="form-control"
+      placeholder="Email..."
+    />
+  </div>
+  <div class="mb-3">
+    <label for="">Trạng thái</label>
+    <select name="status" class="form-select" id="">
+      <option
+        value="0"
+        <%= +user.status === 0 ? "selected" : '' %>
+      >
+        Chưa kích hoạt
+      </option>
+      <option
+        value="1"
+        <%= +user.status === 1 ? "selected" : '' %>
+      >
+        Kích hoạt
+      </option>
+    </select>
+  </div>
+  <button class="btn btn-primary">Cap nhat</button>
+  <a href="/users" class="btn btn-danger">Huy</a>
+</form>
