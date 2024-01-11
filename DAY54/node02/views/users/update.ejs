@@ -9,6 +9,7 @@
       class="form-control"
       placeholder="Tên..."
     />
+    <span class="text-danger"><%=req.errors.name%></span>
   </div>
   <div class="mb-3">
     <label for="">Email</label>
@@ -19,6 +20,7 @@
       class="form-control"
       placeholder="Email..."
     />
+    <span class="text-danger"><%=req.errors.email%></span>
   </div>
   <div class="mb-3">
     <label for="">Trạng thái</label>
@@ -36,6 +38,7 @@
         Kích hoạt
       </option>
     </select>
+    <span class="text-danger"><%=req.errors.status%></span>
   </div>
   <button class="btn btn-primary">Cap nhat</button>
   <a href="/users" class="btn btn-danger">Huy</a>

@@ -58,8 +58,13 @@ module.exports = {
         .required("Email bat buoc phai nhap")
         .email("email khong dung dinh dang")
         .test("check-email", "email da ton tai", async (value) => {
-          const user = await userModel.existEmail(value);
-          return !user.length;
+          const userOld = await userModel.getUpdate(userId);
+          if (userOld[0].email === value) {
+            return true;
+          } else {
+            const user = await userModel.existEmail(value);
+            return !user.length;
+          }
         }),
       status: string().test(
         "check-status",
@@ -76,12 +81,6 @@ module.exports = {
     } catch {
       return res.redirect("/users/update/" + userId);
     }
-  },
-  delete: async (req, res) => {
-    const userId = req.params.id;
-    let data = await userModel.getUpdate(userId);
-    let user = data && data.length > 0 ? data[0] : {};
-    res.render("users/delete", { user, req });
   },
   handleDelete: async (req, res) => {
     const userId = req.params.id;

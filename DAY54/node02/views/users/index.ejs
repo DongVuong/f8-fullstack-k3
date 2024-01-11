@@ -56,7 +56,53 @@
         <a href="/users/update/<%= user.id %>" class="btn btn-warning">Sửa</a>
       </td>
       <td>
-        <a href="/users/delete/<%= user.id %>" class="btn btn-danger">Xóa</a>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Xóa
+        </button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Xoa nguoi dung <%= user.name %> voi email la <%= user.email
+                  %>?
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <form action="/users/delete/<%= user.id %>" method="POST">
+                  <button type="submit" class="btn btn-danger">DELETE</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </td>
     </tr>
     <% })%>
