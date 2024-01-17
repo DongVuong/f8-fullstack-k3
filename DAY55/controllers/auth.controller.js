@@ -27,7 +27,10 @@ module.exports = {
       const account = await User.findOne({
         where: { email },
       });
-      if (!account || !bcrypt.compare(password, account.dataValues.password)) {
+      if (
+        !account ||
+        !(await bcrypt.compare(password, account.dataValues.password))
+      ) {
         req.flash("login", "Email hoặc mật khẩu không đúng!");
         return res.redirect("/auth/login");
       }
@@ -65,7 +68,10 @@ module.exports = {
         email,
         password: bcryptPassword,
       });
-      req.flash("register", "Đăng kí tài khoản thành công!");
+      req.flash(
+        "register",
+        "Đăng kí tài khoản thành công, đăng nhập để trải nghiệm!"
+      );
       return res.redirect("/");
     } else res.redirect("/auth/register");
   },

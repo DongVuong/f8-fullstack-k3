@@ -385,15 +385,12 @@ COPY public.users (id, name, email, password, status, created_at, updated_at, ag
 4	user4	username4@gmail.com	123456	f	2023-12-21 20:08:16.87558	2023-12-21 20:08:16.87558	25
 5	user5	username5@gmail.com	123456	f	2023-12-21 20:08:16.87558	2023-12-21 20:08:16.87558	28
 3	user3	username3@gmail.com	123456	t	2023-12-21 20:08:16.87558	2023-12-21 20:08:16.87558	23
-26	sasas	sasa@dsdsad	dsdsa	f	2024-01-17 07:51:55.135	2024-01-17 07:51:55.135	40
-27	dsdsds	dsdsds@dsdsdas	ddsdsds	f	2024-01-17 07:52:10.644	2024-01-17 07:52:10.644	40
-28	sasa	sasa@dsdsads	sdsadasdasd	f	2024-01-17 07:56:26.346	2024-01-17 07:56:26.346	40
-29	sasa	user1@gmail.com	$2b$10$1Of1Ijk.mk0./LrhOOGnP.yEePyoRgSO.pFdcIoGzvXNZ2fQkK7gC	f	2024-01-17 08:31:39.314	2024-01-17 08:31:39.314	40
-30	vuong dong	123456@gmail.com	$2b$10$Fenc04Y8dnZ/6EJe6yjNqO347mUfEehGqYhV2j3JM1DakXYYZdrJ2	f	2024-01-17 08:40:04.139	2024-01-17 08:40:04.139	40
-31	vuong dong	1234567@gmail.com	$2b$10$0gb6OXPtDtt64GzH8xBsj.v9XEpix6cjrJpoh58Ifyt5aFsJ1Hg4G	f	2024-01-17 08:40:37.863	2024-01-17 08:40:37.863	40
-32	dsdsa	dsdssd@dsdsa	$2b$10$ilc7wr/pDMEI1K0kPRxdeuLzn7weoMYByW.ECqAMKymQEe/3FSj8.	f	2024-01-17 08:56:25.543	2024-01-17 08:56:25.543	40
+29	user1	user1@gmail.com	$2b$10$1Of1Ijk.mk0./LrhOOGnP.yEePyoRgSO.pFdcIoGzvXNZ2fQkK7gC	t	2024-01-17 08:31:39.314	2024-01-17 08:31:39.314	40
+30	user2	user2@gmail.com	$2b$10$Fenc04Y8dnZ/6EJe6yjNqO347mUfEehGqYhV2j3JM1DakXYYZdrJ2	f	2024-01-17 08:40:04.139	2024-01-17 08:40:04.139	40
 13	3232test13466	test1232323@gmail.com	123456	f	2024-01-11 17:29:17.544382	2024-01-11 17:29:17.544382	40
+31	user3	user3@gmail.com	$2b$10$0gb6OXPtDtt64GzH8xBsj.v9XEpix6cjrJpoh58Ifyt5aFsJ1Hg4G	f	2024-01-17 08:40:37.863	2024-01-17 08:40:37.863	40
 16	sasasasasasasasa	sasasas@gmail.com	123456	t	2024-01-11 17:38:02.879198	2024-01-11 17:38:02.879198	40
+32	user4	user4@gmail.com	$2b$10$ilc7wr/pDMEI1K0kPRxdeuLzn7weoMYByW.ECqAMKymQEe/3FSj8.	f	2024-01-17 08:56:25.543	2024-01-17 08:56:25.543	40
 2	user2dsdsdsds	username2@gmail.com	123456	f	2023-12-21 20:08:16.87558	2024-01-11 20:05:57.883436	18
 \.
 
