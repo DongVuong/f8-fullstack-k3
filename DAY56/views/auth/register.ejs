@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+  <div class="col-6">
+    <form action="/auth/register" method="post">
+      <h1 class="text-center">Register</h1>
+      <!-- Name input -->
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form1Example0">Name</label>
+        <input
+          name="name"
+          type="text"
+          id="form1Example0"
+          class="form-control"
+          value="<%= req.old.name%>"
+        />
+        <%if (req.errors.name) {%>
+        <div class="alert w-100 text-danger text-center" role="alert">
+          <%= req.errors.name %>
+        </div>
+        <% }%>
+      </div>
+      <!-- Email input -->
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form1Example1">Email address</label>
+        <input
+          name="email"
+          type="email"
+          id="form1Example1"
+          class="form-control"
+          value="<%= req.old.email%>"
+        />
+        <%if (req.errors.email) {%>
+        <div class="alert w-100 text-danger text-center" role="alert">
+          <%= req.errors.email %>
+        </div>
+        <% }%>
+      </div>
+      <!-- Password input -->
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form1Example2">Password</label>
+        <input
+          name="password"
+          type="password"
+          id="form1Example2"
+          class="form-control"
+          value="<%= req.old.password%>"
+        />
+        <%if (req.errors.password) {%>
+        <div class="alert w-100 text-danger text-center" role="alert">
+          <%= req.errors.password %>
+        </div>
+        <% }%>
+      </div>
+      <!-- 2 column grid layout for inline styling -->
+
+      <!-- Submit button -->
+
+      <button
+        data-mdb-ripple-init
+        type="submit"
+        class="btn btn-warning btn-block w-100"
+      >
+        Register
+      </button>
+      <p>Have a Account? <a href="/auth/login">Login</a></p>
+    </form>
+  </div>
+</div>
