@@ -1,18 +1,14 @@
-require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-const expressEjsLayouts = require("express-ejs-layouts");
-const validateMiddleware = require("./middlewares/validate.middleware");
-const authMiddleware = require("./middlewares/auth.middleware");
 const session = require("express-session");
 const flash = require("connect-flash");
-
+const expressLayout = require("express-ejs-layouts");
+const validateMiddleware = require("./middlewares/validate.middleware");
 var indexRouter = require("./routes/index");
-var authRouter = require("./routes/auth");
 
 var app = express();
 app.use(
@@ -27,7 +23,7 @@ app.use(flash());
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.use(expressEjsLayouts);
+app.use(expressLayout);
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -36,9 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(validateMiddleware);
-app.use(authMiddleware);
 app.use("/", indexRouter);
-app.use("/auth", authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,0 +1,97 @@
+<a href="/send-mail" class="btn btn-primary mb-3 w-100 mt-5">Send email</a>
+<hr />
+<h1 class="text-center mt-5">History</h1>
+<div class="mx-auto">
+  <% if (req?.msg) { %>
+  <div class="alert alert-success text-center" role="alert">
+    <%= req?.msg %>
+  </div>
+  <% } %> <% if (req?.error) { %>
+  <div class="alert alert-danger text-center" role="alert">
+    <%= req?.error %>
+  </div>
+  <% } %>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th width="5%" class="text-center">STT</th>
+      <th>To</th>
+      <th>Title</th>
+      <th class="text-center" width="10%">Status</th>
+      <th>Time</th>
+      <th width="5%">Details</th>
+      <th width="5%">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (data?.length === 0) { %>
+    <tr>
+      <td colspan="5" class="text-center" style="font-size: 20px">
+        Không có dữ liệu!
+      </td>
+    </tr>
+    <% } else { %> <% data.forEach((element, index) => { %>
+    <tr>
+      <td class="text-center"><%= index + 1 %></td>
+      <td><%= element.email %></td>
+      <td><%= element.title %></td>
+      <td class="text-center" width="10%">
+        <%= element.status ? "Đã đọc" : "Chưa đọc" %>
+      </td>
+      <td><%= element.created_at %></td>
+      <td class="d-flex">
+        <a href="/detail/<%= element.id %>" class="btn btn-warning">details</a>
+      </td>
+      <td>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal<%= index %>"
+        >
+          Delete
+        </button>
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal<%= index %>"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel<%= index %>"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel<%= index %>">
+                  Xoa lịch sử email gửi đến <%= element.email %> lúc
+                  <%=element.created_at%>?
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <form action="/delete/<%= element.id %>" method="POST">
+                  <button type="submit" class="btn btn-danger">DELETE</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <% }) %> <% } %>
+  </tbody>
+</table>
