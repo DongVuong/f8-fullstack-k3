@@ -41,32 +41,27 @@ module.exports = {
 
     return res.redirect("/send-mail");
   },
-  check: (req, res) => {
+  check: async (req, res, next) => {
     const { id } = req.params;
+    try {
+      const result = await History.update(
+        {
+          status: true,
+        },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+    } catch (e) {
+      return next(e);
+    }
     const options = {
       root: path.join(__dirname, ".."),
     };
-
     const fileName = `public/images/checkImage.jpeg`;
-    res.sendFile(fileName, options, async function (err) {
-      if (err) {
-        console.error("Error sending file:", err);
-      } else {
-        const result = await History.update(
-          {
-            status: true,
-          },
-          {
-            where: {
-              id,
-            },
-          }
-        );
-        if (!result) {
-          throw new Error("khong tim thay mail");
-        }
-      }
-    });
+    return res.sendFile(fileName, options);
   },
   detail: async (req, res, next) => {
     const { id } = req.params;
