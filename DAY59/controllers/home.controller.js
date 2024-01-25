@@ -1,6 +1,7 @@
 const sendMail = require("../utils/mail");
 const { History } = require("../models/index");
 const { string } = require("yup");
+const path = require("path");
 
 module.exports = {
   index: async (req, res, next) => {
@@ -24,7 +25,11 @@ module.exports = {
     if (body) {
       const createData = await History.create(body);
       if (createData) {
-        const info = await sendMail(body.email, body.title, body.content);
+        const info = await sendMail(
+          body.email,
+          body.title,
+          `${body.content}<img src="https://day-59.vercel.app/check/${createData.id}" style="width: 1px; height: 1px;" alt="checkImage" />`
+        );
         if (info) {
           req.flash("msg", "Gửi thành công");
           return res.redirect("/");
@@ -36,7 +41,33 @@ module.exports = {
 
     return res.redirect("/send-mail");
   },
-  check: async (req, res) => {},
+  check: (req, res) => {
+    const { id } = req.params;
+    const options = {
+      root: path.join(__dirname, ".."),
+    };
+
+    const fileName = `public/images/checkImage.jpeg`;
+    res.sendFile(fileName, options, async function (err) {
+      if (err) {
+        console.error("Error sending file:", err);
+      } else {
+        const result = await History.update(
+          {
+            status: true,
+          },
+          {
+            where: {
+              id,
+            },
+          }
+        );
+        if (!result) {
+          throw new Error("khong tim thay mail");
+        }
+      }
+    });
+  },
   detail: async (req, res, next) => {
     const { id } = req.params;
     try {
