@@ -58,9 +58,9 @@ module.exports = {
       return next(e);
     }
     const options = {
-      root: path.join(__dirname, ".."),
+      root: "public",
     };
-    const fileName = `public/images/checkImage.jpeg`;
+    const fileName = `/images/checkImage.jpeg`;
     return res.sendFile(fileName, options);
   },
   detail: async (req, res, next) => {
