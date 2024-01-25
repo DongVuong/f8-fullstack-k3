@@ -36,6 +36,7 @@ module.exports = {
 
     return res.redirect("/send-mail");
   },
+  check: async (req, res) => {},
   detail: async (req, res, next) => {
     const { id } = req.params;
     try {
